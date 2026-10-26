@@ -23,22 +23,22 @@ function formatPrice(price, currency) {
   }
 }
 
-function getImage(car) {
+function getImage(motorcycle) {
   return (
-    car?.images?.find((image) => image?.url)?.url ||
-    "/images/placeholder-car.jpg"
+    motorcycle?.images?.find((image) => image?.url)?.url ||
+    "/images/motorcycle/motorcycle1.jpg"
   );
 }
 
-function VehicleCard({ car, index }) {
-  const title = [car.year, car.make, car.model]
+function MotorcycleCard({ motorcycle, index }) {
+  const title = [motorcycle.year, motorcycle.make, motorcycle.model]
     .filter(Boolean)
     .join(" ");
 
   const imageAlt =
-    car.images?.find((image) => image?.url)?.alt ||
+    motorcycle.images?.find((image) => image?.url)?.alt ||
     title ||
-    "Featured vehicle";
+    "Featured motorcycle";
 
   return (
     <motion.article
@@ -52,14 +52,14 @@ function VehicleCard({ car, index }) {
       className="group min-w-0"
     >
       <Link
-        href={car._id ? `/cars/${car._id}` : "/cars"}
+        href={motorcycle._id ? `/motorcycle/${motorcycle._id}` : "/motorcycle"}
         className="block h-full"
         aria-label={`View ${title}`}
       >
-        {/* Vehicle image */}
+        {/* Motorcycle image */}
         <div className="relative aspect-[4/3] overflow-hidden bg-[#ebeae6]">
           <Image
-            src={getImage(car)}
+            src={getImage(motorcycle)}
             alt={imageAlt}
             fill
             sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw"
@@ -69,7 +69,7 @@ function VehicleCard({ car, index }) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
 
           <span className="absolute left-1 top-1 border border-white/35 bg-black/35 px-2 py-1 font-montserrat text-[8px] font-medium uppercase tracking-[0.18em] text-white backdrop-blur-sm">
-            {car.bodyType || "Featured vehicle"}
+            {motorcycle.bikeType || "Featured motorcycle"}
           </span>
 
           <span className="absolute bottom-2 right-2 flex h-6 w-6 items-center justify-center border border-white/50 bg-white text-black transition-colors duration-300 group-hover:bg-black group-hover:text-white">
@@ -77,42 +77,42 @@ function VehicleCard({ car, index }) {
           </span>
         </div>
 
-        {/* Vehicle details */}
+        {/* Motorcycle details */}
         <div className="border-b border-black/15 py-5 sm:py-6">
           <div className="mb-2 flex items-center justify-between gap-4">
             <p className="min-w-0 truncate font-montserrat text-[8px] font-medium uppercase tracking-[0.25em] text-black/45 sm:text-[9px]">
-              {car.make || "Selected vehicle"}
+              {motorcycle.make || "Selected motorcycle"}
             </p>
 
-            {car.year && (
+            {motorcycle.year && (
               <span className="shrink-0 font-montserrat text-[9px] tracking-[0.12em] text-black/35">
-                {car.year}
+                {motorcycle.year}
               </span>
             )}
           </div>
 
           <h3 className="font-bebas text-3xl leading-[0.95] tracking-[-0.02em] sm:text-4xl">
-            {car.model || "Vehicle details"}
+            {motorcycle.model || "Motorcycle details"}
           </h3>
 
           <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 font-montserrat text-[8px] uppercase tracking-[0.14em] text-black/40">
-            {car.transmission && <span>{car.transmission}</span>}
+            {motorcycle.transmission && <span>{motorcycle.transmission}</span>}
 
-            {car.fuelType && (
+            {motorcycle.fuelType && (
               <>
-                {car.transmission && (
+                {motorcycle.transmission && (
                   <span className="h-[3px] w-[3px] rounded-full bg-black/25" />
                 )}
-                <span>{car.fuelType}</span>
+                <span>{motorcycle.fuelType}</span>
               </>
             )}
 
-            {car.mileage != null && (
+            {motorcycle.mileage != null && (
               <>
                 <span className="h-[3px] w-[3px] rounded-full bg-black/25" />
                 <span>
-                  {Number(car.mileage).toLocaleString("en-US")}{" "}
-                  {car.mileageUnit || "km"}
+                  {Number(motorcycle.mileage).toLocaleString("en-US")}{" "}
+                  {motorcycle.mileageUnit || "km"}
                 </span>
               </>
             )}
@@ -124,7 +124,7 @@ function VehicleCard({ car, index }) {
             </span>
 
             <span className="text-right font-montserrat text-sm font-semibold tracking-[0.01em]">
-              {formatPrice(car.price, car.currency)}
+              {formatPrice(motorcycle.price, motorcycle.currency)}
             </span>
           </div>
         </div>
@@ -133,7 +133,7 @@ function VehicleCard({ car, index }) {
   );
 }
 
-function VehicleCardSkeleton() {
+function MotorcycleCardSkeleton() {
   return (
     <div className="animate-pulse overflow-hidden" aria-hidden="true">
       <div className="aspect-[4/3] bg-black/[0.06]" />
@@ -154,18 +154,18 @@ function VehicleCardSkeleton() {
 }
 
 export default function FeaturedInventory() {
-  const [cars, setCars] = useState([]);
+  const [motorcycles, setMotorcycles] = useState([]);
   const [status, setStatus] = useState("loading");
   const [error, setError] = useState("");
 
-  const fetchFeaturedCars = useCallback(async (signal, retry = false) => {
+  const fetchFeaturedMotorcycles = useCallback(async (signal, retry = false) => {
     if (retry) {
       setStatus("loading");
       setError("");
     }
 
     try {
-      const response = await fetch("/api/cars/featured", {
+      const response = await fetch("/api/motorcycle/featured", {
         method: "GET",
         cache: "no-store",
         signal,
@@ -175,16 +175,16 @@ export default function FeaturedInventory() {
 
       if (!response.ok || !result.success) {
         throw new Error(
-          result.message || "Unable to load featured vehicles."
+          result.message || "Unable to load featured motorcycles."
         );
       }
 
-      const featuredCars = Array.isArray(result.data)
+      const featuredMotorcycles = Array.isArray(result.data)
         ? result.data
         : [];
 
-      setCars(featuredCars);
-      setStatus(featuredCars.length > 0 ? "ready" : "empty");
+      setMotorcycles(featuredMotorcycles);
+      setStatus(featuredMotorcycles.length > 0 ? "ready" : "empty");
     } catch (fetchError) {
       if (fetchError.name === "AbortError") {
         return;
@@ -193,7 +193,7 @@ export default function FeaturedInventory() {
       console.error("Featured inventory fetch error:", fetchError);
 
       setError(
-        "We couldn't load the featured vehicles. Please try again."
+        "We couldn't load the featured motorcycles. Please try again."
       );
 
       setStatus("error");
@@ -205,18 +205,18 @@ useEffect(() => {
   const controller = new AbortController();
 
   const timeoutId = setTimeout(() => {
-    fetchFeaturedCars(controller.signal);
+    fetchFeaturedMotorcycles(controller.signal);
   }, 0);
 
   return () => {
     clearTimeout(timeoutId);
     controller.abort();
   };
-}, [fetchFeaturedCars]);
+}, [fetchFeaturedMotorcycles]);
 
 
   const handleRetry = () => {
-    fetchFeaturedCars(undefined, true);
+    fetchFeaturedMotorcycles(undefined, true);
   };
 
   return (
@@ -242,15 +242,15 @@ useEffect(() => {
               transition={{ duration: 0.5, delay: 0.04 }}
               className="font-bebas text-5xl leading-[0.88] tracking-[-0.035em] sm:text-6xl md:text-7xl lg:text-[clamp(5rem,7vw,7.5rem)]"
             >
-              Featured inventory
+              Featured Motorcycles
             </motion.h2>
           </div>
 
           <Link
-            href="/cars"
+            href="/motorcycle"
             className="group inline-flex w-fit items-center gap-3 border-b border-black/25 pb-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.18em] text-black/65 transition-colors duration-300 hover:border-black hover:text-black"
           >
-            Explore all vehicles
+            Explore all motorcycles
 
             <ArrowUpRight
               size={15}
@@ -264,7 +264,7 @@ useEffect(() => {
         {status === "loading" ? (
           <div className="grid grid-cols-2 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
             {Array.from({ length: 4 }, (_, index) => (
-              <VehicleCardSkeleton key={index} />
+              <MotorcycleCardSkeleton key={index} />
             ))}
           </div>
         ) : status === "error" ? (
@@ -290,23 +290,23 @@ useEffect(() => {
           /* Empty state */
           <div className="flex min-h-64 flex-col items-center justify-center border border-black/10 px-6 text-center">
             <p className="font-montserrat text-[10px] uppercase tracking-[0.2em] text-black/45">
-              No featured vehicles are available right now.
+              No featured motorcycles are available right now.
             </p>
 
             <Link
-              href="/cars"
+              href="/motorcycle"
               className="mt-5 border-b border-black/30 pb-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.18em] text-black/70 transition-colors hover:border-black hover:text-black"
             >
-              Browse all inventory
+              Browse all motorcycles
             </Link>
           </div>
         ) : (
-          /* Featured vehicles grid */
+          /* Featured motorcycles grid */
           <div className="grid grid-cols-2 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
-            {cars.slice(0, 8).map((car, index) => (
-              <VehicleCard
-                key={car._id || `${car.make}-${car.model}-${index}`}
-                car={car}
+            {motorcycles.slice(0, 8).map((motorcycle, index) => (
+              <MotorcycleCard
+                key={motorcycle._id || `${motorcycle.make}-${motorcycle.model}-${index}`}
+                motorcycle={motorcycle}
                 index={index}
               />
             ))}
@@ -316,10 +316,10 @@ useEffect(() => {
         {/* Bottom CTA */}
         <div className="mt-9 flex justify-center sm:mt-12">
           <Link
-            href="/cars"
+            href="/motorcycle"
             className="group inline-flex min-h-12 items-center justify-center gap-3 bg-[#181818] px-6 py-4 font-montserrat text-[9px] font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-black/75 sm:px-8"
           >
-            View complete inventory
+            View all motorcycles
 
             <ArrowUpRight
               size={15}

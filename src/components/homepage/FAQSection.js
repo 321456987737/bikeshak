@@ -8,39 +8,39 @@ import { useState } from "react";
 const faqs = [
   {
     id: 1,
-    question: "Are all vehicles available for viewing?",
+    question: "Are all motorcycles available for viewing?",
     answer:
-      "Our available vehicles can be viewed at the showroom. We recommend contacting our team before visiting so we can confirm availability and have your preferred vehicle ready.",
+      "Our available motorcycles can be viewed at the showroom. We recommend contacting our team before visiting so we can confirm availability and have your preferred motorcycle ready.",
   },
   {
     id: 2,
     question: "Can I book a test drive?",
     answer:
-      "Yes. You can request a test drive for eligible vehicles through our website or by contacting our team directly. We will arrange a suitable date and time.",
+      "Yes. You can request a test ride for eligible motorcycles through our website or by contacting our team directly. We will arrange a suitable date and time.",
   },
   {
     id: 3,
     question: "Do you accept trade-ins?",
     answer:
-      "Yes. We can review your current vehicle as part of a trade-in. Share your vehicle details with our team and we will guide you through the valuation process.",
+      "Yes. We can review your current motorcycle as part of a trade-in. Share its details with our team and we will guide you through the valuation process.",
   },
   {
     id: 4,
-    question: "Do you offer vehicle financing?",
+    question: "Do you offer motorcycle financing?",
     answer:
-      "Financing options may be available depending on the vehicle and your requirements. Contact our team to discuss the available options for your purchase.",
+      "Financing options may be available depending on the motorcycle and your requirements. Contact our team to discuss the available options for your purchase.",
   },
   {
     id: 5,
-    question: "Can I reserve a vehicle?",
+    question: "Can I reserve a motorcycle?",
     answer:
-      "Selected vehicles may be reserved for a limited period. Reservation availability and terms vary by vehicle, so please contact us for current details.",
+      "Selected motorcycles may be reserved for a limited period. Reservation availability and terms vary by motorcycle, so please contact us for current details.",
   },
   {
     id: 6,
-    question: "Do you offer vehicle delivery?",
+    question: "Do you offer motorcycle delivery?",
     answer:
-      "Delivery arrangements can be discussed with our team based on the vehicle and destination. Contact us and we will provide the available delivery options.",
+      "Delivery arrangements can be discussed with our team based on the motorcycle and destination. Contact us and we will provide the available delivery options.",
   },
 ];
 
@@ -135,7 +135,7 @@ export default function FAQSection() {
               }}
               className="mt-7 max-w-sm font-montserrat text-[10px] leading-[1.8] tracking-[0.06em] text-black/40 md:text-[11px]"
             >
-              Everything you need to know before finding your next vehicle.
+              Everything you need to know before finding your next motorcycle.
               For anything else, our team is always here to help.
             </motion.p>
           </div>

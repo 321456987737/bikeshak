@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
   ArrowUpRight,
-  CarFront,
+  Bike,
   Mail,
   MapPin,
   Phone,
@@ -16,9 +16,9 @@ import {
 export default function ContactPage() {
   const searchParams = useSearchParams();
 
-  const carId = searchParams.get("car");
+  const motorcycleId = searchParams.get("motorcycle");
 
-  const [car, setCar] = useState(null);
+  const [motorcycle, setMotorcycle] = useState(null);
 
   const [form, setForm] = useState({
     customerName: "",
@@ -34,24 +34,27 @@ export default function ContactPage() {
   useEffect(() => {
     async function loadData() {
       try {
-        if (carId) {
-          const carResponse = await fetch(`/api/cars/${carId}`, {
+        if (motorcycleId) {
+          const motorcycleResponse = await fetch(
+            `/api/motorcycle/${motorcycleId}`,
+            {
             cache: "no-store",
-          });
+            },
+          );
 
-          if (carResponse.ok) {
-            const carResult = await carResponse.json();
+          if (motorcycleResponse.ok) {
+            const motorcycleResult = await motorcycleResponse.json();
 
-            if (carResult.success) {
-              const selectedCar = carResult.data.car;
+            if (motorcycleResult.success) {
+              const selectedMotorcycle = motorcycleResult.data.motorcycle;
 
-              setCar(selectedCar);
+              setMotorcycle(selectedMotorcycle);
 
               setForm((current) => ({
                 ...current,
                 message:
                   current.message ||
-                  `Hello, I'm interested in the ${selectedCar.year} ${selectedCar.make} ${selectedCar.model}. Please send me more information about this vehicle.`,
+                  `Hello, I'm interested in the ${selectedMotorcycle.year} ${selectedMotorcycle.make} ${selectedMotorcycle.model} motorcycle. Please send me more information.`,
               }));
             }
           }
@@ -62,7 +65,7 @@ export default function ContactPage() {
     }
 
     loadData();
-  }, [carId]);
+  }, [motorcycleId]);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -88,7 +91,7 @@ export default function ContactPage() {
         },
         body: JSON.stringify({
           ...form,
-          carId: carId || null,
+          motorcycleId: motorcycleId || null,
         }),
       });
 
@@ -129,8 +132,8 @@ export default function ContactPage() {
 
       <section className="relative h-[40dvh] min-h-[320px] overflow-hidden bg-[#e8e8e5] md:min-h-[440px]">
         <Image
-          src={"/images/cars/car1.jpg"}
-          alt="Demo vehicle contact page"
+          src={"/images/motorcycle/motorcycle1.jpg"}
+          alt="Demo motorcycle contact page"
           fill
           priority
           sizes="100vw"
@@ -150,7 +153,7 @@ export default function ContactPage() {
             <h1 className="mt-3 font-bebas text-6xl leading-[0.9] tracking-wide text-white md:text-8xl lg:text-9xl">
               Let us talk
               <br />
-              about your next car.
+              about your next motorcycle.
             </h1>
           </div>
         </div>
@@ -177,7 +180,7 @@ export default function ContactPage() {
 
             <div className="flex items-end">
               <p className="max-w-xl font-montserrat text-sm leading-7 text-black/55 md:text-base md:leading-8">
-                Have a question about a vehicle, want to arrange a visit,
+                Have a question about a motorcycle, want to arrange a visit,
                 schedule a test drive or simply need more information? Send us
                 a message and our team will get back to you.
               </p>
@@ -261,21 +264,21 @@ export default function ContactPage() {
               </div>
 
               {/* VEHICLE INQUIRY */}
-              {car && (
+              {motorcycle && (
                 <div className="mt-10 overflow-hidden border border-black/10 bg-[#f3f3f1]">
                   <div className="flex flex-col sm:flex-row">
                     <div className="relative h-52 w-full shrink-0 sm:h-36 sm:w-52">
-                      {car.images?.[0]?.url ? (
+                      {motorcycle.images?.[0]?.url ? (
                         <Image
-                          src={car.images[0].url}
-                          alt={`${car.make} ${car.model}`}
+                          src={motorcycle.images[0].url}
+                          alt={`${motorcycle.make} ${motorcycle.model}`}
                           fill
                           sizes="(max-width: 640px) 100vw, 208px"
                           className="object-cover"
                         />
                       ) : (
                         <div className="flex h-full w-full items-center justify-center bg-black/[0.04]">
-                          <CarFront
+                          <Bike
                             size={32}
                             strokeWidth={1}
                             className="text-black/20"
@@ -286,17 +289,17 @@ export default function ContactPage() {
 
                     <div className="flex flex-1 flex-col justify-center p-5">
                       <p className="font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-black/35">
-                        Vehicle inquiry
+                        Motorcycle inquiry
                       </p>
 
                       <h4 className="mt-2 font-bebas text-3xl tracking-wide">
-                        {car.make} {car.model}
+                        {motorcycle.make} {motorcycle.model}
                       </h4>
 
                       <p className="mt-1 font-montserrat text-xs text-black/45">
-                        {car.year} · {car.currency}{" "}
+                        {motorcycle.year} · {motorcycle.currency}{" "}
                         {new Intl.NumberFormat("en-US").format(
-                          car.price
+                          motorcycle.price
                         )}
                       </p>
                     </div>
@@ -485,25 +488,25 @@ export default function ContactPage() {
 
             <div className="relative z-10 max-w-3xl">
               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-white/35 md:text-xs">
-                Your next vehicle
+                Your next motorcycle
               </p>
 
               <h2 className="mt-5 font-bebas text-6xl leading-[0.9] tracking-wide md:text-8xl">
                 Still looking?
                 <br />
-                Explore our inventory.
+                Explore our motorcycles.
               </h2>
 
               <p className="mt-6 max-w-xl font-montserrat text-sm leading-7 text-white/45 md:text-base">
-                Take a look at our current vehicles and find something that
+                Take a look at our current motorcycles and find something that
                 catches your eye.
               </p>
 
               <Link
-                href="/cars"
+                href="/motorcycle"
                 className="group mt-9 inline-flex items-center gap-5 bg-white px-6 py-4 font-montserrat text-[10px] font-semibold uppercase tracking-[0.2em] text-black transition-colors hover:bg-white/90"
               >
-                Browse inventory
+                Browse motorcycles
 
                 <ArrowUpRight
                   size={17}
@@ -627,9 +630,9 @@ function ContactInfo({
 // export default function ContactPage() {
 //   const searchParams = useSearchParams();
 
-//   const carId = searchParams.get("car");
+//   const motorcycleId = searchParams.get("motorcycle");
 
-//   const [car, setCar] = useState(null);
+//   const [motorcycle, setMotorcycle] = useState(null);
 
 //   const [form, setForm] = useState({
 //     customerName: "",
@@ -645,8 +648,8 @@ function ContactInfo({
 //   useEffect(() => {
 //     async function loadData() {
 //       try {
-//         if (carId) {
-//           const carResponse = await fetch(`/api/cars/${carId}`, {
+//         if (motorcycleId) {
+//           const carResponse = await fetch(`/api/motorcycles/${motorcycleId}`, {
 //             cache: "no-store",
 //           });
 
@@ -654,15 +657,15 @@ function ContactInfo({
 //             const carResult = await carResponse.json();
 
 //             if (carResult.success) {
-//               const selectedCar = carResult.data.car;
+//               const selectedMotorcycle = carResult.data.motorcycle;
 
-//               setCar(selectedCar);
+//               setMotorcycle(selectedMotorcycle);
 
 //               setForm((current) => ({
 //                 ...current,
 //                 message:
 //                   current.message ||
-//                   `Hello, I'm interested in the ${selectedCar.year} ${selectedCar.make} ${selectedCar.model}. Please send me more information about this vehicle.`,
+//                   `Hello, I'm interested in the ${selectedMotorcycle.year} ${selectedMotorcycle.make} ${selectedMotorcycle.model}. Please send me more information about this motorcycle.`,
 //               }));
 //             }
 //           }
@@ -673,7 +676,7 @@ function ContactInfo({
 //     }
 
 //     loadData();
-//   }, [carId]);
+//   }, [motorcycleId]);
 
 //   function handleChange(event) {
 //     const { name, value } = event.target;
@@ -699,7 +702,7 @@ function ContactInfo({
 //         },
 //         body: JSON.stringify({
 //           ...form,
-//           carId: carId || null,
+//           motorcycleId: motorcycleId || null,
 //         }),
 //       });
 
@@ -740,8 +743,8 @@ function ContactInfo({
 
 //       <section className="relative h-[40dvh] min-h-[320px] overflow-hidden bg-[#e8e8e5] md:min-h-[440px]">
 //         <Image
-//           src={business?.heroImage || "/images/cars/car1.jpg"}
-//           alt="Demo vehicle contact page"
+//           src={business?.heroImage || "/images/motorcycles/car1.jpg"}
+//           alt="Demo motorcycle contact page"
 //           fill
 //           priority
 //           sizes="100vw"
@@ -761,7 +764,7 @@ function ContactInfo({
 //             <h1 className="mt-3 font-bebas text-6xl leading-[0.9] tracking-wide text-white md:text-8xl lg:text-9xl">
 //               Let us talk
 //               <br />
-//               about your next car.
+//               about your next motorcycle.
 //             </h1>
 //           </div>
 //         </div>
@@ -788,7 +791,7 @@ function ContactInfo({
 
 //             <div className="flex items-end">
 //               <p className="max-w-xl font-montserrat text-sm leading-7 text-black/55 md:text-base md:leading-8">
-//                 Have a question about a vehicle, want to arrange a visit,
+//                 Have a question about a motorcycle, want to arrange a visit,
 //                 schedule a test drive or simply need more information? Send us
 //                 a message and our team will get back to you.
 //               </p>
@@ -872,14 +875,14 @@ function ContactInfo({
 //               </div>
 
 //               {/* VEHICLE INQUIRY */}
-//               {car && (
+//               {motorcycle && (
 //                 <div className="mt-10 overflow-hidden border border-black/10 bg-[#f3f3f1]">
 //                   <div className="flex flex-col sm:flex-row">
 //                     <div className="relative h-52 w-full shrink-0 sm:h-36 sm:w-52">
-//                       {car.images?.[0]?.url ? (
+//                       {motorcycle.images?.[0]?.url ? (
 //                         <Image
-//                           src={car.images[0].url}
-//                           alt={`${car.make} ${car.model}`}
+//                           src={motorcycle.images[0].url}
+//                           alt={`${motorcycle.make} ${motorcycle.model}`}
 //                           fill
 //                           sizes="(max-width: 640px) 100vw, 208px"
 //                           className="object-cover"
@@ -897,17 +900,17 @@ function ContactInfo({
 
 //                     <div className="flex flex-1 flex-col justify-center p-5">
 //                       <p className="font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-black/35">
-//                         Vehicle inquiry
+//                         Motorcycle inquiry
 //                       </p>
 
 //                       <h4 className="mt-2 font-bebas text-3xl tracking-wide">
-//                         {car.make} {car.model}
+//                         {motorcycle.make} {motorcycle.model}
 //                       </h4>
 
 //                       <p className="mt-1 font-montserrat text-xs text-black/45">
-//                         {car.year} · {car.currency}{" "}
+//                         {motorcycle.year} · {motorcycle.currency}{" "}
 //                         {new Intl.NumberFormat("en-US").format(
-//                           car.price
+//                           motorcycle.price
 //                         )}
 //                       </p>
 //                     </div>
@@ -1096,7 +1099,7 @@ function ContactInfo({
 
 //             <div className="relative z-10 max-w-3xl">
 //               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-white/35 md:text-xs">
-//                 Your next vehicle
+//                 Your next motorcycle
 //               </p>
 
 //               <h2 className="mt-5 font-bebas text-6xl leading-[0.9] tracking-wide md:text-8xl">
@@ -1106,12 +1109,12 @@ function ContactInfo({
 //               </h2>
 
 //               <p className="mt-6 max-w-xl font-montserrat text-sm leading-7 text-white/45 md:text-base">
-//                 Take a look at our current vehicles and find something that
+//                 Take a look at our current motorcycles and find something that
 //                 catches your eye.
 //               </p>
 
 //               <Link
-//                 href="/cars"
+//                 href="/motorcycles"
 //                 className="group mt-9 inline-flex items-center gap-5 bg-white px-6 py-4 font-montserrat text-[10px] font-semibold uppercase tracking-[0.2em] text-black transition-colors hover:bg-white/90"
 //               >
 //                 Browse inventory
@@ -1209,4 +1212,3 @@ function ContactInfo({
 //     </a>
 //   );
 // }
-

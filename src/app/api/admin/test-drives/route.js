@@ -76,7 +76,7 @@ export async function GET(request) {
       await Promise.all([
         TestDrive.find(filter)
           .populate({
-            path: "carId",
+            path: "motorcycleId",
             select:
               "make model year price currency images status",
           })

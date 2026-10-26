@@ -21,7 +21,7 @@ export const config = {
   matcher: [
     "/admin",
     "/admin/dashboard/:path*",
-    "/admin/cars/:path*",
+    "/admin/motorcycles/:path*",
     "/admin/inquiries/:path*",
     "/admin/test-drives/:path*",
     "/admin/settings/:path*",

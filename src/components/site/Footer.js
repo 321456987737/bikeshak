@@ -11,8 +11,8 @@ const navigation = [
     href: "/",
   },
   {
-    label: "Cars",
-    href: "/cars",
+    label: "Motorcycles",
+    href: "/motorcycle",
   },
   {
     label: "Services",
@@ -59,7 +59,7 @@ export default function Footer() {
                 }}
                 className="mb-5 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-white/30 md:text-[10px]"
               >
-                Your next car awaits
+                Your next motorcycle awaits
               </motion.p>
 
               <motion.h2
@@ -84,7 +84,7 @@ export default function Footer() {
               >
                 Find Your Next
                 <br />
-                Drive.
+                Motorcycle.
               </motion.h2>
             </div>
 
@@ -109,10 +109,10 @@ export default function Footer() {
               }}
             >
               <Link
-                href="/cars"
+                href="/motorcycle"
                 className="group inline-flex items-center gap-4 border border-white bg-white px-7 py-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-black transition-all duration-300 hover:bg-transparent hover:text-white md:px-8 md:py-5"
               >
-                Explore inventory
+                Explore motorcycles
 
                 <ArrowUpRight
                   size={15}
@@ -140,12 +140,12 @@ export default function Footer() {
               href="/"
               className="inline-block font-bebas text-4xl tracking-[0.02em] transition-opacity duration-300 hover:opacity-70 md:text-5xl"
             >
-              DEMO AUTO
+              DEMO Motorcycle
             </Link>
 
             <p className="mt-5 max-w-sm font-montserrat text-[10px] leading-[1.9] tracking-[0.05em] text-white/30 md:text-[11px]">
-              Exceptional vehicles. Refined service. A collection built for
-              those who expect more from every drive.
+              Exceptional motorcycles. Refined service. A collection built for
+              those who expect more from every ride.
             </p>
           </div>
 

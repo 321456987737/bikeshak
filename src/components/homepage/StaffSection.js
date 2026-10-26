@@ -18,7 +18,7 @@ const staff = [
     role: "Showroom Manager",
     image: "/images/people/1.webp",
     description:
-      "Helping customers find the right vehicle and enjoy a smooth showroom experience.",
+      "Helping customers find the right motorcycle and enjoy a smooth showroom experience.",
   },
   {
     id: 2,
@@ -26,15 +26,15 @@ const staff = [
     role: "Sales Consultant",
     image: "/images/people/2.webp",
     description:
-      "Guiding customers through vehicle details, available options, and showroom visits.",
+      "Guiding customers through motorcycle details, available options, and showroom visits.",
   },
   {
     id: 3,
     name: "Team Member Three",
-    role: "Vehicle Specialist",
+    role: "Motorcycle Specialist",
     image: "/images/people/3.jpg",
     description:
-      "Helping customers understand vehicle specifications and choose with confidence.",
+      "Helping customers understand motorcycle specifications and choose with confidence.",
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const staff = [
     role: "Sales Consultant",
     image: "/images/people/4.webp",
     description:
-      "Helping customers explore the inventory and find a vehicle that suits their needs.",
+      "Helping customers explore the inventory and find a motorcycle that suits their needs.",
   },
   {
     id: 5,
@@ -147,7 +147,7 @@ export default function StaffSection() {
             <p className="font-montserrat text-[10px] leading-[1.9] tracking-[0.05em] text-black/45 md:text-[11px]">
               Behind every great showroom experience is a team that cares
               about getting the details right. Meet the people ready to help
-              you find your next vehicle.
+              you find your next motorcycle.
             </p>
 
             <a

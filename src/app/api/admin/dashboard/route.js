@@ -2,7 +2,7 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
 
-import Car from "@/models/Car";
+import Motorcycle from "@/models/Motorcycle";
 import Inquiry from "@/models/Inquiry";
 import TestDrive from "@/models/TestDrive";
 
@@ -11,31 +11,31 @@ export async function GET() {
     await connectDB();
 
     const [
-      totalCars,
-      availableCars,
-      reservedCars,
-      soldCars,
+      totalMotorcycles,
+      availableMotorcycles,
+      reservedMotorcycles,
+      soldMotorcycles,
       totalUsers,
       totalInquiries,
       newInquiries,
       totalTestDrives,
       pendingTestDrives,
       confirmedTestDrives,
-      recentCars,
+      recentMotorcycles,
       recentInquiries,
       recentTestDrives,
     ] = await Promise.all([
-      Car.countDocuments(),
+      Motorcycle.countDocuments(),
 
-      Car.countDocuments({
+      Motorcycle.countDocuments({
         status: "Available",
       }),
 
-      Car.countDocuments({
+      Motorcycle.countDocuments({
         status: "Reserved",
       }),
 
-      Car.countDocuments({
+      Motorcycle.countDocuments({
         status: "Sold",
       }),
 
@@ -61,7 +61,7 @@ export async function GET() {
         status: "Confirmed",
       }),
 
-      Car.find()
+      Motorcycle.find()
         .select(
           "make model year price currency status images createdAt"
         )
@@ -73,10 +73,10 @@ export async function GET() {
 
       Inquiry.find()
         .select(
-          "customerName phone email carId message status createdAt"
+          "customerName phone email motorcycleId message status createdAt"
         )
         .populate({
-          path: "carId",
+          path: "motorcycleId",
           select: "make model year",
         })
         .sort({
@@ -87,10 +87,10 @@ export async function GET() {
 
       TestDrive.find()
         .select(
-          "customerName phone carId date time status createdAt"
+          "customerName phone motorcycleId date time status createdAt"
         )
         .populate({
-          path: "carId",
+          path: "motorcycleId",
           select: "make model year",
         })
         .sort({
@@ -105,10 +105,10 @@ export async function GET() {
 
       data: {
         stats: {
-          totalCars,
-          availableCars,
-          reservedCars,
-          soldCars,
+          totalMotorcycles,
+          availableMotorcycles,
+          reservedMotorcycles,
+          soldMotorcycles,
           totalUsers,
           totalInquiries,
           newInquiries,
@@ -117,7 +117,7 @@ export async function GET() {
           confirmedTestDrives,
         },
 
-        recentCars,
+        recentMotorcycles,
         recentInquiries,
         recentTestDrives,
       },

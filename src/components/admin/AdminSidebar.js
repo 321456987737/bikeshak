@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   LayoutDashboard,
-  CarFront,
+  Bike,
   MessageSquare,
   CalendarCheck,
   ExternalLink,
@@ -18,9 +18,9 @@ const navigation = [
     icon: LayoutDashboard,
   },
   {
-    label: "Cars",
-    href: "/admin/cars",
-    icon: CarFront,
+    label: "Motorcycles",
+    href: "/admin/motorcycles",
+    icon: Bike,
   },
   {
     label: "Inquiries",
@@ -83,7 +83,7 @@ export default function AdminSidebar() {
               </p>
 
               <p className="truncate text-xs text-black/40">
-                Car Dealership
+                Motorcycle Dealership
               </p>
             </div>
           </Link>

@@ -157,7 +157,7 @@ export default function AdminInquiriesPage() {
         </h1>
 
         <p className="mt-2 max-w-2xl text-sm leading-6 text-black/45">
-          Manage messages from customers interested in your vehicles.
+          Manage messages from customers interested in your motorcycles.
         </p>
       </div>
 
@@ -260,7 +260,7 @@ export default function AdminInquiriesPage() {
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Vehicle
+                      Motorcycle
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
@@ -310,20 +310,20 @@ export default function AdminInquiriesPage() {
                           </button>
                         </td>
 
-                        {/* Vehicle */}
+                        {/* Motorcycle */}
 
                         <td className="px-6 py-5">
-                          {inquiry.carId ? (
+                          {inquiry.motorcycleId ? (
                             <Link
-                              href={`/cars/${inquiry.carId._id}`}
+                              href={`/motorcycle/${inquiry.motorcycleId._id}`}
                               target="_blank"
                               className="group flex items-center gap-3"
                             >
                               <div className="h-12 w-14 shrink-0 overflow-hidden rounded-lg bg-black/[0.05]">
-                                {inquiry.carId.images?.[0]?.url ? (
+                                {inquiry.motorcycleId.images?.[0]?.url ? (
                                   <img
-                                    src={inquiry.carId.images[0].url}
-                                    alt={`${inquiry.carId.make} ${inquiry.carId.model}`}
+                                    src={inquiry.motorcycleId.images[0].url}
+                                    alt={`${inquiry.motorcycleId.make} ${inquiry.motorcycleId.model}`}
                                     className="h-full w-full object-cover"
                                   />
                                 ) : (
@@ -335,11 +335,11 @@ export default function AdminInquiriesPage() {
 
                               <div className="min-w-0">
                                 <p className="truncate text-sm font-semibold group-hover:underline">
-                                  {inquiry.carId.make} {inquiry.carId.model}
+                                  {inquiry.motorcycleId.make} {inquiry.motorcycleId.model}
                                 </p>
 
                                 <p className="mt-1 text-xs text-black/40">
-                                  {inquiry.carId.year}
+                                  {inquiry.motorcycleId.year}
                                 </p>
                               </div>
                             </Link>
@@ -440,19 +440,19 @@ export default function AdminInquiriesPage() {
                       </div>
                     </button>
 
-                    {/* Vehicle */}
+                    {/* Motorcycle */}
 
-                    {inquiry.carId ? (
+                    {inquiry.motorcycleId ? (
                       <Link
-                        href={`/cars/${inquiry.carId._id}`}
+                        href={`/motorcycle/${inquiry.motorcycleId._id}`}
                         target="_blank"
                         className="mt-4 flex min-w-0 items-center gap-3 rounded-xl bg-black/[0.035] p-3"
                       >
                         <div className="h-14 w-18 shrink-0 overflow-hidden rounded-lg bg-black/[0.05]">
-                          {inquiry.carId.images?.[0]?.url ? (
+                          {inquiry.motorcycleId.images?.[0]?.url ? (
                             <img
-                              src={inquiry.carId.images[0].url}
-                              alt={`${inquiry.carId.make} ${inquiry.carId.model}`}
+                              src={inquiry.motorcycleId.images[0].url}
+                              alt={`${inquiry.motorcycleId.make} ${inquiry.motorcycleId.model}`}
                               className="h-full w-full object-cover"
                             />
                           ) : (
@@ -464,11 +464,11 @@ export default function AdminInquiriesPage() {
 
                         <div className="min-w-0">
                           <p className="truncate text-xs font-semibold">
-                            {inquiry.carId.make} {inquiry.carId.model}
+                            {inquiry.motorcycleId.make} {inquiry.motorcycleId.model}
                           </p>
 
                           <p className="mt-1 text-[11px] text-black/40">
-                            {inquiry.carId.year}
+                            {inquiry.motorcycleId.year}
                           </p>
                         </div>
                       </Link>
@@ -642,20 +642,20 @@ function InquiryModal({ inquiry, actionId, onClose, onStatusChange }) {
           <InfoBlock label="Received" value={formatDate(inquiry.createdAt)} />
         </div>
 
-        {/* Vehicle */}
+        {/* Motorcycle */}
 
-        {inquiry.carId && (
+        {inquiry.motorcycleId && (
           <div className="mt-5 rounded-2xl bg-black/[0.035] p-4 sm:mt-6 sm:p-5">
             <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-black/35 sm:text-xs">
-              Vehicle
+              Motorcycle
             </p>
 
             <div className="mt-3 flex min-w-0 items-center justify-between gap-3 sm:mt-4 sm:gap-4">
               <div className="flex min-w-0 items-center gap-3 sm:gap-4">
-                {inquiry.carId.images?.[0]?.url ? (
+                {inquiry.motorcycleId.images?.[0]?.url ? (
                   <img
-                    src={inquiry.carId.images[0].url}
-                    alt={`${inquiry.carId.make} ${inquiry.carId.model}`}
+                    src={inquiry.motorcycleId.images[0].url}
+                    alt={`${inquiry.motorcycleId.make} ${inquiry.motorcycleId.model}`}
                     className="h-14 w-18 shrink-0 rounded-xl object-cover sm:h-16 sm:w-20"
                   />
                 ) : (
@@ -664,17 +664,17 @@ function InquiryModal({ inquiry, actionId, onClose, onStatusChange }) {
 
                 <div className="min-w-0">
                   <p className="truncate text-sm font-semibold">
-                    {inquiry.carId.make} {inquiry.carId.model}
+                    {inquiry.motorcycleId.make} {inquiry.motorcycleId.model}
                   </p>
 
                   <p className="mt-1 text-xs text-black/45">
-                    {inquiry.carId.year}
+                    {inquiry.motorcycleId.year}
                   </p>
                 </div>
               </div>
 
               <Link
-                href={`/cars/${inquiry.carId._id}`}
+                href={`/motorcycle/${inquiry.motorcycleId._id}`}
                 target="_blank"
                 className="shrink-0 rounded-lg border border-black/10 px-3 py-2 text-xs font-semibold transition hover:bg-black hover:text-white"
               >
@@ -1039,7 +1039,7 @@ function formatDate(value) {
 //         </h1>
 
 //         <p className="mt-2 text-sm text-black/45">
-//           Manage messages from customers interested in your vehicles.
+//           Manage messages from customers interested in your motorcycles.
 //         </p>
 //       </div>
 
@@ -1132,7 +1132,7 @@ function formatDate(value) {
 //                   </th>
 
 //                   <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-//                     Vehicle
+//                     Motorcycle
 //                   </th>
 
 //                   <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
@@ -1196,25 +1196,25 @@ function formatDate(value) {
 //                         </td>
 
 //                         <td className="px-6 py-5">
-//                           {inquiry.carId ? (
+//                           {inquiry.motorcycleId ? (
 //                             <Link
-//                               href={`/cars/${inquiry.carId._id}`}
+//                               href={`/motorcycle/${inquiry.motorcycleId._id}`}
 //                               target="_blank"
 //                               className="group flex items-center gap-3"
 //                             >
 //                               <div className="h-12 w-14 shrink-0 overflow-hidden rounded-lg bg-black/[0.05]">
 //                                 {inquiry
-//                                   .carId
+//                                   .motorcycleId
 //                                   .images?.[0]
 //                                   ?.url && (
 //                                   <img
 //                                     src={
 //                                       inquiry
-//                                         .carId
+//                                         .motorcycleId
 //                                         .images[0]
 //                                         .url
 //                                     }
-//                                     alt={`${inquiry.carId.make} ${inquiry.carId.model}`}
+//                                     alt={`${inquiry.motorcycleId.make} ${inquiry.motorcycleId.model}`}
 //                                     className="h-full w-full object-cover"
 //                                   />
 //                                 )}
@@ -1224,12 +1224,12 @@ function formatDate(value) {
 //                                 <p className="text-sm font-semibold group-hover:underline">
 //                                   {
 //                                     inquiry
-//                                       .carId
+//                                       .motorcycleId
 //                                       .make
 //                                   }{" "}
 //                                   {
 //                                     inquiry
-//                                       .carId
+//                                       .motorcycleId
 //                                       .model
 //                                   }
 //                                 </p>
@@ -1237,7 +1237,7 @@ function formatDate(value) {
 //                                 <p className="mt-1 text-xs text-black/40">
 //                                   {
 //                                     inquiry
-//                                       .carId
+//                                       .motorcycleId
 //                                       .year
 //                                   }
 //                                 </p>
@@ -1464,22 +1464,22 @@ function formatDate(value) {
 //           />
 //         </div>
 
-//         {inquiry.carId && (
+//         {inquiry.motorcycleId && (
 //           <div className="mt-6 rounded-2xl bg-black/[0.035] p-5">
 //             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-black/35">
-//               Vehicle
+//               Motorcycle
 //             </p>
 
 //             <div className="mt-4 flex items-center justify-between gap-4">
 //               <div className="flex items-center gap-4">
-//                 {inquiry.carId
+//                 {inquiry.motorcycleId
 //                   .images?.[0]?.url ? (
 //                   <img
 //                     src={
-//                       inquiry.carId
+//                       inquiry.motorcycleId
 //                         .images[0].url
 //                     }
-//                     alt={`${inquiry.carId.make} ${inquiry.carId.model}`}
+//                     alt={`${inquiry.motorcycleId.make} ${inquiry.motorcycleId.model}`}
 //                     className="h-16 w-20 rounded-xl object-cover"
 //                   />
 //                 ) : (
@@ -1488,18 +1488,18 @@ function formatDate(value) {
 
 //                 <div>
 //                   <p className="font-semibold">
-//                     {inquiry.carId.make}{" "}
-//                     {inquiry.carId.model}
+//                     {inquiry.motorcycleId.make}{" "}
+//                     {inquiry.motorcycleId.model}
 //                   </p>
 
 //                   <p className="mt-1 text-sm text-black/45">
-//                     {inquiry.carId.year}
+//                     {inquiry.motorcycleId.year}
 //                   </p>
 //                 </div>
 //               </div>
 
 //               <Link
-//                 href={`/cars/${inquiry.carId._id}`}
+//                 href={`/motorcycle/${inquiry.motorcycleId._id}`}
 //                 target="_blank"
 //                 className="rounded-lg border border-black/10 px-3 py-2 text-xs font-semibold transition hover:bg-black hover:text-white"
 //               >

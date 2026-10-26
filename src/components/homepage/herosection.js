@@ -10,47 +10,47 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  CarFront,
+  Bike,
   ShieldCheck,
 } from "lucide-react";
 
 const slides = [
   {
     id: 1,
-    image: "/images/cars/car1.jpg",
-    eyebrow: "YOUR NEXT CAR STARTS HERE",
-    title: "FIND YOUR NEXT DRIVE.",
+    image: "/images/motorcycle/motorcycle1.jpg",
+    eyebrow: "YOUR NEXT RIDE STARTS HERE",
+    title: "FIND YOUR NEXT BIKES.",
     description:
-      "Explore a carefully selected collection of premium cars, exceptional SUVs, and everyday favorites.",
-    cta: "Explore Inventory",
-    href: "/cars",
-    secondaryCta: "Book a Test Drive",
+      "Explore a carefully selected collection of premium motorcycles, versatile commuters, and everyday favorites.",
+    cta: "Explore Motorcycles",
+    href: "/motorcycle",
+    secondaryCta: "Book a Test Ride",
     secondaryHref: "/test-drive",
     category: "DISCOVER OUR COLLECTION",
   },
   {
     id: 2,
-    image: "/images/cars/car2.jpg",
-    eyebrow: "DRIVE SOMETHING EXCEPTIONAL",
+    image: "/images/motorcycle/motorcycle2.jpg",
+    eyebrow: "RIDE SOMETHING EXCEPTIONAL",
     title: "QUALITY YOU CAN FEEL.",
     description:
-      "Discover vehicles selected for their performance, comfort, and character. Your next journey begins here.",
-    cta: "View All Vehicles",
-    href: "/cars",
+      "Discover motorcycles selected for their performance, comfort, and character. Your next journey begins here.",
+    cta: "View All Motorcycles",
+    href: "/motorcycle",
     secondaryCta: "Contact Showroom",
     secondaryHref: "/contact",
     category: "QUALITY MEETS CONFIDENCE",
   },
   {
     id: 3,
-    image: "/images/cars/car3.jpg",
+    image: "/images/motorcycle/motorcycle3.jpg",
     eyebrow: "YOUR JOURNEY. YOUR CHOICE.",
-    title: "THE RIGHT CAR. RIGHT HERE.",
+    title: "THE RIGHT BIKE. RIGHT HERE.",
     description:
-      "From refined sedans to versatile SUVs, find a vehicle that fits your lifestyle and your next adventure.",
-    cta: "Find Your Car",
-    href: "/cars",
-    secondaryCta: "Book a Test Drive",
+      "From nimble urban rides to powerful touring motorcycles, find the perfect fit for your lifestyle and next adventure.",
+    cta: "Find Your Motorcycle",
+    href: "/motorcycle",
+    secondaryCta: "Book a Test Ride",
     secondaryHref: "/test-drive",
     category: "EXPLORE THE POSSIBILITIES",
   },
@@ -92,7 +92,7 @@ export default function HeroSection() {
   return (
     <section
       aria-label="Discover our vehicle inventory"
-      className="relative h-[720px] min-h-[650px] w-full overflow-hidden bg-[#171717] text-white md:h-[88svh] md:min-h-[680px] md:max-h-[1000px]"
+      className="relative h-[80dvh] min-h-[500px]  w-full overflow-hidden bg-[#171717] text-white md:h-[88svh] md:min-h-[680px] md:max-h-[1000px]"
     >
       {/* BACKGROUND CAROUSEL */}
 
@@ -105,7 +105,7 @@ export default function HeroSection() {
             >
               <Image
                 src={slide.image}
-                alt={`${slide.category} — featured vehicle`}
+                alt={`${slide.category} — featured motorcycle`}
                 fill
                 priority={slide.id === 1}
                 sizes="100vw"
@@ -188,7 +188,7 @@ export default function HeroSection() {
                     exit: { opacity: 0 },
                   }}
                   transition={{ duration: 0.4 }}
-                  className="mt-6 max-w-xl text-sm leading-7 text-white/75 sm:text-base sm:leading-8"
+                  className="mt-6 max-w-xl text-[12px] leading-7 text-white/75 sm:text-base sm:leading-8"
                 >
                   {activeSlide.description}
                 </motion.p>
@@ -206,9 +206,9 @@ export default function HeroSection() {
                 >
                   <Link
                     href={activeSlide.href}
-                    className="group inline-flex min-h-14 items-center justify-center gap-5 bg-white px-6 text-sm font-semibold text-[#171717] transition-colors duration-300 hover:bg-[#e9e8e4]"
+                    className="group inline-flex min-h-12 items-center justify-center gap-5 bg-white px-6 text-sm font-semibold text-[#171717] transition-colors duration-300 hover:bg-[#e9e8e4]"
                   >
-                    <CarFront size={19} strokeWidth={1.7} />
+                    <Bike size={19} strokeWidth={1.7} />
 
                     {activeSlide.cta}
 
@@ -220,7 +220,7 @@ export default function HeroSection() {
 
                   <Link
                     href={activeSlide.secondaryHref}
-                    className="group inline-flex min-h-14 items-center justify-center gap-3 border border-white/40 bg-white/[0.04] px-6 text-sm font-medium text-white backdrop-blur-sm transition-colors duration-300 hover:bg-white/10"
+                    className="group inline-flex min-h-12 items-center justify-center gap-3 border border-white/40 bg-white/[0.04] px-6 text-sm font-medium text-white backdrop-blur-sm transition-colors duration-300 hover:bg-white/10"
                   >
                     {activeSlide.secondaryCta}
 
@@ -233,7 +233,7 @@ export default function HeroSection() {
 
                 {/* TRUST INDICATORS */}
 
-                <motion.div
+                {/* <motion.div
                   variants={{
                     hidden: { opacity: 0 },
                     visible: { opacity: 1 },
@@ -250,10 +250,10 @@ export default function HeroSection() {
                   <span className="hidden h-1 w-1 rounded-full bg-white/50 sm:block" />
 
                   <div className="flex items-center gap-2 text-xs text-white/80">
-                    <CarFront size={16} strokeWidth={1.5} />
-                    Explore Available Vehicles
+                    <Bike size={16} strokeWidth={1.5} />
+                    Explore Available Motorcycles
                   </div>
-                </motion.div>
+                </motion.div> */}
               </motion.div>
             </AnimatePresence>
           </div>

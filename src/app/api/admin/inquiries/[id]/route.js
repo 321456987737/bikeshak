@@ -37,7 +37,7 @@ export async function GET(
     const inquiry =
       await Inquiry.findById(id)
         .populate({
-          path: "carId",
+          path: "motorcycleId",
           select:
             "make model year price currency mileage mileageUnit images status",
         })
@@ -137,7 +137,7 @@ export async function PATCH(
         }
       )
         .populate({
-          path: "carId",
+          path: "motorcycleId",
           select:
             "make model year price currency images status",
         })

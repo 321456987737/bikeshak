@@ -83,11 +83,11 @@ export default function AdminDashboardPage() {
       {/* Main Stats */}
       <div className="grid gap-4 grid-cols-2 xl:grid-cols-4">
         <StatCard
-          title="Total Cars"
+          title="Total Motorcycles"
           value={
-            loading ? "—" : stats?.totalCars ?? 0
+            loading ? "—" : stats?.totalMotorcycles ?? 0
           }
-          href="/admin/cars"
+          href="/admin/motorcycles"
         />
 
         <StatCard
@@ -95,17 +95,17 @@ export default function AdminDashboardPage() {
           value={
             loading
               ? "—"
-              : stats?.availableCars ?? 0
+              : stats?.availableMotorcycles ?? 0
           }
-          href="/admin/cars?status=Available"
+          href="/admin/motorcycles?status=Available"
         />
 
         <StatCard
           title="Sold"
           value={
-            loading ? "—" : stats?.soldCars ?? 0
+            loading ? "—" : stats?.soldMotorcycles ?? 0
           }
-          href="/admin/cars?status=Sold"
+          href="/admin/motorcycles?status=Sold"
         />
 
         <StatCard
@@ -122,11 +122,11 @@ export default function AdminDashboardPage() {
       {/* Secondary Stats */}
       <div className="mt-4 grid gap-4 grid-cols-2 xl:grid-cols-4">
         <MiniStat
-          title="Reserved Cars"
+          title="Reserved Motorcycles"
           value={
             loading
               ? "—"
-              : stats?.reservedCars ?? 0
+              : stats?.reservedMotorcycles ?? 0
           }
         />
 
@@ -168,15 +168,15 @@ export default function AdminDashboardPage() {
 
         <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
           <QuickAction
-            href="/admin/cars/new"
-            title="Add Car"
-            description="Add a new vehicle to your inventory."
+            href="/admin/motorcycles/new"
+            title="Add Motorcycle"
+            description="Add a new motorcycle to your inventory."
           />
 
           <QuickAction
             href="/admin/inquiries"
             title="View Inquiries"
-            description="See customers interested in your vehicles."
+            description="See customers interested in your motorcycles."
           />
 
           <QuickAction
@@ -195,8 +195,8 @@ export default function AdminDashboardPage() {
 
       {/* Recent Content */}
       <div className="mt-8 grid gap-6 xl:grid-cols-2">
-        <RecentCars
-          cars={data?.recentCars || []}
+        <RecentMotorcycles
+          motorcycles={data?.recentMotorcycles || []}
           loading={loading}
         />
 
@@ -287,8 +287,8 @@ function QuickAction({
   );
 }
 
-function RecentCars({
-  cars,
+function RecentMotorcycles({
+  motorcycles,
   loading,
 }) {
   return (
@@ -296,16 +296,16 @@ function RecentCars({
       <div className="flex items-center justify-between border-b border-black/10 px-6 py-5">
         <div>
           <h2 className="font-semibold">
-            Recent Cars
+            Recent Motorcycles
           </h2>
 
           <p className="mt-1 text-xs text-black/40">
-            Recently added vehicles
+            Recently added motorcycles
           </p>
         </div>
 
         <Link
-          href="/admin/cars"
+          href="/admin/motorcycles"
           className="text-xs font-semibold underline underline-offset-4"
         >
           View all
@@ -315,17 +315,17 @@ function RecentCars({
       <div className="divide-y divide-black/10">
         {loading ? (
           <LoadingRows />
-        ) : cars.length > 0 ? (
-          cars.map((car) => (
+        ) : motorcycles.length > 0 ? (
+          motorcycles.map((motorcycle) => (
             <div
-              key={car._id}
+              key={motorcycle._id}
               className="flex items-center gap-4 px-6 py-4"
             >
               <div className="h-14 w-16 shrink-0 overflow-hidden rounded-xl bg-black/[0.05]">
-                {car.images?.[0]?.url && (
+                {motorcycle.images?.[0]?.url && (
                   <img
-                    src={car.images[0].url}
-                    alt={`${car.make} ${car.model}`}
+                    src={motorcycle.images[0].url}
+                    alt={`${motorcycle.make} ${motorcycle.model}`}
                     className="h-full w-full object-cover"
                   />
                 )}
@@ -333,23 +333,23 @@ function RecentCars({
 
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-semibold">
-                  {car.make} {car.model}
+                  {motorcycle.make} {motorcycle.model}
                 </p>
 
                 <p className="mt-1 text-xs text-black/40">
-                  {car.year} ·{" "}
-                  {car.currency}{" "}
-                  {formatNumber(car.price)}
+                  {motorcycle.year} ·{" "}
+                  {motorcycle.currency}{" "}
+                  {formatNumber(motorcycle.price)}
                 </p>
               </div>
 
               <StatusBadge
-                status={car.status}
+                status={motorcycle.status}
               />
             </div>
           ))
         ) : (
-          <EmptyRow text="No cars added yet." />
+          <EmptyRow text="No motorcycles added yet." />
         )}
       </div>
     </section>
@@ -400,12 +400,12 @@ function RecentInquiries({
                     {inquiry.phone}
                   </p>
 
-                  {inquiry.carId && (
+                  {inquiry.motorcycleId && (
                     <p className="mt-2 truncate text-xs text-black/55">
                       Interested in{" "}
                       <span className="font-medium">
-                        {inquiry.carId.make}{" "}
-                        {inquiry.carId.model}
+                        {inquiry.motorcycleId.make}{" "}
+                        {inquiry.motorcycleId.model}
                       </span>
                     </p>
                   )}
@@ -468,10 +468,10 @@ function RecentTestDrives({
                   {testDrive.phone}
                 </p>
 
-                {testDrive.carId && (
+                {testDrive.motorcycleId && (
                   <p className="mt-2 text-xs text-black/55">
-                    {testDrive.carId.make}{" "}
-                    {testDrive.carId.model} ·{" "}
+                    {testDrive.motorcycleId.make}{" "}
+                    {testDrive.motorcycleId.model} ·{" "}
                     {testDrive.date} ·{" "}
                     {testDrive.time}
                   </p>

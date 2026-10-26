@@ -12,7 +12,7 @@ const reviews = [
     date: "Demo content",
     rating: 5,
     text: "A professional and straightforward experience. The team was helpful, answered my questions clearly, and made the entire process comfortable.",
-    vehicle: "Vehicle purchase",
+    category: "Motorcycle purchase",
   },
   {
     id: 2,
@@ -20,8 +20,8 @@ const reviews = [
     location: "Demo testimonial",
     date: "Demo content",
     rating: 5,
-    text: "The showroom had a great selection of vehicles. I appreciated the attention to detail and the time taken to explain everything.",
-    vehicle: "Showroom experience",
+    text: "The showroom had a great selection of motorcycles. I appreciated the attention to detail and the time taken to explain everything.",
+    category: "Showroom experience",
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const reviews = [
     date: "Demo content",
     rating: 5,
     text: "A smooth experience from the first conversation to the showroom visit. Communication was clear and the team was easy to deal with.",
-    vehicle: "Customer service",
+    category: "Customer service",
   },
 ];
 
@@ -82,8 +82,8 @@ export default function ReviewsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="mt-6 max-w-md font-montserrat text-[10px] leading-[1.9] tracking-[0.04em] text-black/40 md:text-[11px]"
             >
-              Buying a car is a personal decision. We believe the experience
-              should be just as good as the vehicle you drive home.
+              Buying a motorcycle is a personal decision. We believe the experience
+              should be just as good as the motorcycle you ride home.
             </motion.p>
           </div>
 
@@ -157,7 +157,7 @@ export default function ReviewsSection() {
                   </div>
 
                   <span className="text-right font-montserrat text-[8px] uppercase tracking-[0.1em] text-black/30">
-                    {review.vehicle}
+                    {review.category}
                   </span>
                 </div>
               </div>

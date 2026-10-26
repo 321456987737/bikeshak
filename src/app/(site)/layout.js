@@ -2,7 +2,7 @@ import Footer from "@/components/site/Footer";
 import Header from "@/components/site/Header";
 import CarStartup from "@/components/startinganimation";
 export const metadata = {
-  title: "Demo Auto | Demo Vehicle Website",
+  title: "Demo Auto | Motorcycle Dealership",
   description: "A demo automotive inventory and dealership website.",
 };
 
@@ -11,7 +11,7 @@ export default function mainlayout({ children }) {
     <div className="min-h-full flex flex-col">
         <CarStartup
           variant="drive"
-          brand="Your car logo here"
+          brand="Your motorcycle logo here"
           duration={2200}
         />
       <Header />

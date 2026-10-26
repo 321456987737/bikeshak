@@ -4,46 +4,45 @@ import Link from "next/link";
 import {
   ArrowDownRight,
   ArrowUpRight,
-  CarFront,
+  Bike,
   CircleDollarSign,
   ClipboardCheck,
   Handshake,
   MessageCircle,
   Wrench,
 } from "lucide-react";
-const HERO_IMAGE =
-  "/images/cars/car5.jpg";
+const HERO_IMAGE = "/images/motorcycle/motorcycle5.jpg";
 const SERVICES = [
   {
     number: "01",
-    image: "/images/cars/car1.jpg",
-    title: "Vehicle Sales",
+    image: "/images/motorcycle/motorcycle1.jpg",
+    title: "Motorcycle Sales",
     description:
-      "Explore our carefully selected inventory and let our team help you find a vehicle that fits your lifestyle, preferences and budget.",
-    icon: CarFront,
-    label: "Find your vehicle",
+      "Explore our carefully selected collection and let our team help you find a motorcycle that fits your lifestyle, preferences and budget.",
+    icon: Bike,
+    label: "Find your motorcycle",
   },
   {
     number: "02",
-    image: "/images/cars/car2.jpg",
-    title: "Test Drives",
+    image: "/images/motorcycle/motorcycle2.jpg",
+    title: "Test Rides",
     description:
-      "A vehicle should feel right before you buy it. Schedule a test drive and experience your preferred vehicle for yourself.",
+      "A motorcycle should feel right before you buy it. Schedule a test ride and experience your preferred model for yourself.",
     icon: ClipboardCheck,
-    label: "Experience the drive",
+    label: "Experience the ride",
   },
   {
     number: "03",
-    image: "/images/cars/car3.jpg",
+    image: "/images/motorcycle/motorcycle3.jpg",
     title: "Trade-In",
     description:
-      "Thinking about upgrading? We can help you understand your current vehicle's trade-in options while you move toward your next car.",
+      "Thinking about upgrading? We can help you understand your current motorcycle's trade-in options while you move toward your next ride.",
     icon: Handshake,
-    label: "Upgrade your vehicle",
+    label: "Upgrade your motorcycle",
   },
   {
     number: "04",
-    image: "/images/cars/car4.jpg",
+    image: "/images/motorcycle/motorcycle4.jpg",
     title: "Financing",
     description:
       "Discuss available financing options with our team and understand the requirements and purchasing process before moving forward.",
@@ -52,16 +51,16 @@ const SERVICES = [
   },
   {
     number: "05",
-    image: "/images/cars/car5.jpg",
-    title: "Vehicle Inspection",
+    image: "/images/motorcycle/motorcycle5.jpg",
+    title: "Motorcycle Inspection",
     description:
-      "Get more information about a vehicle's condition, specifications and inspection details so you can make an informed decision.",
+      "Get more information about a motorcycle's condition, specifications and inspection details so you can make an informed decision.",
     icon: Wrench,
-    label: "Know your vehicle",
+    label: "Know your motorcycle",
   },
   {
     number: "06",
-    image: "/images/cars/car1.jpg",
+    image: "/images/motorcycle/motorcycle1.jpg",
     title: "Customer Support",
     description:
       "From your first question to your final decision, our team is available to help by phone or email.",
@@ -89,7 +88,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0">
           <Image
             src={HERO_IMAGE}
-            alt="Luxury vehicle"
+            alt="Premium motorcycle"
             fill
             priority
             sizes="100vw"
@@ -119,7 +118,7 @@ export default function ServicesPage() {
               </h1>
 
               <p className="mt-6 max-w-lg font-montserrat text-[10px] leading-[1.8] tracking-[0.04em] text-white/55 md:text-[11px]">
-                More than finding a car. From your first enquiry to
+                More than finding a motorcycle. From your first enquiry to
                 getting behind the wheel, we are here to make the
                 experience simple.
               </p>
@@ -143,16 +142,16 @@ export default function ServicesPage() {
 
             <div>
               <h2 className="max-w-6xl font-bebas text-[clamp(3.8rem,7vw,8rem)] leading-[0.78] tracking-[-0.045em]">
-                The right car is only
+                The right motorcycle is only
                 <br />
                 part of the experience.
               </h2>
 
               <p className="mt-8 max-w-2xl font-montserrat text-[11px] leading-[1.9] tracking-[0.03em] text-black/45 md:text-[13px]">
                 This demo website provides a sample approach to buying and
-                owning a vehicle. Replace this copy with verified business
+                owning a motorcycle. Replace this copy with verified business
                 information before launch.
-                Whether you are looking for your next car, considering a
+                Whether you are looking for your next motorcycle, considering a
                 trade-in or simply want more information, our team is
                 here to help.
               </p>
@@ -229,7 +228,7 @@ export default function ServicesPage() {
             <div className="grid border-t border-white/10 sm:grid-cols-2">
               <Feature
                 number="01"
-                title="Selected vehicles"
+                title="Selected motorcycles"
                 text="A collection focused on quality, condition and value."
               />
 
@@ -268,7 +267,7 @@ export default function ServicesPage() {
               </p>
 
               <h2 className="mt-5 max-w-5xl font-bebas text-[clamp(4rem,8vw,8rem)] leading-[0.78] tracking-[-0.05em]">
-                Your next car
+                Your next motorcycle
                 <br />
                 is waiting.
               </h2>
@@ -282,7 +281,7 @@ export default function ServicesPage() {
             <div className="border-t border-black/10 pt-7">
               <div className="flex flex-wrap gap-3">
                 <Link
-                  href="/cars"
+                  href="/motorcycle"
                   className="group inline-flex items-center gap-3 bg-black px-6 py-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.18em] text-white transition-all duration-300 hover:bg-black/80 md:text-[10px]"
                 >
                   Browse inventory
@@ -729,7 +728,7 @@ function Feature({ number, title, text }) {
 //             <div className="border-t border-black/10 pt-7">
 //               <div className="flex flex-wrap gap-3">
 //                 <Link
-//                   href="/cars"
+//                   href="/motorcycle"
 //                   className="group inline-flex items-center gap-3 bg-black px-6 py-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.18em] text-white transition-all duration-300 hover:bg-black/80 md:text-[10px]"
 //                 >
 //                   Browse inventory

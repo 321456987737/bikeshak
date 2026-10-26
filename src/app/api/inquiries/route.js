@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 
 import { connectDB } from "@/lib/db";
 
-import Car from "@/models/Car";
+import Motorcycle from "@/models/Motorcycle";
 import Inquiry from "@/models/Inquiry";
 
 export async function POST(request) {
@@ -19,7 +19,7 @@ export async function POST(request) {
     const email =
       body.email?.trim().toLowerCase() || "";
     const message = body.message?.trim();
-    const carId = body.carId?.trim() || null;
+    const motorcycleId = body.motorcycleId?.trim() || null;
 
     if (!customerName) {
       return NextResponse.json(
@@ -91,28 +91,28 @@ export async function POST(request) {
     }
 
     if (
-      carId &&
-      !mongoose.Types.ObjectId.isValid(carId)
+      motorcycleId &&
+      !mongoose.Types.ObjectId.isValid(motorcycleId)
     ) {
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid vehicle",
+          message: "Invalid motorcycle",
         },
         { status: 400 }
       );
     }
 
-    if (carId) {
-      const car = await Car.findById(carId)
+    if (motorcycleId) {
+      const motorcycle = await Motorcycle.findById(motorcycleId)
         .select("_id")
         .lean();
 
-      if (!car) {
+      if (!motorcycle) {
         return NextResponse.json(
           {
             success: false,
-            message: "Vehicle not found",
+            message: "Motorcycle not found",
           },
           { status: 404 }
         );
@@ -120,7 +120,7 @@ export async function POST(request) {
     }
 
     const inquiry = await Inquiry.create({
-      carId,
+      motorcycleId,
       customerName,
       phone,
       email,

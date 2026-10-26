@@ -6,33 +6,33 @@ import Marquee from "react-fast-marquee";
 
 const brands = [
   {
-    name: "Porsche",
-    logo: "/images/brandlogo/porche.png",
+    name: "Ama",
+    logo: "/images/brandlogo/ama.png",
     width: 100,
   },
   {
-    name: "BMW",
-    logo: "/images/brandlogo/bmw.png",
+    name: "Harley-Davidson",
+    logo: "/images/brandlogo/harley.png",
     width: 64,
   },
   {
-    name: "Mercedes-Benz",
-    logo: "/images/brandlogo/mercedes.png",
+    name: "Honda",
+    logo: "/images/brandlogo/honda.png",
     width: 110,
   },
   {
-    name: "Range Rover",
-    logo: "/images/brandlogo/range.png",
+    name: "Ktm",
+    logo: "/images/brandlogo/ktm.png",
     width: 125,
   },
   {
-    name: "Audi",
-    logo: "/images/brandlogo/audi.png",
+    name: "royal enfield",
+    logo: "/images/brandlogo/royal.png",
     width: 90,
   },
   {
-    name: "Lexus",
-    logo: "/images/brandlogo/lexus.png",
+    name: "Yamaha",
+    logo: "/images/brandlogo/yamaha.png",
     width: 90,
   },
 ];
@@ -41,7 +41,7 @@ export default function BrandsMarquee() {
   return (
     <section
       aria-label="Featured automotive brands"
-      className="border-b border-black/10 bg-white py-8"
+      className="border-b border-black/10 bg-white py-4"
     >
       <Marquee
         speed={35}
@@ -52,14 +52,14 @@ export default function BrandsMarquee() {
         {brands.map((brand) => (
           <div
             key={brand.name}
-            className="mx-10 flex h-14 items-center justify-center sm:mx-14"
+            className="mx-10 flex h-20 items-center justify-center sm:mx-14"
           >
             <Image
               src={brand.logo}
               alt={brand.name}
               width={brand.width}
               height={50}
-              className="h-auto max-h-14 w-auto object-contain opacity-60 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+              className="h-auto max-h-20 w-auto object-contain opacity-60 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
             />
           </div>
         ))}

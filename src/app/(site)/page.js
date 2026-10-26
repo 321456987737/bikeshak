@@ -13,7 +13,10 @@ export default function HomePage() {
       <HeroSection />          
       <BrandsStrip />          
       <FeaturedInventory />
-      {/* <LatestArrivals />        */}
+      <LatestArrivals/>
+
+
+      
       <StaffSection />       
       <StatsSection />         
       <ReviewsSection />      
@@ -22,18 +25,3 @@ export default function HomePage() {
     </main>
   );
 }
-// export default function HomePage() {
-//   return (
-//     <main className="min-h-screen overflow-hidden bg-[#f7f7f5] text-[#181818]">
-//       <HeroSection />
-//       <BrandsStrip />
-//       <FeaturedInventory />
-//       <LatestArrivals />
-//       <StaffSection />
-//       <ReviewsSection />
-//       <StatsSection />
-//       <LocationSection />
-//       <FAQSection />
-//     </main>
-//   );
-// }

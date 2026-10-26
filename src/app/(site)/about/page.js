@@ -3,7 +3,7 @@ import Link from "next/link";
 import {
   ArrowDownRight,
   ArrowUpRight,
-  CarFront,
+  Bike,
   Check,
   MapPin,
   ShieldCheck,
@@ -19,8 +19,8 @@ export default function AboutPage() {
 
       <section className="relative h-[40dvh] min-h-[320px] overflow-hidden bg-[#e8e8e5] md:min-h-[440px]">
         <Image
-          src="/images/cars/car1.jpg"
-          alt="Demo vehicle"
+          src="/images/motorcycle/motorcycle1.jpg"
+          alt="Demo motorcycle"
           fill
           priority
           sizes="100vw"
@@ -42,7 +42,7 @@ export default function AboutPage() {
             <h1 className="mt-3 font-bebas text-6xl leading-[0.9] tracking-wide text-white md:text-8xl lg:text-9xl">
               Built around
               <br />
-              the right car.a
+              the right motorcycle.
             </h1>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function AboutPage() {
 
             <div className="flex items-end">
               <p className="max-w-xl font-montserrat text-sm leading-7 text-black/55 md:text-base md:leading-8">
-                This demo website showcases sample inventory and a simple vehicle-shopping experience. Replace this copy with verified business information before launch.
+                This demo website showcases a sample motorcycle collection. Replace this copy with verified business information before launch.
               </p>
             </div>
           </div>
@@ -84,8 +84,8 @@ export default function AboutPage() {
             {/* IMAGE */}
             <div className="relative min-h-[380px] overflow-hidden bg-[#ededeb] md:min-h-[520px]">
               <Image
-                src="/images/cars/car2.jpg"
-                alt="Vehicle at the dealership"
+                src="/images/motorcycle/motorcycle2.jpg"
+                alt="Motorcycle at the dealership"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 hover:scale-105"
@@ -113,13 +113,13 @@ export default function AboutPage() {
 
                 <div className="mt-8 max-w-xl space-y-5 font-montserrat text-sm leading-7 text-black/55">
                   <p>
-                    Finding your next vehicle should not feel complicated.
+                    Finding your next motorcycle should not feel complicated.
                     That is why we focus on giving you the information you need
                     and making it easy to connect with our team.
                   </p>
 
                   <p>
-                    Browse our current inventory, explore individual vehicles,
+                    Browse our current inventory, explore individual motorcycles,
                     arrange a test drive and speak directly with our dealership
                     whenever you are ready.
                   </p>
@@ -161,7 +161,7 @@ export default function AboutPage() {
 
               <p className="mt-7 max-w-sm font-montserrat text-sm leading-7 text-black/50">
                 We believe a good dealership experience starts with clarity,
-                honest communication and vehicles worth considering.
+                honest communication and motorcycles worth considering.
               </p>
             </div>
 
@@ -169,9 +169,9 @@ export default function AboutPage() {
             <div className="grid border-t border-black/10 md:grid-cols-2">
               <AboutFeature
                 number="01"
-                icon={CarFront}
-                title="Quality vehicles"
-                description="We showcase vehicles currently available through our dealership with the details you need to make an informed decision."
+                icon={Bike}
+                title="Quality motorcycles"
+                description="We showcase motorcycles currently available through our dealership with the details you need to make an informed decision."
               />
 
               <AboutFeature
@@ -192,7 +192,7 @@ export default function AboutPage() {
                 number="04"
                 icon={MapPin}
                 title="Local dealership"
-                description="Visit us in person, explore our vehicles and speak directly with our team."
+                description="Visit us in person, explore our motorcycles and speak directly with our team."
               />
             </div>
           </div>
@@ -223,7 +223,7 @@ export default function AboutPage() {
             <div className="grid gap-10 sm:grid-cols-2">
               <ValueItem
                 title="Transparent"
-                description="Clear vehicle information and a straightforward way to get in touch."
+                description="Clear motorcycle information and a straightforward way to get in touch."
               />
 
               <ValueItem
@@ -259,26 +259,26 @@ export default function AboutPage() {
 
             <div className="relative z-10 max-w-3xl">
               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/35 md:text-xs">
-                Find your next car
+                Find your next motorcycle
               </p>
 
               <h2 className="mt-5 font-bebas text-6xl leading-[0.9] tracking-wide md:text-8xl">
                 Ready to find
                 <br />
-                your vehicle?
+                your motorcycle?
               </h2>
 
               <p className="mt-6 max-w-xl font-montserrat text-sm leading-7 text-black/50 md:text-base">
-                Explore our current inventory and discover the vehicles
-                available through Demo Auto.
+                Explore our current collection and discover the motorcycles
+                available through Demo Motorcycles.
               </p>
 
               <div className="mt-9 flex flex-wrap gap-3">
                 <Link
-                  href="/cars"
+                  href="/motorcycle"
                   className="group inline-flex items-center gap-4 bg-black px-6 py-4 font-montserrat text-[10px] font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-black/80"
                 >
-                  Browse inventory
+                  Browse motorcycles
 
                   <ArrowUpRight
                     size={16}

@@ -201,10 +201,11 @@ function TestDriveSkeleton() {
 export default function TestDrivePage() {
   const searchParams = useSearchParams();
 
-  const carId = searchParams.get("car");
+  const motorcycleId =
+    searchParams.get("motorcycle");
 
-  const [car, setCar] = useState(null);
-  const [loadingCar, setLoadingCar] = useState(true);
+  const [motorcycle, setMotorcycle] = useState(null);
+  const [loadingMotorcycle, setLoadingMotorcycle] = useState(true);
 
   const [heroImageLoaded, setHeroImageLoaded] = useState(false);
   const [bottomImageLoaded, setBottomImageLoaded] = useState(false);
@@ -227,35 +228,35 @@ export default function TestDrivePage() {
   const dateOptions = useMemo(() => getDateOptions(), []);
 
   /* =========================================================
-     FETCH CAR
+     FETCH MOTORCYCLE
   ========================================================= */
 
   useEffect(() => {
-    async function fetchCar() {
-      if (!carId) {
-        setLoadingCar(false);
+    async function fetchMotorcycle() {
+      if (!motorcycleId) {
+        setLoadingMotorcycle(false);
         return;
       }
 
       try {
-        setLoadingCar(true);
+        setLoadingMotorcycle(true);
 
-        const response = await fetch(`/api/cars/${carId}`);
+        const response = await fetch(`/api/motorcycle/${motorcycleId}`);
 
         const result = await response.json();
 
         if (result.success) {
-          setCar(result.data);
+          setMotorcycle(result.data.motorcycle);
         }
       } catch (error) {
-        console.error("Failed to fetch car:", error);
+        console.error("Failed to fetch motorcycle:", error);
       } finally {
-        setLoadingCar(false);
+        setLoadingMotorcycle(false);
       }
     }
 
-    fetchCar();
-  }, [carId]);
+    fetchMotorcycle();
+  }, [motorcycleId]);
 
   /* =========================================================
      FORM HELPERS
@@ -324,8 +325,8 @@ export default function TestDrivePage() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    if (!carId) {
-      setError("No vehicle has been selected.");
+    if (!motorcycleId) {
+      setError("No motorcycle has been selected.");
       return;
     }
 
@@ -364,7 +365,7 @@ export default function TestDrivePage() {
         },
         body: JSON.stringify({
           ...form,
-          carId,
+          motorcycleId: motorcycleId,
         }),
       });
 
@@ -392,7 +393,7 @@ export default function TestDrivePage() {
      LOADING
   ========================================================= */
 
-  if (loadingCar) {
+  if (loadingMotorcycle) {
     return <TestDriveSkeleton />;
   }
 
@@ -400,7 +401,7 @@ export default function TestDrivePage() {
      NO VEHICLE
   ========================================================= */
 
-  if (!carId || !car) {
+  if (!motorcycleId || !motorcycle) {
     return (
       <main className="min-h-screen bg-white text-black">
         <div className="h-20 w-full bg-[#181818]" />
@@ -408,25 +409,25 @@ export default function TestDrivePage() {
         <section className="flex min-h-[75vh] items-center justify-center px-6">
           <div className="max-w-xl text-center">
             <p className="mb-5 font-montserrat text-[11px] uppercase tracking-[0.3em] text-black/45">
-              Test Drive
+              Test Ride
             </p>
 
             <h1 className="font-bebas text-[64px] leading-[0.85] tracking-wide sm:text-[90px]">
-              VEHICLE NOT
+              MOTORCYCLE NOT
               <br />
               SELECTED
             </h1>
 
             <p className="mx-auto mt-7 max-w-md font-montserrat text-[13px] leading-6 text-black/55">
-              Please select a vehicle from our inventory before requesting a
-              test drive.
+              Please select a motorcycle from our collection before requesting a
+              test ride.
             </p>
 
             <Link
-              href="/cars"
+              href="/motorcycle"
               className="group mt-9 inline-flex items-center gap-3 bg-black px-7 py-4 font-montserrat text-[10px] font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-black/80"
             >
-              Browse inventory
+              Browse motorcycles
 
               <ArrowUpRight
                 size={15}
@@ -441,25 +442,25 @@ export default function TestDrivePage() {
   }
 
   /* =========================================================
-     CAR DATA
+     MOTORCYCLE DATA
   ========================================================= */
 
-  const carImage =
-    car.car.images?.[0].url ||
-    car.car.image ||
-    "/images/placeholder-car.jpg";
+  const motorcycleImage =
+    motorcycle.images?.[0].url ||
+    motorcycle.image ||
+    "/images/motorcycle/motorcycle1.jpg";
 
-  const carName = [car.car.make, car.car.model]
+  const motorcycleName = [motorcycle.make, motorcycle.model]
     .filter(Boolean)
     .join(" ");
 
   const formattedPrice =
-    car.price !== undefined && car.price !== null
+    motorcycle.price !== undefined && motorcycle.price !== null
       ? new Intl.NumberFormat("en-US", {
           style: "currency",
-          currency: car.currency || "USD",
+          currency: motorcycle.currency || "USD",
           maximumFractionDigits: 0,
-        }).format(car.price)
+        }).format(motorcycle.price)
       : null;
 
   const selectedDate = dateOptions.find(
@@ -479,8 +480,8 @@ export default function TestDrivePage() {
           {!heroImageLoaded && <ImageSkeleton />}
 
           <Image
-            src={carImage}
-            alt={carName}
+            src={motorcycleImage}
+            alt={motorcycleName}
             fill
             priority
             onLoad={() => setHeroImageLoaded(true)}
@@ -516,7 +517,7 @@ export default function TestDrivePage() {
 
               <p className="mt-9 max-w-xl font-montserrat text-[14px] leading-7 text-white/70">
                 Your test drive request for the{" "}
-                <span className="text-white">{carName}</span> has been
+                <span className="text-white">{motorcycleName}</span> has been
                 received. Our team will get in touch with you to confirm the
                 appointment.
               </p>
@@ -545,10 +546,10 @@ export default function TestDrivePage() {
 
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
-                  href={`/cars/${car.car._id}`}
+                  href={`/motorcycle/${motorcycle._id}`}
                   className="group inline-flex items-center gap-3 bg-white px-7 py-4 font-montserrat text-[10px] font-medium uppercase tracking-[0.2em] text-black transition-all duration-300 hover:bg-white/90"
                 >
-                  View vehicle
+                  View motorcycle
 
                   <ArrowUpRight
                     size={15}
@@ -558,10 +559,10 @@ export default function TestDrivePage() {
                 </Link>
 
                 <Link
-                  href="/cars"
+                  href="/motorcycle"
                   className="inline-flex items-center gap-3 border border-white/30 px-7 py-4 font-montserrat text-[10px] font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:border-white"
                 >
-                  Browse inventory
+                  Browse motorcycles
                 </Link>
               </div>
             </div>
@@ -612,8 +613,8 @@ export default function TestDrivePage() {
 
         {/* IMAGE */}
         <Image
-          src={carImage}
-          alt={carName}
+          src={motorcycleImage}
+          alt={motorcycleName}
           fill
           priority
           onLoad={() => setHeroImageLoaded(true)}
@@ -631,7 +632,7 @@ export default function TestDrivePage() {
           <div className="w-full">
             <div className="mb-10 flex items-center justify-between border-b border-white/20 pb-5">
               <p className="font-montserrat text-[10px] uppercase tracking-[0.3em] text-white/55">
-                Test Drive Experience
+                Test Ride Experience
               </p>
 
               <p className="font-montserrat text-[10px] uppercase tracking-[0.25em] text-white/40">
@@ -641,11 +642,11 @@ export default function TestDrivePage() {
 
             <div className="max-w-5xl">
               <p className="mb-4 font-montserrat text-[11px] uppercase tracking-[0.25em] text-white/55">
-                {car.year} · {car.bodyType || "Vehicle"}
+                {motorcycle.year} · {motorcycle.bikeType || "Motorcycle"}
               </p>
 
               <h1 className="font-bebas text-[76px] leading-[0.82] tracking-wide text-white sm:text-[110px] lg:text-[150px]">
-                {carName}
+                {motorcycleName}
               </h1>
 
               {formattedPrice && (
@@ -1106,11 +1107,11 @@ export default function TestDrivePage() {
                       <div className="grid grid-cols-1 border-b border-black/10 sm:grid-cols-3">
                         <div className="border-b border-black/10 px-0 py-6 sm:border-b-0 sm:border-r sm:px-6">
                           <p className="font-montserrat text-[9px] uppercase tracking-[0.25em] text-black/40">
-                            Vehicle
+                            Motorcycle
                           </p>
 
                           <p className="mt-2 font-montserrat text-[13px]">
-                            {carName}
+                            {motorcycleName}
                           </p>
                         </div>
 
@@ -1208,8 +1209,8 @@ export default function TestDrivePage() {
             </AnimatePresence>
 
             <Image
-              src={carImage}
-              alt={carName}
+              src={motorcycleImage}
+              alt={motorcycleName}
               fill
               onLoad={() => setBottomImageLoaded(true)}
               className={`object-cover transition-opacity duration-700 ${
@@ -1225,25 +1226,25 @@ export default function TestDrivePage() {
 
           <div className="px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
             <p className="font-montserrat text-[9px] uppercase tracking-[0.3em] text-black/40">
-              Your selected vehicle
+              Your selected motorcycle
             </p>
 
             <div className="mt-5 flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
               <div>
                 <p className="font-montserrat text-[10px] uppercase tracking-[0.2em] text-black/40">
-                  {car.year}
+                  {motorcycle.year}
                 </p>
 
                 <h3 className="mt-2 font-bebas text-[52px] leading-none tracking-wide">
-                  {carName}
+                  {motorcycleName}
                 </h3>
               </div>
 
               <Link
-                href={`/cars/${car.car._id}`}
+                href={`/motorcycle/${motorcycle._id}`}
                 className="group inline-flex w-fit items-center gap-3 border-b border-black/20 pb-2 font-montserrat text-[10px] uppercase tracking-[0.2em] transition-colors hover:border-black"
               >
-                View vehicle
+                View motorcycle
 
                 <ArrowUpRight
                   size={14}
@@ -1270,15 +1271,15 @@ export default function TestDrivePage() {
             <h2 className="mt-5 max-w-3xl font-bebas text-[64px] leading-[0.85] tracking-wide sm:text-[90px]">
               TAKE YOUR TIME.
               <br />
-              FIND YOUR CAR.
+              FIND YOUR MOTORCYCLE.
             </h2>
           </div>
 
           <Link
-            href="/cars"
+            href="/motorcycle"
             className="group inline-flex w-fit items-center gap-4 border-b border-white/25 pb-3 font-montserrat text-[10px] uppercase tracking-[0.2em] text-white/70 transition-colors hover:border-white hover:text-white"
           >
-            Explore inventory
+            Explore motorcycles
 
             <ArrowUpRight
               size={16}

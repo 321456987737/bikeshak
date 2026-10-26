@@ -9,9 +9,9 @@ const inquirySchema = new mongoose.Schema(
       index: true,
     },
 
-    carId: {
+    motorcycleId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Car",
+      ref: "Motorcycle",
       default: null,
       index: true,
     },

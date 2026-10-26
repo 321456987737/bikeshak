@@ -6,8 +6,8 @@ const stats = [
   {
     id: 1,
     value: "2,500+",
-    label: "Vehicles Sold",
-    description: "Over 2,500 quality vehicles sold to happy customers across Pakistan.",
+    label: "Motorcycles Sold",
+    description: "Over 2,500 quality motorcycles sold to happy customers across Pakistan.",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const stats = [
     id: 3,
     value: "15+",
     label: "Years Experience",
-    description: "More than 15 years of experience in importing and selling quality cars.",
+    description: "More than 15 years of experience in importing and selling quality motorcycles.",
   },
 ];
 const reveal = {
@@ -71,7 +71,7 @@ export default function StatsSection() {
               className="mt-6 max-w-md font-montserrat text-[10px] leading-[1.9] tracking-[0.04em] text-black/45 md:text-[11px]"
             >
               Every number represents a relationship, a milestone, and a
-              commitment to delivering a better automotive experience.
+              commitment to delivering a better riding experience.
             </motion.p>
           </div>
 
@@ -145,7 +145,7 @@ export default function StatsSection() {
           className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
         >
           <p className="font-montserrat text-[9px] leading-[1.8] tracking-[0.04em] text-black/35">
-            More than vehicles. A standard of service you can trust.
+            More than motorcycles. A standard of service you can trust.
           </p>
 
           <span className="font-montserrat text-[9px] uppercase tracking-[0.14em] text-black/40">

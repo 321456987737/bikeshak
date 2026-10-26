@@ -15,7 +15,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "Demo Auto | Demo Vehicle Website",
+  title: "Demo Auto | Motorcycle Dealership",
   description: "A demo automotive inventory and dealership website.",
 };
 

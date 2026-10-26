@@ -232,7 +232,7 @@ async function uploadWithRetry(buffer, filename) {
       return await new Promise((resolve, reject) => {
         const uploadStream = cloudinary.uploader.upload_stream(
           {
-            folder: "car-dealership/cars",
+            folder: "motorcycle-dealership/motorcycles",
             resource_type: "image",
             use_filename: true,
             unique_filename: true,

@@ -1,18 +1,18 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
-import Car from "@/models/Car";
+import Motorcycle from "@/models/Motorcycle";
 
 export async function GET() {
   try {
     await connectDB();
 
-    const [featuredCars, latestCars] = await Promise.all([
-      Car.find({
+    const [featuredMotorcycles, latestMotorcycles] = await Promise.all([
+      Motorcycle.find({
         status: "Available",
         isFeatured: true,
       })
         .select(
-          "make model year price currency mileage mileageUnit transmission fuelType bodyType condition exteriorColor images status isFeatured"
+          "make model year price currency mileage mileageUnit transmission fuelType bikeType condition exteriorColor engineCapacity images status isFeatured"
         )
         .sort({
           createdAt: -1,
@@ -20,11 +20,11 @@ export async function GET() {
         .limit(8)
         .lean(),
 
-      Car.find({
+      Motorcycle.find({
         status: "Available",
       })
         .select(
-          "make model year price currency mileage mileageUnit transmission fuelType bodyType condition exteriorColor images status isFeatured"
+          "make model year price currency mileage mileageUnit transmission fuelType bikeType condition exteriorColor engineCapacity images status isFeatured"
         )
         .sort({
           createdAt: -1,
@@ -36,8 +36,8 @@ export async function GET() {
     return NextResponse.json({
       success: true,
       data: {
-        featuredCars,
-        latestCars,
+        featuredMotorcycles,
+        latestMotorcycles,
       },
     });
   } catch (error) {

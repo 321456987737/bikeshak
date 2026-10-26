@@ -528,7 +528,7 @@ export default function AdminTestDrivesPage() {
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Vehicle
+                      Motorcycle
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
@@ -718,38 +718,38 @@ function DesktopTestDriveRow({
         </button>
       </td>
 
-      {/* Vehicle */}
+      {/* Motorcycle */}
       <td className="px-6 py-5 align-top">
-        {testDrive.carId ? (
+        {testDrive.motorcycleId ? (
           <Link
-            href={`/cars/${testDrive.carId._id}`}
+            href={`/motorcycle/${testDrive.motorcycleId._id}`}
             target="_blank"
             rel="noreferrer"
             className="group flex items-center gap-3"
           >
-            <CarThumbnail
+            <MotorcycleThumbnail
               image={
-                testDrive.carId
+                testDrive.motorcycleId
                   .images?.[0]?.url
               }
-              alt={`${testDrive.carId.make} ${testDrive.carId.model}`}
+              alt={`${testDrive.motorcycleId.make} ${testDrive.motorcycleId.model}`}
               size="desktop"
             />
 
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold group-hover:underline">
-                {testDrive.carId.make}{" "}
-                {testDrive.carId.model}
+                {testDrive.motorcycleId.make}{" "}
+                {testDrive.motorcycleId.model}
               </p>
 
               <p className="mt-1 text-xs text-black/40">
-                {testDrive.carId.year}
+                {testDrive.motorcycleId.year}
               </p>
             </div>
           </Link>
         ) : (
           <span className="text-sm text-black/40">
-            Vehicle unavailable
+            Motorcycle unavailable
           </span>
         )}
       </td>
@@ -834,38 +834,38 @@ function MobileTestDriveCard({
         />
       </div>
 
-      {/* Vehicle */}
+      {/* Motorcycle */}
       <div className="mt-4 rounded-2xl bg-black/[0.035] p-3 sm:p-4">
-        {testDrive.carId ? (
+        {testDrive.motorcycleId ? (
           <Link
-            href={`/cars/${testDrive.carId._id}`}
+            href={`/motorcycle/${testDrive.motorcycleId._id}`}
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-3"
           >
-            <CarThumbnail
+            <MotorcycleThumbnail
               image={
-                testDrive.carId
+                testDrive.motorcycleId
                   .images?.[0]?.url
               }
-              alt={`${testDrive.carId.make} ${testDrive.carId.model}`}
+              alt={`${testDrive.motorcycleId.make} ${testDrive.motorcycleId.model}`}
               size="mobile"
             />
 
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold">
-                {testDrive.carId.make}{" "}
-                {testDrive.carId.model}
+                {testDrive.motorcycleId.make}{" "}
+                {testDrive.motorcycleId.model}
               </p>
 
               <p className="mt-1 text-xs text-black/40">
-                {testDrive.carId.year}
+                {testDrive.motorcycleId.year}
               </p>
             </div>
           </Link>
         ) : (
           <p className="text-sm text-black/40">
-            Vehicle unavailable
+            Motorcycle unavailable
           </p>
         )}
       </div>
@@ -1052,39 +1052,39 @@ function TestDriveModal({
             />
           </div>
 
-          {/* Vehicle */}
-          {testDrive.carId && (
+          {/* Motorcycle */}
+          {testDrive.motorcycleId && (
             <div className="mt-5 rounded-2xl bg-black/[0.035] p-4 sm:mt-6 sm:p-5">
               <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-black/35 sm:text-xs">
-                Vehicle
+                Motorcycle
               </p>
 
               <div className="mt-3 flex items-center justify-between gap-3 sm:mt-4 sm:gap-4">
                 <div className="flex min-w-0 items-center gap-3 sm:gap-4">
-                  <CarThumbnail
+                  <MotorcycleThumbnail
                     image={
-                      testDrive.carId
+                      testDrive.motorcycleId
                         .images?.[0]
                         ?.url
                     }
-                    alt={`${testDrive.carId.make} ${testDrive.carId.model}`}
+                    alt={`${testDrive.motorcycleId.make} ${testDrive.motorcycleId.model}`}
                     size="modal"
                   />
 
                   <div className="min-w-0">
                     <p className="truncate text-sm font-semibold sm:text-base">
-                      {testDrive.carId.make}{" "}
-                      {testDrive.carId.model}
+                      {testDrive.motorcycleId.make}{" "}
+                      {testDrive.motorcycleId.model}
                     </p>
 
                     <p className="mt-1 text-xs text-black/45 sm:text-sm">
-                      {testDrive.carId.year}
+                      {testDrive.motorcycleId.year}
                     </p>
                   </div>
                 </div>
 
                 <Link
-                  href={`/cars/${testDrive.carId._id}`}
+                  href={`/motorcycle/${testDrive.motorcycleId._id}`}
                   target="_blank"
                   rel="noreferrer"
                   className="shrink-0 rounded-lg border border-black/10 px-3 py-2 text-xs font-semibold transition hover:bg-black hover:text-white"
@@ -1162,7 +1162,7 @@ function TestDriveModal({
 /* CAR THUMBNAIL                                                             */
 /* ========================================================================= */
 
-function CarThumbnail({
+function MotorcycleThumbnail({
   image,
   alt,
   size = "desktop",
@@ -1832,7 +1832,7 @@ function formatTime(value) {
 //                     </th>
 
 //                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-//                       Vehicle
+//                       Motorcycle
 //                     </th>
 
 //                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
@@ -2015,38 +2015,38 @@ function formatTime(value) {
 //         </button>
 //       </td>
 
-//       {/* Vehicle */}
+//       {/* Motorcycle */}
 //       <td className="px-6 py-5 align-top">
-//         {testDrive.carId ? (
+//         {testDrive.motorcycleId ? (
 //           <Link
-//             href={`/cars/${testDrive.carId._id}`}
+//             href={`/motorcycle/${testDrive.motorcycleId._id}`}
 //             target="_blank"
 //             rel="noreferrer"
 //             className="group flex items-center gap-3"
 //           >
-//             <CarThumbnail
+//             <MotorcycleThumbnail
 //               image={
-//                 testDrive.carId
+//                 testDrive.motorcycleId
 //                   .images?.[0]?.url
 //               }
-//               alt={`${testDrive.carId.make} ${testDrive.carId.model}`}
+//               alt={`${testDrive.motorcycleId.make} ${testDrive.motorcycleId.model}`}
 //               size="desktop"
 //             />
 
 //             <div className="min-w-0">
 //               <p className="truncate text-sm font-semibold group-hover:underline">
-//                 {testDrive.carId.make}{" "}
-//                 {testDrive.carId.model}
+//                 {testDrive.motorcycleId.make}{" "}
+//                 {testDrive.motorcycleId.model}
 //               </p>
 
 //               <p className="mt-1 text-xs text-black/40">
-//                 {testDrive.carId.year}
+//                 {testDrive.motorcycleId.year}
 //               </p>
 //             </div>
 //           </Link>
 //         ) : (
 //           <span className="text-sm text-black/40">
-//             Vehicle unavailable
+//             Motorcycle unavailable
 //           </span>
 //         )}
 //       </td>
@@ -2129,38 +2129,38 @@ function formatTime(value) {
 //         />
 //       </div>
 
-//       {/* Vehicle */}
+//       {/* Motorcycle */}
 //       <div className="mt-4 rounded-2xl bg-black/[0.035] p-3 sm:p-4">
-//         {testDrive.carId ? (
+//         {testDrive.motorcycleId ? (
 //           <Link
-//             href={`/cars/${testDrive.carId._id}`}
+//             href={`/motorcycle/${testDrive.motorcycleId._id}`}
 //             target="_blank"
 //             rel="noreferrer"
 //             className="flex items-center gap-3"
 //           >
-//             <CarThumbnail
+//             <MotorcycleThumbnail
 //               image={
-//                 testDrive.carId
+//                 testDrive.motorcycleId
 //                   .images?.[0]?.url
 //               }
-//               alt={`${testDrive.carId.make} ${testDrive.carId.model}`}
+//               alt={`${testDrive.motorcycleId.make} ${testDrive.motorcycleId.model}`}
 //               size="mobile"
 //             />
 
 //             <div className="min-w-0">
 //               <p className="truncate text-sm font-semibold">
-//                 {testDrive.carId.make}{" "}
-//                 {testDrive.carId.model}
+//                 {testDrive.motorcycleId.make}{" "}
+//                 {testDrive.motorcycleId.model}
 //               </p>
 
 //               <p className="mt-1 text-xs text-black/40">
-//                 {testDrive.carId.year}
+//                 {testDrive.motorcycleId.year}
 //               </p>
 //             </div>
 //           </Link>
 //         ) : (
 //           <p className="text-sm text-black/40">
-//             Vehicle unavailable
+//             Motorcycle unavailable
 //           </p>
 //         )}
 //       </div>
@@ -2347,38 +2347,38 @@ function formatTime(value) {
 //             />
 //           </div>
 
-//           {/* Vehicle */}
-//           {testDrive.carId && (
+//           {/* Motorcycle */}
+//           {testDrive.motorcycleId && (
 //             <div className="mt-5 rounded-2xl bg-black/[0.035] p-4 sm:mt-6 sm:p-5">
 //               <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-black/35 sm:text-xs">
-//                 Vehicle
+//                 Motorcycle
 //               </p>
 
 //               <div className="mt-3 flex items-center justify-between gap-3 sm:mt-4 sm:gap-4">
 //                 <div className="flex min-w-0 items-center gap-3 sm:gap-4">
-//                   <CarThumbnail
+//                   <MotorcycleThumbnail
 //                     image={
-//                       testDrive.carId
+//                       testDrive.motorcycleId
 //                         .images?.[0]?.url
 //                     }
-//                     alt={`${testDrive.carId.make} ${testDrive.carId.model}`}
+//                     alt={`${testDrive.motorcycleId.make} ${testDrive.motorcycleId.model}`}
 //                     size="modal"
 //                   />
 
 //                   <div className="min-w-0">
 //                     <p className="truncate text-sm font-semibold sm:text-base">
-//                       {testDrive.carId.make}{" "}
-//                       {testDrive.carId.model}
+//                       {testDrive.motorcycleId.make}{" "}
+//                       {testDrive.motorcycleId.model}
 //                     </p>
 
 //                     <p className="mt-1 text-xs text-black/45 sm:text-sm">
-//                       {testDrive.carId.year}
+//                       {testDrive.motorcycleId.year}
 //                     </p>
 //                   </div>
 //                 </div>
 
 //                 <Link
-//                   href={`/cars/${testDrive.carId._id}`}
+//                   href={`/motorcycle/${testDrive.motorcycleId._id}`}
 //                   target="_blank"
 //                   rel="noreferrer"
 //                   className="shrink-0 rounded-lg border border-black/10 px-3 py-2 text-xs font-semibold transition hover:bg-black hover:text-white"
@@ -2454,7 +2454,7 @@ function formatTime(value) {
 // /* CAR THUMBNAIL                                                              */
 // /* -------------------------------------------------------------------------- */
 
-// function CarThumbnail({
+// function MotorcycleThumbnail({
 //   image,
 //   alt,
 //   size = "desktop",
@@ -2962,7 +2962,7 @@ function formatTime(value) {
 // //                   </th>
 
 // //                   <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-// //                     Vehicle
+// //                     Motorcycle
 // //                   </th>
 
 // //                   <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
@@ -3026,25 +3026,25 @@ function formatTime(value) {
 // //                         </td>
 
 // //                         <td className="px-6 py-5">
-// //                           {testDrive.carId ? (
+// //                           {testDrive.motorcycleId ? (
 // //                             <Link
-// //                               href={`/cars/${testDrive.carId._id}`}
+// //                               href={`/motorcycle/${testDrive.motorcycleId._id}`}
 // //                               target="_blank"
 // //                               className="flex items-center gap-3"
 // //                             >
 // //                               <div className="h-12 w-14 shrink-0 overflow-hidden rounded-lg bg-black/[0.05]">
 // //                                 {testDrive
-// //                                   .carId
+// //                                   .motorcycleId
 // //                                   .images?.[0]
 // //                                   ?.url && (
 // //                                   <img
 // //                                     src={
 // //                                       testDrive
-// //                                         .carId
+// //                                         .motorcycleId
 // //                                         .images[0]
 // //                                         .url
 // //                                     }
-// //                                     alt={`${testDrive.carId.make} ${testDrive.carId.model}`}
+// //                                     alt={`${testDrive.motorcycleId.make} ${testDrive.motorcycleId.model}`}
 // //                                     className="h-full w-full object-cover"
 // //                                   />
 // //                                 )}
@@ -3054,12 +3054,12 @@ function formatTime(value) {
 // //                                 <p className="text-sm font-semibold hover:underline">
 // //                                   {
 // //                                     testDrive
-// //                                       .carId
+// //                                       .motorcycleId
 // //                                       .make
 // //                                   }{" "}
 // //                                   {
 // //                                     testDrive
-// //                                       .carId
+// //                                       .motorcycleId
 // //                                       .model
 // //                                   }
 // //                                 </p>
@@ -3067,7 +3067,7 @@ function formatTime(value) {
 // //                                 <p className="mt-1 text-xs text-black/40">
 // //                                   {
 // //                                     testDrive
-// //                                       .carId
+// //                                       .motorcycleId
 // //                                       .year
 // //                                   }
 // //                                 </p>
@@ -3075,7 +3075,7 @@ function formatTime(value) {
 // //                             </Link>
 // //                           ) : (
 // //                             <span className="text-sm text-black/40">
-// //                               Vehicle unavailable
+// //                               Motorcycle unavailable
 // //                             </span>
 // //                           )}
 // //                         </td>
@@ -3293,22 +3293,22 @@ function formatTime(value) {
 // //           />
 // //         </div>
 
-// //         {testDrive.carId && (
+// //         {testDrive.motorcycleId && (
 // //           <div className="mt-6 rounded-2xl bg-black/[0.035] p-5">
 // //             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-black/35">
-// //               Vehicle
+// //               Motorcycle
 // //             </p>
 
 // //             <div className="mt-4 flex items-center justify-between gap-4">
 // //               <div className="flex items-center gap-4">
-// //                 {testDrive.carId
+// //                 {testDrive.motorcycleId
 // //                   .images?.[0]?.url ? (
 // //                   <img
 // //                     src={
-// //                       testDrive.carId
+// //                       testDrive.motorcycleId
 // //                         .images[0].url
 // //                     }
-// //                     alt={`${testDrive.carId.make} ${testDrive.carId.model}`}
+// //                     alt={`${testDrive.motorcycleId.make} ${testDrive.motorcycleId.model}`}
 // //                     className="h-16 w-20 rounded-xl object-cover"
 // //                   />
 // //                 ) : (
@@ -3317,18 +3317,18 @@ function formatTime(value) {
 
 // //                 <div>
 // //                   <p className="font-semibold">
-// //                     {testDrive.carId.make}{" "}
-// //                     {testDrive.carId.model}
+// //                     {testDrive.motorcycleId.make}{" "}
+// //                     {testDrive.motorcycleId.model}
 // //                   </p>
 
 // //                   <p className="mt-1 text-sm text-black/45">
-// //                     {testDrive.carId.year}
+// //                     {testDrive.motorcycleId.year}
 // //                   </p>
 // //                 </div>
 // //               </div>
 
 // //               <Link
-// //                 href={`/cars/${testDrive.carId._id}`}
+// //                 href={`/motorcycle/${testDrive.motorcycleId._id}`}
 // //                 target="_blank"
 // //                 className="rounded-lg border border-black/10 px-3 py-2 text-xs font-semibold transition hover:bg-black hover:text-white"
 // //               >

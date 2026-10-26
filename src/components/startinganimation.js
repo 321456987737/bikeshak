@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Car } from "lucide-react";
+import { Bike } from "lucide-react";
 
-export default function CarStartup({
-  brand = "Your car logo here",
+export default function BikeStartup({
+  brand = "Your motorcycle logo here",
   duration = 1800,
 }) {
   const [started, setStarted] = useState(false);
@@ -44,7 +44,7 @@ export default function CarStartup({
       }`}
     >
       <div className="flex flex-col items-center">
-        {/* Car animation */}
+        {/* Motorcycle animation */}
         <div
           className={`transition-all duration-700 ease-out motion-reduce:transition-none ${
             started
@@ -52,7 +52,7 @@ export default function CarStartup({
               : "-translate-x-36 opacity-0"
           }`}
         >
-          <Car
+          <Bike
             size={76}
             strokeWidth={1.5}
             className="text-white"

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 
 import { connectDB } from "@/lib/db";
-import Car from "@/models/Car";
+import Motorcycle from "@/models/Motorcycle";
 import TestDrive from "@/models/TestDrive";
 
 export async function POST(request) {
@@ -17,7 +17,7 @@ export async function POST(request) {
     const date = body.date?.trim();
     const time = body.time?.trim();
     const message = body.message?.trim() || "";
-    const carId = body.carId?.trim();
+    const motorcycleId = body.motorcycleId?.trim();
 
     // -------------------------
     // VALIDATION
@@ -73,21 +73,21 @@ export async function POST(request) {
       );
     }
 
-    if (!carId) {
+    if (!motorcycleId) {
       return NextResponse.json(
         {
           success: false,
-          message: "Vehicle is required",
+          message: "Motorcycle is required",
         },
         { status: 400 }
       );
     }
 
-    if (!mongoose.Types.ObjectId.isValid(carId)) {
+    if (!mongoose.Types.ObjectId.isValid(motorcycleId)) {
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid vehicle",
+          message: "Invalid motorcycle",
         },
         { status: 400 }
       );
@@ -115,15 +115,15 @@ export async function POST(request) {
     // FIND VEHICLE
     // -------------------------
 
-    const car = await Car.findById(carId)
+    const motorcycle = await Motorcycle.findById(motorcycleId)
       .select("_id make model year status")
       .lean();
 
-    if (!car) {
+    if (!motorcycle) {
       return NextResponse.json(
         {
           success: false,
-          message: "Vehicle not found",
+          message: "Motorcycle not found",
         },
         { status: 404 }
       );
@@ -133,12 +133,12 @@ export async function POST(request) {
     // CHECK VEHICLE STATUS
     // -------------------------
 
-    if (car.status === "Sold") {
+    if (motorcycle.status === "Sold") {
       return NextResponse.json(
         {
           success: false,
           message:
-            "This vehicle is no longer available for a test drive",
+            "This motorcycle is no longer available for a test ride",
         },
         { status: 400 }
       );
@@ -149,7 +149,7 @@ export async function POST(request) {
     // -------------------------
 
     const existingBooking = await TestDrive.findOne({
-      carId: car._id,
+      motorcycleId: motorcycle._id,
       date,
       time,
       status: {
@@ -164,7 +164,7 @@ export async function POST(request) {
         {
           success: false,
           message:
-            "That time is already requested for this vehicle. Please choose another time.",
+            "That time is already requested for this motorcycle. Please choose another time.",
         },
         { status: 409 }
       );
@@ -175,7 +175,7 @@ export async function POST(request) {
     // -------------------------
 
     const testDrive = await TestDrive.create({
-      carId: car._id,
+      motorcycleId: motorcycle._id,
       customerName,
       phone,
       email,
@@ -193,7 +193,7 @@ export async function POST(request) {
       {
         success: true,
         message:
-          "Your test drive request has been submitted successfully.",
+          "Your test ride request has been submitted successfully.",
         data: {
           testDriveId: testDrive._id,
         },

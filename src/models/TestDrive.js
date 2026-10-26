@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 
 const testDriveSchema = new mongoose.Schema(
   {
-    carId: {
+    motorcycleId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Car",
+      ref: "Motorcycle",
       required: true,
       index: true,
     },
@@ -79,7 +79,7 @@ const testDriveSchema = new mongoose.Schema(
 // Prevent the same vehicle from having
 // multiple active requests for the same date/time.
 testDriveSchema.index({
-  carId: 1,
+  motorcycleId: 1,
   date: 1,
   time: 1,
 });

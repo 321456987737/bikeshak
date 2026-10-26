@@ -10,17 +10,15 @@ import {
 import { useSession } from "next-auth/react";
 import {
   Home,
-  CarFront,
+  Bike,
   Wrench,
   Info,
-  Car,
   Phone,
 } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home", icon: Home },
-  { href: "/cars", label: "Cars", icon: Car },
-  // { href: "/models", label: "Models", icon: CarFront },
+  { href: "/motorcycle", label: "Motorcycle", icon: Bike },
   { href: "/services", label: "Services", icon: Wrench },
   { href: "/about", label: "About", icon: Info },
   { href: "/contact", label: "Contact", icon: Phone },
@@ -49,8 +47,8 @@ export default function Header() {
 
   const { scrollY } = useScroll();
 
-  const isCarDetailsPage =
-    pathname.startsWith("/cars/") && pathname !== "/cars";
+  const isMotorcycleDetailsPage =
+    pathname.startsWith("/motorcycle/") && pathname !== "/motorcycle";
 
   /* =====================================================
      SCROLL BACKGROUND
@@ -59,7 +57,7 @@ export default function Header() {
   const backgroundColor = useTransform(
     scrollY,
     [0, 40],
-    isCarDetailsPage
+    isMotorcycleDetailsPage
       ? ["#181818", "#181818"]
       : ["rgba(24, 24, 24, 0)", "#181818"]
   );
@@ -67,7 +65,7 @@ export default function Header() {
   const borderColor = useTransform(
     scrollY,
     [0, 40],
-    isCarDetailsPage
+    isMotorcycleDetailsPage
       ? [
           "rgba(255,255,255,0.10)",
           "rgba(255,255,255,0.10)",
@@ -112,20 +110,20 @@ export default function Header() {
 
           <Link
             href="/"
-            aria-label="Dealership home"
+            aria-label="Motorcycle store home"
             className="flex shrink-0 items-center gap-3"
           >
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-sm font-bold text-[#181818]">
-              D
+              M
             </div>
 
             <div>
               <p className="text-sm font-semibold tracking-tight text-white">
-                Demo Auto
+                Demo Motorcycles
               </p>
 
               <p className="text-xs text-white/50">
-                Demo Website
+                Ride shop
               </p>
             </div>
           </Link>
@@ -170,10 +168,10 @@ export default function Header() {
 
           <div className="flex shrink-0 items-center gap-3">
             <Link
-              href="/cars"
+              href="/motorcycle"
               className="rounded-full bg-white px-5 py-3 text-sm font-medium text-[#181818] transition hover:bg-white/90"
             >
-              View inventory
+              View motorcycle
             </Link>
 
             {/* Admin */}
@@ -207,16 +205,16 @@ export default function Header() {
 
           <Link
             href="/"
-            aria-label="Dealership home"
+            aria-label="Motorcycle store home"
             className="flex shrink-0 items-center gap-2.5"
           >
             <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-sm font-bold text-[#181818]">
-              D
+              M
             </div>
 
             <div>
               <p className="text-sm font-semibold tracking-tight text-white">
-                Demo Auto
+                Demo Motorcycles
               </p>
 
               <p className="text-[10px] text-white/50">

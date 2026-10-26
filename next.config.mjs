@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-   images: {
+  experimental: {
+    agentUpgrade: "security",
+  },
+  images: {
     remotePatterns: [
       {
         protocol: "https",

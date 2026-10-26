@@ -4,39 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
-
-const categories = [
-  {
-    name: "Helmets",
-    slug: "helmets",
-    description: "Protection meets performance.",
-    image: "/images/accessories/helmet.jpg",
-    count: "01",
-  },
-  {
-    name: "Riding Gear",
-    slug: "riding-gear",
-    description: "Gear up for every journey.",
-    image: "/images/accessories/gear.webp",
-    count: "02",
-  },
-  {
-    name: "Spare Parts",
-    slug: "spare-parts",
-    description: "Parts built for the ride.",
-    image: "/images/accessories/parts.jpg",
-    count: "03",
-  },
-  {
-    name: "Bike Accessories",
-    slug: "bike-accessories",
-    description: "Upgrade every detail.",
-    image: "/images/accessories/BikeAccessories.webp",
-    count: "04",
-  },
-];
+import { MOTORCYCLE_ACCESSORIES } from "@/lib/motorcycle-accessories";
 
 export default function MotorcycleAccessories() {
+  const categories = MOTORCYCLE_ACCESSORIES.map((category, index) => ({
+    ...category,
+    count: String(index + 1).padStart(2, "0"),
+  }));
+
   return (
     <section className="relative overflow-hidden bg-[#181818] text-white">
       <div className="mx-auto max-w-[1800px] px-5 py-16 sm:px-8 md:px-10 md:py-20 lg:px-14 lg:py-24">
@@ -65,7 +40,7 @@ export default function MotorcycleAccessories() {
           </div>
 
           <Link
-            href="/accessories"
+            href="/motorcycle"
             className="group inline-flex w-fit items-center gap-3 border-b border-white/25 pb-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.18em] text-white/65 transition-colors duration-300 hover:border-white hover:text-white"
           >
             View all accessories
@@ -92,15 +67,15 @@ export default function MotorcycleAccessories() {
               className="group min-w-0"
             >
               <Link
-                href={`/accessories?category=${category.slug}`}
+                href={`/motorcycle?accessory=${category.value}`}
                 className="block h-full"
-                aria-label={`Browse ${category.name}`}
+                aria-label={`Browse ${category.label}`}
               >
                 {/* Image */}
                 <div className="relative aspect-[4/5] overflow-hidden border border-white/10 bg-white/[0.035]">
                   <Image
                     src={category.image}
-                    alt={category.name}
+                    alt={category.label}
                     fill
                     sizes="(max-width: 639px) 50vw, (max-width: 1023px) 50vw, 25vw"
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.045]"
@@ -118,7 +93,7 @@ export default function MotorcycleAccessories() {
 
                   <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
                     <h3 className="font-bebas text-3xl leading-none tracking-wide sm:text-4xl lg:text-3xl xl:text-4xl">
-                      {category.name}
+                      {category.label}
                     </h3>
 
                     <p className="mt-2 font-montserrat text-[9px] leading-5 text-white/65 sm:text-[10px]">
@@ -134,7 +109,7 @@ export default function MotorcycleAccessories() {
         {/* Bottom CTA */}
         <div className="mt-9 flex justify-center sm:mt-12">
           <Link
-            href="/accessories"
+            href="/motorcycle"
             className="group inline-flex min-h-12 items-center justify-center gap-3 border border-white/30 px-6 py-4 font-montserrat text-[9px] font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:border-white hover:bg-white hover:text-black sm:px-8"
           >
             Explore all accessories

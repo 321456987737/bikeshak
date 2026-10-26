@@ -1,5 +1,6 @@
 
 import mongoose from "mongoose";
+import { MOTORCYCLE_ACCESSORY_VALUES } from "@/lib/motorcycle-accessories";
 
 const motorcycleImageSchema = new mongoose.Schema(
   {
@@ -175,6 +176,17 @@ const motorcycleSchema = new mongoose.Schema(
     features: {
       type: [String],
       default: [],
+    },
+
+    accessories: {
+      type: [
+        {
+          type: String,
+          enum: MOTORCYCLE_ACCESSORY_VALUES,
+        },
+      ],
+      default: [],
+      index: true,
     },
 
     images: {

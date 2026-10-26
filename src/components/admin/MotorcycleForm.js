@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { MOTORCYCLE_ACCESSORIES } from "@/lib/motorcycle-accessories";
 
 const BIKE_TYPES = [
   "Sport",
@@ -55,6 +56,7 @@ const DEFAULT_FORM = {
   abs: false,
   description: "",
   features: "",
+  accessories: [],
   status: "Available",
   isFeatured: false,
 };
@@ -97,6 +99,9 @@ export default function MotorcycleForm({ initialData = null }) {
       features: Array.isArray(initialData.features)
         ? initialData.features.join("\n")
         : "",
+      accessories: Array.isArray(initialData.accessories)
+        ? initialData.accessories
+        : [],
       status: initialData.status || "Available",
       isFeatured: Boolean(initialData.isFeatured),
     };
@@ -443,6 +448,8 @@ export default function MotorcycleForm({ initialData = null }) {
 
         features,
 
+        accessories: form.accessories,
+
         images: finalImages,
 
         status: form.status,
@@ -574,7 +581,7 @@ export default function MotorcycleForm({ initialData = null }) {
             name="model"
             value={form.model}
             onChange={handleChange}
-            placeholder="M4 Competition"
+            placeholder="R 1250 GS"
             required
           />
 
@@ -595,7 +602,7 @@ export default function MotorcycleForm({ initialData = null }) {
             name="stockNumber"
             value={form.stockNumber}
             onChange={handleChange}
-            placeholder="BMW-M4-024"
+            placeholder="BMW-R1250GS-024"
           />
         </div>
       </FormSection>
@@ -809,6 +816,45 @@ Adaptive cruise control
 Panoramic roof`}
           className="w-full min-w-0 resize-y rounded-xl border border-black/15 px-4 py-3.5 text-sm leading-6 outline-none placeholder:text-black/30 focus:border-black sm:px-4 sm:py-4"
         />
+      </FormSection>
+
+      <FormSection
+        title="Accessories"
+        description="Select the accessory categories available with this motorcycle."
+      >
+        <div className="grid gap-3 sm:grid-cols-2">
+          {MOTORCYCLE_ACCESSORIES.map((accessory) => {
+            const selected = form.accessories.includes(accessory.value);
+
+            return (
+              <label
+                key={accessory.value}
+                className={`flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 text-sm transition-colors ${
+                  selected
+                    ? "border-black bg-black/[0.03]"
+                    : "border-black/15 hover:border-black/40"
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  checked={selected}
+                  onChange={() => {
+                    setForm((current) => ({
+                      ...current,
+                      accessories: selected
+                        ? current.accessories.filter(
+                            (value) => value !== accessory.value,
+                          )
+                        : [...current.accessories, accessory.value],
+                    }));
+                  }}
+                  className="h-4 w-4 accent-black"
+                />
+                <span>{accessory.label}</span>
+              </label>
+            );
+          })}
+        </div>
       </FormSection>
 
       {/* =====================================================

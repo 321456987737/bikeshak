@@ -5,21 +5,21 @@ import { ArrowUpRight } from "lucide-react";
 const stats = [
   {
     id: 1,
-    value: "2,500+",
-    label: "Motorcycles Sold",
-    description: "Over 2,500 quality motorcycles sold to happy customers across Pakistan.",
+    value: "Browse",
+    label: "Motorcycle inventory",
+    description: "Explore the motorcycles currently listed in our collection.",
   },
   {
     id: 2,
-    value: "4.9/5",
-    label: "Customer Rating",
-    description: "Rated 4.9 out of 5 stars by 1,200+ verified buyers for trusted service.",
+    value: "Ask",
+    label: "Get more details",
+    description: "Contact our team with questions about an available motorcycle.",
   },
   {
     id: 3,
-    value: "15+",
-    label: "Years Experience",
-    description: "More than 15 years of experience in importing and selling quality motorcycles.",
+    value: "Visit",
+    label: "Riyadh showroom",
+    description: "Find BIKESHAK in Riyadh, Saudi Arabia, and plan your visit.",
   },
 ];
 const reveal = {
@@ -48,7 +48,7 @@ export default function StatsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="mb-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-black/35 md:text-[10px]"
             >
-              Sample statistics · Demo content
+              A simple way to get started
             </motion.p>
 
             <motion.h2
@@ -58,9 +58,9 @@ export default function StatsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="font-bebas text-[clamp(4.5rem,9vw,9rem)] leading-[0.8] tracking-[-0.04em] text-black"
             >
-              TRUST BUILT.
+              FIND YOUR NEXT
               <br />
-              MILES AHEAD.
+              MOTORCYCLE.
             </motion.h2>
 
             <motion.p
@@ -70,8 +70,8 @@ export default function StatsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="mt-6 max-w-md font-montserrat text-[10px] leading-[1.9] tracking-[0.04em] text-black/45 md:text-[11px]"
             >
-              Every number represents a relationship, a milestone, and a
-              commitment to delivering a better riding experience.
+              Explore our inventory online, then contact us or visit the
+              showroom in Riyadh.
             </motion.p>
           </div>
 
@@ -149,7 +149,7 @@ export default function StatsSection() {
           </p>
 
           <span className="font-montserrat text-[9px] uppercase tracking-[0.14em] text-black/40">
-            Demo location
+            BIKESHAK · Riyadh, Saudi Arabia
           </span>
         </motion.div>
       </div>

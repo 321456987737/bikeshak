@@ -90,13 +90,13 @@ export default function AdminSignupPage() {
           <div className="mb-7 flex items-start gap-4">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#181818]">
               <span className="text-xs font-bold tracking-tight text-white">
-                DA
+                BS
               </span>
             </div>
 
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-black/35">
-                Demo Auto · Demo Website
+                BIKESHAK · ADMINISTRATION
               </p>
 
               <h1 className="mt-1.5 text-2xl font-semibold tracking-tight text-[#181818] sm:text-3xl">
@@ -185,7 +185,7 @@ export default function AdminSignupPage() {
                     type="email"
                     value={form.email}
                     onChange={handleChange}
-                    placeholder="admin@example.com"
+                    placeholder="Admin email address"
                     autoComplete="email"
                     required
                     className="h-13 w-full rounded-2xl border border-black/10 bg-[#fafafa] pl-11 pr-4 text-sm text-black outline-none transition placeholder:text-black/25 hover:border-black/20 focus:border-black/30 focus:bg-white focus:ring-4 focus:ring-black/[0.03]"

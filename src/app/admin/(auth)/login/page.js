@@ -53,12 +53,12 @@ export default function AdminLoginPage() {
           <div className="mb-8 text-center">
             <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-2xl bg-[#181818]">
               <span className="text-xs font-bold tracking-tight text-white">
-                DA
+                BS
               </span>
             </div>
 
             <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-black/35">
-              Demo Auto · Demo Website
+              BIKESHAK · ADMINISTRATION
             </p>
 
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-[#181818]">
@@ -93,7 +93,7 @@ export default function AdminLoginPage() {
                   type="email"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
-                  placeholder="admin@example.com"
+                  placeholder="Admin email address"
                   autoComplete="email"
                   required
                   className="h-13 w-full rounded-2xl border border-black/10 bg-[#fafafa] pl-11 pr-4 text-sm text-black outline-none transition placeholder:text-black/25 hover:border-black/20 focus:border-black/30 focus:bg-white focus:ring-4 focus:ring-black/[0.03]"

@@ -12,6 +12,7 @@ import {
   X,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { MOTORCYCLE_ACCESSORIES } from "@/lib/motorcycle-accessories";
 
 const HERO_IMAGE = "/images/motorcycle/motorcycle1.jpg";
 
@@ -39,15 +40,15 @@ const CONDITIONS = ["New", "Used"];
 
 const MAKES = [
   "BMW",
-  "Mercedes-Benz",
-  "Toyota",
-  "Porsche",
-  "Audi",
-  "Lexus",
-  "Ford",
+  "Ducati",
+  "Harley-Davidson",
   "Honda",
-  "Nissan",
-  "Land Rover",
+  "Kawasaki",
+  "KTM",
+  "Royal Enfield",
+  "Suzuki",
+  "Triumph",
+  "Yamaha",
 ];
 
 const SORT_OPTIONS = [
@@ -115,6 +116,8 @@ export default function MotorcycleBrowser({
 
   const urlCondition = searchParams.get("condition") || "";
 
+  const urlAccessory = searchParams.get("accessory") || "";
+
   const urlMinPrice = searchParams.get("minPrice") || "";
 
   const urlMaxPrice = searchParams.get("maxPrice") || "";
@@ -165,6 +168,10 @@ export default function MotorcycleBrowser({
 
   const [condition, setCondition] = useState(
     normalizeValue(initialFilters?.condition) || urlCondition,
+  );
+
+  const [accessory, setAccessory] = useState(
+    normalizeValue(initialFilters?.accessory) || urlAccessory,
   );
 
   const [minPrice, setMinPrice] = useState(
@@ -244,6 +251,7 @@ export default function MotorcycleBrowser({
         fuelType,
         transmission,
         condition,
+        accessory,
         minPrice,
         maxPrice,
         minYear,
@@ -276,6 +284,10 @@ export default function MotorcycleBrowser({
 
       if (values.condition) {
         params.set("condition", values.condition);
+      }
+
+      if (values.accessory) {
+        params.set("accessory", values.accessory);
       }
 
       if (values.minPrice) {
@@ -311,6 +323,7 @@ export default function MotorcycleBrowser({
       fuelType,
       transmission,
       condition,
+      accessory,
       minPrice,
       maxPrice,
       minYear,
@@ -332,6 +345,7 @@ export default function MotorcycleBrowser({
         fuelType,
         transmission,
         condition,
+        accessory,
         minPrice,
         maxPrice,
         minYear,
@@ -364,6 +378,10 @@ export default function MotorcycleBrowser({
 
       if (values.condition) {
         urlParams.set("condition", values.condition);
+      }
+
+      if (values.accessory) {
+        urlParams.set("accessory", values.accessory);
       }
 
       if (values.minPrice) {
@@ -399,6 +417,7 @@ export default function MotorcycleBrowser({
       fuelType,
       transmission,
       condition,
+      accessory,
       minPrice,
       maxPrice,
       minYear,
@@ -751,6 +770,7 @@ export default function MotorcycleBrowser({
     setFuelType("");
     setTransmission("");
     setCondition("");
+    setAccessory("");
     setMinPrice("");
     setMaxPrice("");
     setMinYear("");
@@ -766,6 +786,7 @@ export default function MotorcycleBrowser({
         fuelType: "",
         transmission: "",
         condition: "",
+        accessory: "",
         minPrice: "",
         maxPrice: "",
         minYear: "",
@@ -786,6 +807,7 @@ export default function MotorcycleBrowser({
     fuelType,
     transmission,
     condition,
+    accessory,
     minPrice,
     maxPrice,
     minYear,
@@ -852,7 +874,7 @@ export default function MotorcycleBrowser({
           ACTIVE CATEGORY
       ====================================================== */}
 
-      {bikeType && (
+      {(bikeType || accessory) && (
         <div className="border-b border-black/10 bg-[#f7f7f5]">
           <div className="mx-auto flex max-w-[1800px] items-center justify-between gap-5 px-6 py-4 md:px-10 lg:px-14">
             <div>
@@ -861,7 +883,11 @@ export default function MotorcycleBrowser({
               </p>
 
               <p className="mt-1 font-bebas text-2xl leading-none">
-                {bikeType}
+                {bikeType ||
+                  MOTORCYCLE_ACCESSORIES.find(
+                    (category) => category.value === accessory,
+                  )?.label ||
+                  accessory}
               </p>
             </div>
 
@@ -1002,6 +1028,8 @@ export default function MotorcycleBrowser({
                 setMake={setMake}
                 bikeType={bikeType}
                 setBodyType={setBodyType}
+                accessory={accessory}
+                setAccessory={setAccessory}
                 fuelType={fuelType}
                 setFuelType={setFuelType}
                 transmission={transmission}
@@ -1084,6 +1112,8 @@ export default function MotorcycleBrowser({
                       setMake={setMake}
                       bikeType={bikeType}
                       setBodyType={setBodyType}
+                      accessory={accessory}
+                      setAccessory={setAccessory}
                       fuelType={fuelType}
                       setFuelType={setFuelType}
                       transmission={transmission}
@@ -1177,6 +1207,8 @@ function FilterPanel({
   setMake,
   bikeType,
   setBodyType,
+  accessory,
+  setAccessory,
   fuelType,
   setFuelType,
   transmission,
@@ -1230,6 +1262,15 @@ function FilterPanel({
             handleFilterChange(setBodyType, "bikeType", value)
           }
           options={BIKE_TYPES}
+        />
+
+        <FilterSelect
+          label="Accessories"
+          value={accessory}
+          onChange={(value) =>
+            handleFilterChange(setAccessory, "accessory", value)
+          }
+          options={MOTORCYCLE_ACCESSORIES}
         />
 
         <FilterSelect
@@ -1345,8 +1386,11 @@ function FilterSelect({ label, value, onChange, options }) {
           <option value="">All {label.toLowerCase()}</option>
 
           {options.map((option) => (
-            <option key={option} value={option}>
-              {option}
+            <option
+              key={typeof option === "string" ? option : option.value}
+              value={typeof option === "string" ? option : option.value}
+            >
+              {typeof option === "string" ? option : option.label}
             </option>
           ))}
         </select>
@@ -1379,9 +1423,13 @@ function InventoryCard({ motorcycle, index }) {
         opacity: 0,
         y: 24,
       }}
-      animate={{
+      whileInView={{
         opacity: 1,
         y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.15,
       }}
       transition={{
         duration: 0.45,

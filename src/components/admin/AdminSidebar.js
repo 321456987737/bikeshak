@@ -10,6 +10,7 @@ import {
   CalendarCheck,
   ExternalLink,
 } from "lucide-react";
+import { BUSINESS_NAME } from "@/lib/business";
 
 const navigation = [
   {
@@ -74,16 +75,16 @@ export default function AdminSidebar() {
             aria-label="Admin dashboard"
           >
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black text-sm font-bold text-white">
-              A
+              BS
             </div>
 
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold tracking-tight">
-                Admin Panel
+                {BUSINESS_NAME}
               </p>
 
               <p className="truncate text-xs text-black/40">
-                Motorcycle Dealership
+                Admin panel
               </p>
             </div>
           </Link>

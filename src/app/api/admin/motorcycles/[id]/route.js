@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import { connectDB } from "@/lib/db";
 import Motorcycle from "@/models/Motorcycle";
 import cloudinary from "@/lib/cloudinary";
+import { isMotorcycleAccessory } from "@/lib/motorcycle-accessories";
 export async function GET(
   request,
   { params }
@@ -114,6 +115,7 @@ export async function PATCH(
       "abs",
       "description",
       "features",
+      "accessories",
       "images",
       "status",
       "isFeatured",
@@ -196,6 +198,28 @@ export async function PATCH(
           )
           .map((item) => item.trim())
           .filter(Boolean);
+
+        continue;
+      }
+
+      if (field === "accessories") {
+        if (
+          !Array.isArray(body[field]) ||
+          body[field].some(
+            (accessory) => !isMotorcycleAccessory(accessory),
+          )
+        ) {
+          return NextResponse.json(
+            {
+              success: false,
+              message:
+                "Accessories must contain only supported categories",
+            },
+            { status: 400 },
+          );
+        }
+
+        existingMotorcycle.accessories = [...new Set(body[field])];
 
         continue;
       }

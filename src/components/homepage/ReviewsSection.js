@@ -2,35 +2,29 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Quote, Star } from "lucide-react";
+import { ArrowUpRight, Bike, MapPin, MessageCircle } from "lucide-react";
 
-const reviews = [
+const waysToGetStarted = [
   {
     id: 1,
-    name: "Sample customer 01",
-    location: "Demo testimonial",
-    date: "Demo content",
-    rating: 5,
-    text: "A professional and straightforward experience. The team was helpful, answered my questions clearly, and made the entire process comfortable.",
-    category: "Motorcycle purchase",
+    title: "Explore the inventory",
+    icon: Bike,
+    text: "Browse available motorcycles and compare their specifications, condition, and listed prices.",
+    category: "Available motorcycles",
   },
   {
     id: 2,
-    name: "Sample customer 02",
-    location: "Demo testimonial",
-    date: "Demo content",
-    rating: 5,
-    text: "The showroom had a great selection of motorcycles. I appreciated the attention to detail and the time taken to explain everything.",
-    category: "Showroom experience",
+    title: "Ask our team",
+    icon: MessageCircle,
+    text: "Contact BIKESHAK with questions about a motorcycle or to arrange a showroom visit.",
+    category: "Personal assistance",
   },
   {
     id: 3,
-    name: "Sample customer 03",
-    location: "Demo testimonial",
-    date: "Demo content",
-    rating: 5,
-    text: "A smooth experience from the first conversation to the showroom visit. Communication was clear and the team was easy to deal with.",
-    category: "Customer service",
+    title: "Visit the showroom",
+    icon: MapPin,
+    text: "Find BIKESHAK in Riyadh and open the map for directions before you visit.",
+    category: "Riyadh, Saudi Arabia",
   },
 ];
 
@@ -60,7 +54,7 @@ export default function ReviewsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="mb-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-black/30 md:text-[10px]"
             >
-              Sample reviews · Demo content
+              Find the right motorcycle
             </motion.p>
 
             <motion.h2
@@ -70,9 +64,9 @@ export default function ReviewsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="font-bebas text-[clamp(4.5rem,9vw,9rem)] leading-[0.8] tracking-[-0.04em] text-black"
             >
-              WORDS THAT
+              YOUR NEXT RIDE
               <br />
-              SPEAK FOR US.
+              STARTS HERE.
             </motion.h2>
 
             <motion.p
@@ -82,8 +76,8 @@ export default function ReviewsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="mt-6 max-w-md font-montserrat text-[10px] leading-[1.9] tracking-[0.04em] text-black/40 md:text-[11px]"
             >
-              Buying a motorcycle is a personal decision. We believe the experience
-              should be just as good as the motorcycle you ride home.
+              Browse the collection, ask questions, or plan a visit to the
+              BIKESHAK showroom in Riyadh.
             </motion.p>
           </div>
 
@@ -104,11 +98,11 @@ export default function ReviewsSection() {
           </motion.a>
         </div>
 
-        {/* REVIEW CARDS */}
+        {/* GETTING STARTED */}
         <div className="grid grid-cols-1 border-l border-t border-black/10 sm:grid-cols-2 lg:grid-cols-3">
-          {reviews.map((review, index) => (
+          {waysToGetStarted.map((item, index) => (
             <motion.article
-              key={review.id}
+              key={item.id}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
@@ -120,46 +114,25 @@ export default function ReviewsSection() {
               className="group flex min-h-[310px] flex-col border-b border-r border-black/10 p-6 transition-colors duration-300 hover:bg-[#f7f7f5] md:min-h-[340px] md:p-8 lg:p-9"
             >
               <div className="mb-8 flex items-center justify-between">
-                <Quote
+                <item.icon
                   size={25}
                   strokeWidth={1}
                   className="text-black/20 transition-colors group-hover:text-black"
                 />
-
-                <div
-                  className="flex gap-1"
-                  aria-label={`${review.rating} out of 5 stars`}
-                >
-                  {Array.from({ length: review.rating }, (_, i) => (
-                    <Star
-                      key={i}
-                      size={12}
-                      strokeWidth={1.2}
-                      className="fill-black text-black"
-                    />
-                  ))}
-                </div>
               </div>
 
-              <p className="flex-1 font-montserrat text-[11px] leading-[2] tracking-[0.02em] text-black/65 md:text-xs">
-                “{review.text}”
+              <h3 className="font-bebas text-3xl tracking-wide md:text-4xl">
+                {item.title}
+              </h3>
+
+              <p className="mt-4 flex-1 font-montserrat text-[11px] leading-[2] tracking-[0.02em] text-black/65 md:text-xs">
+                {item.text}
               </p>
 
               <div className="mt-9 border-t border-black/10 pt-5">
-                <div className="flex items-end justify-between gap-3">
-                  <div>
-                    <h3 className="font-montserrat text-[11px] font-semibold uppercase tracking-[0.08em]">
-                      {review.name}
-                    </h3>
-                    <p className="mt-2 font-montserrat text-[9px] tracking-[0.08em] text-black/35">
-                      {review.location}
-                    </p>
-                  </div>
-
-                  <span className="text-right font-montserrat text-[8px] uppercase tracking-[0.1em] text-black/30">
-                    {review.category}
-                  </span>
-                </div>
+                <span className="font-montserrat text-[8px] uppercase tracking-[0.1em] text-black/40">
+                  {item.category}
+                </span>
               </div>
             </motion.article>
           ))}
@@ -174,7 +147,7 @@ export default function ReviewsSection() {
           className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
         >
           <p className="font-montserrat text-[9px] leading-[1.8] tracking-[0.04em] text-black/35">
-            Every customer interaction is an opportunity to do better.
+            Have questions? Contact our team directly.
           </p>
 
           <a

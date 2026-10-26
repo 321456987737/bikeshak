@@ -1,5 +1,6 @@
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import Link from "next/link";
+import { BUSINESS_NAME } from "@/lib/business";
 export default function AdminLayout({
   children,
 }) {
@@ -11,7 +12,7 @@ export default function AdminLayout({
         <header className="sticky top-0 z-40 flex h-20 items-center justify-between border-b border-black/10 bg-white/90 px-5 backdrop-blur md:px-8">
           <div>
             <p className="text-sm font-semibold">
-              Dealership Management
+              {BUSINESS_NAME} management
             </p>
 
             <p className="text-xs text-black/40">

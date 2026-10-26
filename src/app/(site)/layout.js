@@ -1,9 +1,10 @@
 import Footer from "@/components/site/Footer";
 import Header from "@/components/site/Header";
 import CarStartup from "@/components/startinganimation";
+import { BUSINESS_NAME, SHOWROOM_LOCATION } from "@/lib/business";
 export const metadata = {
-  title: "Demo Auto | Motorcycle Dealership",
-  description: "A demo automotive inventory and dealership website.",
+  title: `${BUSINESS_NAME} | Motorcycle Dealership`,
+  description: `Explore motorcycle inventory and contact ${BUSINESS_NAME} in ${SHOWROOM_LOCATION}.`,
 };
 
 export default function mainlayout({ children }) {
@@ -11,7 +12,7 @@ export default function mainlayout({ children }) {
     <div className="min-h-full flex flex-col">
         <CarStartup
           variant="drive"
-          brand="Your motorcycle logo here"
+          brand={BUSINESS_NAME}
           duration={2200}
         />
       <Header />

@@ -1,8 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, MapPin, Phone } from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  BUSINESS_NAME,
+  BUSINESS_PHONE,
+  SHOWROOM_DIRECTIONS_URL,
+  SHOWROOM_LOCATION,
+} from "@/lib/business";
 
 export default function LocationSection() {
   return (
@@ -14,7 +20,7 @@ export default function LocationSection() {
       <div className="absolute inset-0">
         <img
           src="/images/motorcycle/motorcycle1.jpg"
-          alt="Demo showroom experience"
+          alt="Motorcycle showroom"
           className="h-full w-full object-cover"
         />
       </div>
@@ -58,7 +64,7 @@ export default function LocationSection() {
             }}
             className="mb-6 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-white/55 md:mb-8 md:text-[10px]"
           >
-            Demo Showroom
+            Visit {BUSINESS_NAME} · {SHOWROOM_LOCATION}
           </motion.p>
 
           {/* MAIN TITLE */}
@@ -110,17 +116,37 @@ export default function LocationSection() {
             }}
             className="mt-9 md:mt-11"
           >
-            <Link
-              href="/motorcycle"
-              className="group inline-flex items-center gap-3 border border-white/35 bg-white px-6 py-3.5 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-black transition-all duration-300 hover:bg-transparent hover:text-white md:px-7 md:py-4"
-            >
-              Browse motorcycles
-              <ArrowUpRight
-                size={15}
-                strokeWidth={1.3}
-                className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-              />
-            </Link>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link
+                href="/motorcycle"
+                className="group inline-flex items-center gap-3 border border-white/35 bg-white px-6 py-3.5 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-black transition-all duration-300 hover:bg-transparent hover:text-white md:px-7 md:py-4"
+              >
+                Browse motorcycles
+                <ArrowUpRight
+                  size={15}
+                  strokeWidth={1.3}
+                  className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                />
+              </Link>
+
+              <a
+                href={SHOWROOM_DIRECTIONS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 border border-white/35 px-6 py-3.5 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-white transition-colors hover:bg-white/10 md:px-7 md:py-4"
+              >
+                <MapPin size={15} strokeWidth={1.3} />
+                Get directions
+              </a>
+
+              <a
+                href={`tel:${BUSINESS_PHONE}`}
+                className="inline-flex items-center gap-3 border border-white/35 px-6 py-3.5 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-white transition-colors hover:bg-white/10 md:px-7 md:py-4"
+              >
+                <Phone size={15} strokeWidth={1.3} />
+                Call {BUSINESS_PHONE}
+              </a>
+            </div>
           </motion.div>
         </div>
       </div>

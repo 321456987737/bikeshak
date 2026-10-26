@@ -24,7 +24,7 @@ export async function GET(request, { params }) {
 
     const motorcycle = await Motorcycle.findById(id)
       .select(
-        "stockNumber make model year price currency mileage mileageUnit engineCapacity engineType coolingSystem transmission fuelType bikeType condition exteriorColor engineNumber chassisNumber startingSystem brakeType abs description features images status isFeatured createdAt"
+        "stockNumber make model year price currency mileage mileageUnit engineCapacity engineType coolingSystem transmission fuelType bikeType condition exteriorColor engineNumber chassisNumber startingSystem brakeType abs description features accessories images status isFeatured createdAt"
       )
       .lean();
 

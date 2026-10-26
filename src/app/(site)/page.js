@@ -1,10 +1,9 @@
 import HeroSection from "@/components/homepage/herosection";
 import BrandsStrip from "@/components/homepage/BrandsStrip";
 import FeaturedInventory from "@/components/homepage/FeaturedInventory";
-import LatestArrivals from "@/components/homepage/LatestArrivals";
+import MotorcycleAccessories from "@/components/homepage/MotorcycleAccessories";
 import LocationSection from "@/components/homepage/location";
 import FAQSection from "@/components/homepage/FAQSection";
-import StaffSection from "@/components/homepage/StaffSection";
 import ReviewsSection from "@/components/homepage/ReviewsSection";
 import StatsSection from "@/components/homepage/StatsSection";
 export default function HomePage() {
@@ -13,11 +12,10 @@ export default function HomePage() {
       <HeroSection />          
       <BrandsStrip />          
       <FeaturedInventory />
-      <LatestArrivals/>
+      <MotorcycleAccessories/>
 
 
       
-      <StaffSection />       
       <StatsSection />         
       <ReviewsSection />      
       <LocationSection />       

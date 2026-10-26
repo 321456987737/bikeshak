@@ -15,6 +15,7 @@ async function getMotorcycles(searchParams) {
     "fuelType",
     "transmission",
     "condition",
+    "accessory",
     "minPrice",
     "maxPrice",
     "minYear",

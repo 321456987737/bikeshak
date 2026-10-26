@@ -1,7 +1,8 @@
 import { Bebas_Neue, Montserrat } from "next/font/google";
 import Providers from "../lib/providers";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
+import { BUSINESS_NAME, SHOWROOM_LOCATION } from "@/lib/business";
 const bebasNeue = Bebas_Neue({
   variable: "--font-bebas-neue",
   subsets: ["latin"],
@@ -15,13 +16,13 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "Demo Auto | Motorcycle Dealership",
-  description: "A demo automotive inventory and dealership website.",
+  title: `${BUSINESS_NAME} | Motorcycle Dealership`,
+  description: `Explore motorcycle inventory and contact ${BUSINESS_NAME} in ${SHOWROOM_LOCATION}.`,
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en"   >
       <body className={`${bebasNeue.variable} ${montserrat.variable}`}>
         <Analytics/>
         <Providers>{children}</Providers>

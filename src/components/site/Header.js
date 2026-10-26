@@ -110,20 +110,20 @@ export default function Header() {
 
           <Link
             href="/"
-            aria-label="Motorcycle store home"
+            aria-label="BIKESHAK home"
             className="flex shrink-0 items-center gap-3"
           >
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-sm font-bold text-[#181818]">
-              M
+              BS
             </div>
 
             <div>
               <p className="text-sm font-semibold tracking-tight text-white">
-                Demo Motorcycles
+                BIKESHAK
               </p>
 
               <p className="text-xs text-white/50">
-                Ride shop
+                Motorcycle showroom
               </p>
             </div>
           </Link>
@@ -171,7 +171,7 @@ export default function Header() {
               href="/motorcycle"
               className="rounded-full bg-white px-5 py-3 text-sm font-medium text-[#181818] transition hover:bg-white/90"
             >
-              View motorcycle
+              View motorcycles
             </Link>
 
             {/* Admin */}
@@ -205,20 +205,20 @@ export default function Header() {
 
           <Link
             href="/"
-            aria-label="Motorcycle store home"
+            aria-label="BIKESHAK home"
             className="flex shrink-0 items-center gap-2.5"
           >
             <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-sm font-bold text-[#181818]">
-              M
+              BS
             </div>
 
             <div>
               <p className="text-sm font-semibold tracking-tight text-white">
-                Demo Motorcycles
+                BIKESHAK
               </p>
 
               <p className="text-[10px] text-white/50">
-                Demo Website
+                Motorcycle showroom
               </p>
             </div>
           </Link>

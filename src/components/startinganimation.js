@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Bike } from "lucide-react";
 
 export default function BikeStartup({
-  brand = "Your motorcycle logo here",
+  brand = "BIKESHAK",
   duration = 1800,
 }) {
   const [started, setStarted] = useState(false);

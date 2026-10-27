@@ -16,14 +16,14 @@ const waysToGetStarted = [
     id: 2,
     title: "Ask our team",
     icon: MessageCircle,
-    text: "Contact BIKESHAK with questions about a motorcycle or to arrange a showroom visit.",
+    text: "Contact BIKESHACK with questions about a motorcycle or to arrange a showroom visit.",
     category: "Personal assistance",
   },
   {
     id: 3,
     title: "Visit the showroom",
     icon: MapPin,
-    text: "Find BIKESHAK in Riyadh and open the map for directions before you visit.",
+    text: "Find BIKESHACK in Riyadh and open the map for directions before you visit.",
     category: "Riyadh, Saudi Arabia",
   },
 ];
@@ -77,7 +77,7 @@ export default function ReviewsSection() {
               className="mt-6 max-w-md font-montserrat text-[10px] leading-[1.9] tracking-[0.04em] text-black/40 md:text-[11px]"
             >
               Browse the collection, ask questions, or plan a visit to the
-              BIKESHAK showroom in Riyadh.
+              BIKESHACK showroom in Riyadh.
             </motion.p>
           </div>
 

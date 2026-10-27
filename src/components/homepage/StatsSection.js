@@ -19,7 +19,7 @@ const stats = [
     id: 3,
     value: "Visit",
     label: "Riyadh showroom",
-    description: "Find BIKESHAK in Riyadh, Saudi Arabia, and plan your visit.",
+    description: "Find BIKESHACK in Riyadh, Saudi Arabia, and plan your visit.",
   },
 ];
 const reveal = {
@@ -149,7 +149,7 @@ export default function StatsSection() {
           </p>
 
           <span className="font-montserrat text-[9px] uppercase tracking-[0.14em] text-black/40">
-            BIKESHAK · Riyadh, Saudi Arabia
+            BIKESHACK · Riyadh, Saudi Arabia
           </span>
         </motion.div>
       </div>

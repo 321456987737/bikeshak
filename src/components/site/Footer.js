@@ -10,6 +10,7 @@ import {
   SHOWROOM_LOCATION,
   SHOWROOM_MAP_URL,
 } from "@/lib/business";
+import Image from "next/image";
 
 const navigation = [
   { label: "Home", href: "/" },
@@ -92,8 +93,9 @@ export default function Footer() {
           >
             <Link
               href="/"
-              className="inline-block font-bebas text-4xl tracking-[0.02em] transition-opacity duration-300 hover:opacity-70 md:text-5xl"
+              className="inline-block  font-bebas text-4xl tracking-[0.02em] transition-opacity duration-300 hover:opacity-70 md:text-5xl"
             >
+                <Image src="/logo.png" alt="BIKESHACK logo" width={120} height={120} />
               {BUSINESS_NAME}
             </Link>
 

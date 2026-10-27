@@ -149,7 +149,7 @@ export default function ContactPage() {
       <section className="relative h-[40dvh] min-h-[320px] overflow-hidden bg-[#e8e8e5] md:min-h-[440px]">
         <Image
           src="/images/motorcycle/motorcycle1.jpg"
-          alt="Motorcycle at BIKESHAK"
+          alt="Motorcycle at BIKESHACK"
           fill
           priority
           sizes="100vw"
@@ -186,7 +186,7 @@ export default function ContactPage() {
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
             <ScrollReveal>
               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/40 md:text-xs">
-                Contact BIKESHAK
+                Contact BIKESHACK
               </p>
 
               <h2 className="mt-5 max-w-4xl font-bebas text-5xl leading-[0.95] tracking-wide md:text-7xl lg:text-8xl">
@@ -212,10 +212,12 @@ export default function ContactPage() {
 
       <section className="bg-white">
         <div className="mx-auto max-w-[1800px] px-6 py-16 md:px-10 md:py-24 lg:px-14">
-          <div className="grid gap-0 border border-black/10 lg:grid-cols-[0.75fr_1.25fr]">
+          <div className="grid gap-0 border border-black/10 lg:grid-cols-[0.75fr_1.25fr] ">
             {/* CONTACT INFORMATION */}
 
-            <ScrollReveal className="bg-[#f3f3f1] p-7 md:p-10 lg:p-12">
+            <ScrollReveal className="bg-[#f3f3f1] p-7 md:p-10 lg:p-12 ">
+              <div className="sticky top-25">
+                
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/40">
@@ -268,6 +270,8 @@ export default function ContactPage() {
                     className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                   />
                 </a>
+              </div>
+              
               </div>
             </ScrollReveal>
 

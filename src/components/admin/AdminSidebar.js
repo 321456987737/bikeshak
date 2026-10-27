@@ -11,6 +11,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { BUSINESS_NAME } from "@/lib/business";
+import Image from "next/image";
 
 const navigation = [
   {
@@ -74,8 +75,8 @@ export default function AdminSidebar() {
             className="flex items-center gap-3"
             aria-label="Admin dashboard"
           >
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black text-sm font-bold text-white">
-              BS
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl  text-sm font-bold text-white">
+              <Image src="/logo.png" alt="Logo" width={40} height={40} className="" />
             </div>
 
             <div className="min-w-0">

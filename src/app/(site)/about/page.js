@@ -21,7 +21,7 @@ export default function AboutPage() {
       <section className="relative h-[40dvh] min-h-[320px] overflow-hidden bg-[#e8e8e5] md:min-h-[440px]">
         <Image
           src="/images/motorcycle/motorcycle1.jpg"
-          alt="Motorcycle at BIKESHAK"
+          alt="Motorcycle at BIKESHACK"
           fill
           priority
           sizes="100vw"
@@ -73,7 +73,7 @@ export default function AboutPage() {
 
             <ScrollReveal className="flex items-end" delay={0.1}>
               <p className="max-w-xl font-montserrat text-sm leading-7 text-black/55 md:text-base md:leading-8">
-                BIKESHAK is a motorcycle showroom in Riyadh. Explore the
+                BIKESHACK is a motorcycle showroom in Riyadh. Explore the
                 available motorcycles, review their details, and contact our
                 team with questions or to arrange a visit.
               </p>
@@ -289,7 +289,7 @@ export default function AboutPage() {
 
               <p className="mt-6 max-w-xl font-montserrat text-sm leading-7 text-black/50 md:text-base">
                 Explore our current collection and discover the motorcycles
-                available through BIKESHAK.
+                available through BIKESHACK.
               </p>
 
               <div className="mt-9 flex flex-wrap gap-3">

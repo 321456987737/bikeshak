@@ -96,7 +96,7 @@ export default function AdminSignupPage() {
 
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-black/35">
-                BIKESHAK · ADMINISTRATION
+                BIKESHACK · ADMINISTRATION
               </p>
 
               <h1 className="mt-1.5 text-2xl font-semibold tracking-tight text-[#181818] sm:text-3xl">

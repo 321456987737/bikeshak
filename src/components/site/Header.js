@@ -15,7 +15,7 @@ import {
   Info,
   Phone,
 } from "lucide-react";
-
+import Image from "next/image";
 const navLinks = [
   { href: "/", label: "Home", icon: Home },
   { href: "/motorcycle", label: "Motorcycle", icon: Bike },
@@ -110,26 +110,11 @@ export default function Header() {
 
           <Link
             href="/"
-            aria-label="BIKESHAK home"
+            aria-label="BIKESHACK home"
             className="flex shrink-0 items-center gap-3"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-sm font-bold text-[#181818]">
-              BS
-            </div>
-
-            <div>
-              <p className="text-sm font-semibold tracking-tight text-white">
-                BIKESHAK
-              </p>
-
-              <p className="text-xs text-white/50">
-                Motorcycle showroom
-              </p>
-            </div>
-          </Link>
-
-          {/* Navigation */}
-
+            <Image src="/logo.png" alt="BIKESHACK logo" width={85} height={85} />
+            </Link>
           <nav
             aria-label="Main navigation"
             className="flex items-center gap-8"
@@ -205,7 +190,7 @@ export default function Header() {
 
           <Link
             href="/"
-            aria-label="BIKESHAK home"
+            aria-label="BIKESHACK home"
             className="flex shrink-0 items-center gap-2.5"
           >
             <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-sm font-bold text-[#181818]">
@@ -214,7 +199,7 @@ export default function Header() {
 
             <div>
               <p className="text-sm font-semibold tracking-tight text-white">
-                BIKESHAK
+                BIKESHACK
               </p>
 
               <p className="text-[10px] text-white/50">

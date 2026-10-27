@@ -958,12 +958,12 @@ export default function MotorcycleBrowser({
       ====================================================== */}
 
       <section className="bg-white">
-        <div className="mx-auto max-w-[1800px] px-6 py-10 md:px-10 md:py-12 lg:px-14 lg:py-14">
+        <div className="mx-auto max-w-[1800px] px-6 pb-10 md:px-10 md:pb-12 lg:px-14 lg:pb-14 pt-5">
           <div className="mb-8 flex items-center justify-between gap-1 border-b border-black/10 pb-5">
             <div className="flex flex-col items-center gap-3">
              
               <div className="flex flex-col gap-0.5">
-                <span className="font-montserrat text-[9px] uppercase tracking-[0.2em] text-black/35">
+                <span className="font-montserrat text-[14px] font-bold uppercase tracking-[0.2em] text-black/35">
                   {pagination.total}
                 </span>
 
@@ -1372,7 +1372,7 @@ function FilterPanel({
 
 function FilterSelect({ label, value, onChange, options }) {
   return (
-    <div className="py-5">
+    <div className="py-5 ">
       <label className="mb-3 block font-montserrat text-[8px] font-medium uppercase tracking-[0.2em] text-black/40">
         {label}
       </label>

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
@@ -52,7 +51,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-white text-black">
+    <section className="relative bg-white text-black">
       {/* ======================================================
           MAIN CONTAINER
       ====================================================== */}
@@ -63,7 +62,7 @@ export default function FAQSection() {
               LEFT SIDE
           ================================================== */}
 
-          <div className="lg:sticky lg:top-20 lg:h-fit">
+          <div className="lg:sticky lg:top-20 lg:z-10 lg:h-fit">
             {/* EYEBROW */}
 
             <motion.p

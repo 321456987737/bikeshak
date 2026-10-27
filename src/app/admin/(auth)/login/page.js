@@ -58,7 +58,7 @@ export default function AdminLoginPage() {
             </div>
 
             <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-black/35">
-              BIKESHAK · ADMINISTRATION
+              BIKESHACK · ADMINISTRATION
             </p>
 
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-[#181818]">

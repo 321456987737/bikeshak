@@ -122,7 +122,7 @@ export default function AccessoryBrowser({
               className="max-w-3xl"
             >
               <p className="mb-3 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-white/60 md:text-[10px]">
-                   Everything for the ride
+                   Everything for the ride 
               </p>
 
               <h1 className="font-bebas text-[clamp(4rem,8vw,8rem)] leading-[0.8] tracking-[-0.045em] text-white">
@@ -130,7 +130,7 @@ export default function AccessoryBrowser({
               </h1>
 
               <p className="mt-5 max-w-xl font-montserrat text-[10px] leading-[1.8] tracking-[0.05em] text-white/60 md:text-[11px]">
-                  Browse our accessories, riding gear and parts available in store.
+                  Browse our accessories, riding gear and parts available in  store.
               </p>
             </motion.div>
           </div>

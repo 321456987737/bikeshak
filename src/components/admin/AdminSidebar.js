@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import {
   LayoutDashboard,
   Bike,
+  Package,
   MessageSquare,
   CalendarCheck,
   ExternalLink,
@@ -23,6 +24,11 @@ const navigation = [
     label: "Motorcycles",
     href: "/admin/motorcycles",
     icon: Bike,
+  },
+  {
+    label: "Accessories",
+    href: "/admin/accessories",
+    icon: Package,
   },
   {
     label: "Inquiries",
@@ -159,7 +165,7 @@ export default function AdminSidebar() {
           paddingBottom: "max(8px, env(safe-area-inset-bottom))",
         }}
       >
-        <div className="grid h-full grid-cols-4 px-2">
+        <div className="grid h-full grid-cols-5 px-2">
           {navigation.map((item) => {
             const Icon = item.icon;
             const active = isActive(item.href);

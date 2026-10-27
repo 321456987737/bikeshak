@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/animations/Reveal";
 import { BUSINESS_NAME, SHOWROOM_LOCATION } from "@/lib/business";
-import { MOTORCYCLE_ACCESSORIES } from "@/lib/motorcycle-accessories";
 
 async function getMotorcycle(id) {
   const baseUrl =
@@ -368,26 +367,23 @@ export default async function Page({ params }) {
 
       {/* FEATURES */}
 
-      {(motorcycle.features?.length > 0 ||
-        motorcycle.accessories?.length > 0) && (
+      {motorcycle.features?.length > 0 && (
         <section className="border-t border-black/10">
           <div className="mx-auto max-w-[1800px] px-6 py-16 md:px-10 md:py-20 lg:px-14 lg:py-24">
             <Reveal>
               <div className="mb-10 flex items-end justify-between">
                 <div>
                   <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/30 md:text-[11px]">
-                    Equipment & accessories
+                    Equipment
                   </p>
 
                   <h2 className="mt-3 font-bebas text-5xl leading-none tracking-[-0.03em] md:text-6xl">
-                    Features & accessories
+                    Features
                   </h2>
                 </div>
 
                 <span className="hidden font-montserrat text-[9px] uppercase tracking-[0.2em] text-black/25 sm:block md:text-[10px]">
-                  {(motorcycle.features?.length || 0) +
-                    (motorcycle.accessories?.length || 0)}{" "}
-                  items
+                  {motorcycle.features.length} items
                 </span>
               </div>
             </Reveal>
@@ -408,28 +404,6 @@ export default async function Page({ params }) {
                     </span>
                   </div>
                 ))}
-                {(motorcycle.accessories || []).map((value, index) => {
-                  const category = MOTORCYCLE_ACCESSORIES.find(
-                    (item) => item.value === value,
-                  );
-
-                  return (
-                    <div
-                      key={value}
-                      className="flex items-center gap-4 border-b border-black/10 px-1 py-5 sm:border-r sm:px-4 lg:px-5"
-                    >
-                      <span className="font-montserrat text-[9px] tracking-[0.15em] text-black/20 md:text-[10px]">
-                        {String(
-                          (motorcycle.features?.length || 0) + index + 1,
-                        ).padStart(2, "0")}
-                      </span>
-
-                      <span className="font-montserrat text-[11px] tracking-[0.02em] text-black/65 md:text-[12px]">
-                        {category?.label || value}
-                      </span>
-                    </div>
-                  );
-                })}
               </div>
             </Reveal>
           </div>

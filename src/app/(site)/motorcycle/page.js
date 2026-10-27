@@ -1,4 +1,4 @@
-import MotorcycleBrowser from "@/components/motorcycle/MotorcycleBrowser";
+import InventoryBrowser from "@/components/motorcycle/InventoryBrowser";
 
 async function getMotorcycles(searchParams) {
   const baseUrl =
@@ -15,7 +15,6 @@ async function getMotorcycles(searchParams) {
     "fuelType",
     "transmission",
     "condition",
-    "accessory",
     "minPrice",
     "maxPrice",
     "minYear",
@@ -84,15 +83,19 @@ export default async function MotorcyclePage({
     },
   };
 
-  try {
-    data = await getMotorcycles(params);
-  } catch (error) {
-    console.error("Motorcycle page error:", error);
+  if (params?.inventory !== "accessories") {
+    try {
+      data = await getMotorcycles(params);
+    } catch (error) {
+      console.error("Motorcycle page error:", error);
+    }
   }
 
   return (
     <main className="min-h-screen bg-white">
-      <MotorcycleBrowser
+      <InventoryBrowser
+        initialInventory={params?.inventory}
+        initialCategory={params?.category}
         initialMotorcycles={data.motorcycles}
         initialPagination={data.pagination}
         initialFilters={params}

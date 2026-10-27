@@ -12,7 +12,6 @@ import {
   X,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { MOTORCYCLE_ACCESSORIES } from "@/lib/motorcycle-accessories";
 
 const HERO_IMAGE = "/images/motorcycle/motorcycle1.jpg";
 
@@ -92,6 +91,7 @@ function normalizeValue(value) {
 }
 
 export default function MotorcycleBrowser({
+  inventorySelector,
   initialMotorcycles,
   initialPagination,
   initialFilters,
@@ -115,8 +115,6 @@ export default function MotorcycleBrowser({
   const urlTransmission = searchParams.get("transmission") || "";
 
   const urlCondition = searchParams.get("condition") || "";
-
-  const urlAccessory = searchParams.get("accessory") || "";
 
   const urlMinPrice = searchParams.get("minPrice") || "";
 
@@ -170,10 +168,6 @@ export default function MotorcycleBrowser({
     normalizeValue(initialFilters?.condition) || urlCondition,
   );
 
-  const [accessory, setAccessory] = useState(
-    normalizeValue(initialFilters?.accessory) || urlAccessory,
-  );
-
   const [minPrice, setMinPrice] = useState(
     normalizeValue(initialFilters?.minPrice) || urlMinPrice,
   );
@@ -216,8 +210,6 @@ export default function MotorcycleBrowser({
 
   const loadingRef = useRef(false);
 
-  const firstLoadRef = useRef(false);
-
   const fetchMotorcycleRef = useRef(null);
 
   /*
@@ -251,7 +243,6 @@ export default function MotorcycleBrowser({
         fuelType,
         transmission,
         condition,
-        accessory,
         minPrice,
         maxPrice,
         minYear,
@@ -284,10 +275,6 @@ export default function MotorcycleBrowser({
 
       if (values.condition) {
         params.set("condition", values.condition);
-      }
-
-      if (values.accessory) {
-        params.set("accessory", values.accessory);
       }
 
       if (values.minPrice) {
@@ -323,7 +310,6 @@ export default function MotorcycleBrowser({
       fuelType,
       transmission,
       condition,
-      accessory,
       minPrice,
       maxPrice,
       minYear,
@@ -345,7 +331,6 @@ export default function MotorcycleBrowser({
         fuelType,
         transmission,
         condition,
-        accessory,
         minPrice,
         maxPrice,
         minYear,
@@ -378,10 +363,6 @@ export default function MotorcycleBrowser({
 
       if (values.condition) {
         urlParams.set("condition", values.condition);
-      }
-
-      if (values.accessory) {
-        urlParams.set("accessory", values.accessory);
       }
 
       if (values.minPrice) {
@@ -417,7 +398,6 @@ export default function MotorcycleBrowser({
       fuelType,
       transmission,
       condition,
-      accessory,
       minPrice,
       maxPrice,
       minYear,
@@ -489,7 +469,6 @@ export default function MotorcycleBrowser({
 
       try {
         const params = buildParams(overrides, page);
-        console.log("mama")
         const response = await fetch(`/api/motorcycle?${params.toString()}`, {
           method: "GET",
           cache: "no-store",
@@ -594,19 +573,7 @@ export default function MotorcycleBrowser({
 
 
   useEffect(() => {
-    if (firstLoadRef.current) {
-      return;
-    }
-
-    firstLoadRef.current = true;
-
-    const timer = window.setTimeout(() => {
-      fetchMotorcycleRef.current?.(1, {}, false);
-    }, 0);
-
-    return () => {
-      window.clearTimeout(timer);
-    };
+    fetchMotorcycleRef.current?.(1, {}, false);
   }, []);
 
   /* ======================================================
@@ -770,7 +737,6 @@ export default function MotorcycleBrowser({
     setFuelType("");
     setTransmission("");
     setCondition("");
-    setAccessory("");
     setMinPrice("");
     setMaxPrice("");
     setMinYear("");
@@ -786,7 +752,6 @@ export default function MotorcycleBrowser({
         fuelType: "",
         transmission: "",
         condition: "",
-        accessory: "",
         minPrice: "",
         maxPrice: "",
         minYear: "",
@@ -807,7 +772,6 @@ export default function MotorcycleBrowser({
     fuelType,
     transmission,
     condition,
-    accessory,
     minPrice,
     maxPrice,
     minYear,
@@ -874,7 +838,7 @@ export default function MotorcycleBrowser({
           ACTIVE CATEGORY
       ====================================================== */}
 
-      {(bikeType || accessory) && (
+      {bikeType && (
         <div className="border-b border-black/10 bg-[#f7f7f5]">
           <div className="mx-auto flex max-w-[1800px] items-center justify-between gap-5 px-6 py-4 md:px-10 lg:px-14">
             <div>
@@ -883,11 +847,7 @@ export default function MotorcycleBrowser({
               </p>
 
               <p className="mt-1 font-bebas text-2xl leading-none">
-                {bikeType ||
-                  MOTORCYCLE_ACCESSORIES.find(
-                    (category) => category.value === accessory,
-                  )?.label ||
-                  accessory}
+                {bikeType}
               </p>
             </div>
 
@@ -959,15 +919,18 @@ export default function MotorcycleBrowser({
 
       <section className="bg-white">
         <div className="mx-auto max-w-[1800px] px-6 pb-10 md:px-10 md:pb-12 lg:px-14 lg:pb-14 pt-5">
-          <div className="mb-8 flex items-center justify-between gap-1 border-b border-black/10 pb-5">
-            <div className="flex flex-col items-center gap-3">
-             
+          <div className="mb-8 grid grid-cols-[1fr_auto] items-center gap-x-3 gap-y-4 border-b border-black/10 pb-5 md:grid-cols-[1fr_auto_1fr]">
+            <div className="col-span-2 flex justify-center md:col-span-1 md:col-start-2 md:row-start-1">
+              {inventorySelector}
+            </div>
+
+            <div className="flex min-w-0 flex-col gap-1 md:col-start-1 md:row-start-1">
               <div className="flex flex-col gap-0.5">
                 <span className="font-montserrat text-[14px] font-bold uppercase tracking-[0.2em] text-black/35">
                   {pagination.total}
                 </span>
 
-                <span className="font-montserrat text-[9px] uppercase tracking-[0.2em] text-black/35">
+                <span className="font-montserrat text-[9px] uppercase tracking-[0.12em] text-black/35 sm:tracking-[0.2em]">
                   {pagination.total === 1 ? "motorcycle" : "motorcycles"} available
                 </span>
               </div>
@@ -978,7 +941,7 @@ export default function MotorcycleBrowser({
               )}
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-end gap-2 sm:gap-3 md:col-start-3 md:row-start-1">
               <button
                 type="button"
                 onClick={() => setMobileFiltersOpen(true)}
@@ -1028,8 +991,6 @@ export default function MotorcycleBrowser({
                 setMake={setMake}
                 bikeType={bikeType}
                 setBodyType={setBodyType}
-                accessory={accessory}
-                setAccessory={setAccessory}
                 fuelType={fuelType}
                 setFuelType={setFuelType}
                 transmission={transmission}
@@ -1112,8 +1073,6 @@ export default function MotorcycleBrowser({
                       setMake={setMake}
                       bikeType={bikeType}
                       setBodyType={setBodyType}
-                      accessory={accessory}
-                      setAccessory={setAccessory}
                       fuelType={fuelType}
                       setFuelType={setFuelType}
                       transmission={transmission}
@@ -1207,8 +1166,6 @@ function FilterPanel({
   setMake,
   bikeType,
   setBodyType,
-  accessory,
-  setAccessory,
   fuelType,
   setFuelType,
   transmission,
@@ -1262,15 +1219,6 @@ function FilterPanel({
             handleFilterChange(setBodyType, "bikeType", value)
           }
           options={BIKE_TYPES}
-        />
-
-        <FilterSelect
-          label="Accessories"
-          value={accessory}
-          onChange={(value) =>
-            handleFilterChange(setAccessory, "accessory", value)
-          }
-          options={MOTORCYCLE_ACCESSORIES}
         />
 
         <FilterSelect

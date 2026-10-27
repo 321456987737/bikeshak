@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import cloudinary from "@/lib/cloudinary";
+import { getAdminSession } from "@/lib/auth";
 
 export const runtime = "nodejs";
 
@@ -14,10 +15,19 @@ const ALLOWED_TYPES = [
 ];
 
 export async function POST(request) {
+  if (!(await getAdminSession())) {
+    return NextResponse.json(
+      { success: false, message: "Unauthorized" },
+      { status: 401 },
+    );
+  }
+
   const uploadedPublicIds = [];
 
   try {
     const formData = await request.formData();
+    const folderType =
+      formData.get("folder") === "accessories" ? "accessories" : "motorcycles";
 
     const files = formData
       .getAll("files")
@@ -81,7 +91,8 @@ export async function POST(request) {
 
       const result = await uploadToCloudinary(
         buffer,
-        file.name
+        file.name,
+        folderType,
       );
 
       uploadedPublicIds.push(
@@ -151,6 +162,13 @@ export async function POST(request) {
 }
 
 export async function DELETE(request) {
+  if (!(await getAdminSession())) {
+    return NextResponse.json(
+      { success: false, message: "Unauthorized" },
+      { status: 401 },
+    );
+  }
+
   try {
     const body = await request.json();
 
@@ -214,17 +232,18 @@ export async function DELETE(request) {
 
 function uploadToCloudinary(
   buffer,
-  originalName
+  originalName,
+  folderType
 ) {
   const filename = originalName
     .replace(/\.[^/.]+$/, "")
     .replace(/[^a-zA-Z0-9-_]/g, "-")
     .toLowerCase();
 
-  return uploadWithRetry(buffer, filename);
+  return uploadWithRetry(buffer, filename, folderType);
 }
 
-async function uploadWithRetry(buffer, filename) {
+async function uploadWithRetry(buffer, filename, folderType) {
   let lastError;
 
   for (let attempt = 1; attempt <= CLOUDINARY_UPLOAD_ATTEMPTS; attempt += 1) {
@@ -232,7 +251,7 @@ async function uploadWithRetry(buffer, filename) {
       return await new Promise((resolve, reject) => {
         const uploadStream = cloudinary.uploader.upload_stream(
           {
-            folder: "motorcycle-dealership/motorcycles",
+            folder: `motorcycle-dealership/${folderType}`,
             resource_type: "image",
             use_filename: true,
             unique_filename: true,

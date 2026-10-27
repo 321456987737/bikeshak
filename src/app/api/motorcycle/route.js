@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 
 import { connectDB } from "@/lib/db";
 import Motorcycle from "@/models/Motorcycle";
-import { isMotorcycleAccessory } from "@/lib/motorcycle-accessories";
 
 export async function GET(request) {
   try {
@@ -49,18 +48,6 @@ export async function GET(request) {
 
     const transmission =
       searchParams.get("transmission")?.trim() || "";
-
-    const accessory = searchParams.get("accessory")?.trim() || "";
-
-    if (accessory && !isMotorcycleAccessory(accessory)) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Invalid motorcycle accessory category",
-        },
-        { status: 400 },
-      );
-    }
 
     const condition =
       searchParams.get("condition")?.trim() || "";
@@ -155,10 +142,6 @@ export async function GET(request) {
 
     if (transmission) {
       filter.transmission = transmission;
-    }
-
-    if (accessory) {
-      filter.accessories = accessory;
     }
 
     /* CONDITION */
@@ -293,7 +276,6 @@ export async function GET(request) {
             "brakeType",
             "abs",
             "images",
-            "accessories",
             "status",
             "isFeatured",
             "stockNumber",

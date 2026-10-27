@@ -22,6 +22,7 @@ export const config = {
     "/admin",
     "/admin/dashboard/:path*",
     "/admin/motorcycles/:path*",
+    "/admin/accessories/:path*",
     "/admin/inquiries/:path*",
     "/admin/test-drives/:path*",
     "/admin/settings/:path*",

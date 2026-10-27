@@ -1,4 +1,4 @@
-export const MOTORCYCLE_ACCESSORIES = [
+export const ACCESSORY_CATEGORIES = [
   {
     value: "helmets",
     label: "Helmets",
@@ -25,10 +25,10 @@ export const MOTORCYCLE_ACCESSORIES = [
   },
 ];
 
-export const MOTORCYCLE_ACCESSORY_VALUES = MOTORCYCLE_ACCESSORIES.map(
+export const ACCESSORY_CATEGORY_VALUES = ACCESSORY_CATEGORIES.map(
   ({ value }) => value,
 );
 
-export function isMotorcycleAccessory(value) {
-  return MOTORCYCLE_ACCESSORY_VALUES.includes(value);
+export function isAccessoryCategory(value) {
+  return ACCESSORY_CATEGORY_VALUES.includes(value);
 }

@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 
 import { connectDB } from "@/lib/db";
 import Motorcycle from "@/models/Motorcycle";
-import { isMotorcycleAccessory } from "@/lib/motorcycle-accessories";
 
 export const dynamic = "force-dynamic";
 
@@ -435,22 +434,6 @@ export async function POST(request) {
     const make = body.make?.trim();
 
     const model = body.model?.trim();
-    const accessories =
-      body.accessories === undefined ? [] : body.accessories;
-
-    if (
-      !Array.isArray(accessories) ||
-      accessories.some((accessory) => !isMotorcycleAccessory(accessory))
-    ) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Accessories must contain only supported categories",
-        },
-        { status: 400 },
-      );
-    }
-
     if (!make) {
       return NextResponse.json(
         {
@@ -595,8 +578,6 @@ export async function POST(request) {
             .map((item) => item.trim())
             .filter(Boolean)
         : [],
-
-      accessories: [...new Set(accessories)],
 
       images: Array.isArray(body.images) ? body.images : [],
 

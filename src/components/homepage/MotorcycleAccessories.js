@@ -4,10 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { MOTORCYCLE_ACCESSORIES } from "@/lib/motorcycle-accessories";
+import { ACCESSORY_CATEGORIES } from "@/lib/accessory-categories";
 
 export default function MotorcycleAccessories() {
-  const categories = MOTORCYCLE_ACCESSORIES.map((category, index) => ({
+  const categories = ACCESSORY_CATEGORIES.map((category, index) => ({
     ...category,
     count: String(index + 1).padStart(2, "0"),
   }));
@@ -40,7 +40,7 @@ export default function MotorcycleAccessories() {
           </div>
 
           <Link
-            href="/motorcycle"
+            href="/motorcycle?inventory=accessories"
             className="group inline-flex w-fit items-center gap-3 border-b border-white/25 pb-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.18em] text-white/65 transition-colors duration-300 hover:border-white hover:text-white"
           >
             View all accessories
@@ -56,7 +56,7 @@ export default function MotorcycleAccessories() {
         <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
           {categories.map((category, index) => (
             <motion.article
-              key={category.slug}
+              key={category.value}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.12 }}
@@ -67,7 +67,7 @@ export default function MotorcycleAccessories() {
               className="group min-w-0"
             >
               <Link
-                href={`/motorcycle?accessory=${category.value}`}
+                href={`/motorcycle?inventory=accessories&category=${category.value}`}
                 className="block h-full"
                 aria-label={`Browse ${category.label}`}
               >
@@ -109,7 +109,7 @@ export default function MotorcycleAccessories() {
         {/* Bottom CTA */}
         <div className="mt-9 flex justify-center sm:mt-12">
           <Link
-            href="/motorcycle"
+            href="/motorcycle?inventory=accessories"
             className="group inline-flex min-h-12 items-center justify-center gap-3 border border-white/30 px-6 py-4 font-montserrat text-[9px] font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:border-white hover:bg-white hover:text-black sm:px-8"
           >
             Explore all accessories

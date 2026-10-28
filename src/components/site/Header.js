@@ -193,19 +193,14 @@ export default function Header() {
             aria-label="الصفحة الرئيسية لـ BIKESHACK"
             className="flex shrink-0 items-center gap-2.5"
           >
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-sm font-bold text-[#181818]">
-              BS
-            </div>
-
-            <div>
-              <p className="text-sm font-semibold tracking-tight text-white">
-                BIKESHACK
-              </p>
-
-              <p className="text-[10px] text-white/50">
-                معرض دراجات نارية
-              </p>
-            </div>
+          
+          <Link
+            href="/"
+            aria-label="الصفحة الرئيسية لـ BIKESHACK"
+            className="flex shrink-0 items-center gap-3"
+          >
+            <Image src="/logo.png" alt="شعار BIKESHACK" width={85} height={85} />
+            </Link>
           </Link>
 
           {session && (

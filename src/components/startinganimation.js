@@ -31,7 +31,7 @@ export default function BikeStartup({
   return (
     <motion.div
       role="status"
-      aria-label={`${brand} loading`}
+      aria-label={`جارٍ تحميل ${brand}`}
       initial={{ opacity: 1 }}
       animate={{ opacity: leaving ? 0 : 1 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -111,7 +111,7 @@ export default function BikeStartup({
           }}
           className="mt-3 font-montserrat text-[9px] font-medium uppercase tracking-[0.3em] text-white/45"
         >
-          Premium motorcycles & accessories
+          دراجات نارية وإكسسوارات مميزة
         </motion.p>
       </div>
     </motion.div>

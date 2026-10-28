@@ -30,7 +30,7 @@ export default function AdminLoginPage() {
       });
 
       if (!result || result.error) {
-        setError("Invalid email or password.");
+        setError("البريد الإلكتروني أو كلمة المرور غير صحيحة.");
         setLoading(false);
         return;
       }
@@ -40,7 +40,7 @@ export default function AdminLoginPage() {
     } catch (error) {
       console.error("LOGIN ERROR:", error);
 
-      setError("Something went wrong. Please try again.");
+      setError("حدث خطأ ما. يُرجى المحاولة مرة أخرى.");
       setLoading(false);
     }
   }
@@ -58,15 +58,15 @@ export default function AdminLoginPage() {
             </div>
 
             <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-black/35">
-              BIKESHACK · ADMINISTRATION
+              BIKESHACK · الإدارة
             </p>
 
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-[#181818]">
-              Welcome back.
+              مرحبًا بعودتك
             </h1>
 
             <p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-black/45">
-              Sign in to manage your dealership.
+              سجّل الدخول لإدارة وكالتك.
             </p>
           </div>
 
@@ -78,7 +78,7 @@ export default function AdminLoginPage() {
                 htmlFor="email"
                 className="mb-2 block text-sm font-medium text-black/75"
               >
-                Email address
+                البريد الإلكتروني
               </label>
 
               <div className="relative">
@@ -93,7 +93,7 @@ export default function AdminLoginPage() {
                   type="email"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
-                  placeholder="Admin email address"
+                  placeholder="البريد الإلكتروني للمسؤول"
                   autoComplete="email"
                   required
                   className="h-13 w-full rounded-2xl border border-black/10 bg-[#fafafa] pl-11 pr-4 text-sm text-black outline-none transition placeholder:text-black/25 hover:border-black/20 focus:border-black/30 focus:bg-white focus:ring-4 focus:ring-black/[0.03]"
@@ -107,7 +107,7 @@ export default function AdminLoginPage() {
                 htmlFor="password"
                 className="mb-2 block text-sm font-medium text-black/75"
               >
-                Password
+                كلمة المرور
               </label>
 
               <div className="relative">
@@ -122,7 +122,7 @@ export default function AdminLoginPage() {
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
-                  placeholder="Enter your password"
+                  placeholder="أدخل كلمة المرور"
                   autoComplete="current-password"
                   required
                   className="h-13 w-full rounded-2xl border border-black/10 bg-[#fafafa] pl-11 pr-14 text-sm text-black outline-none transition placeholder:text-black/25 hover:border-black/20 focus:border-black/30 focus:bg-white focus:ring-4 focus:ring-black/[0.03]"
@@ -132,7 +132,7 @@ export default function AdminLoginPage() {
                   type="button"
                   onClick={() => setShowPassword((current) => !current)}
                   aria-label={
-                    showPassword ? "Hide password" : "Show password"
+                    showPassword ? "إخفاء كلمة المرور" : "إظهار كلمة المرور"
                   }
                   className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-xl text-black/35 transition hover:bg-black/[0.05] hover:text-black"
                 >
@@ -158,7 +158,7 @@ export default function AdminLoginPage() {
               disabled={loading}
               className="group flex h-13 w-full items-center justify-center gap-2 rounded-2xl bg-[#181818] px-5 text-sm font-semibold text-white transition hover:bg-black disabled:cursor-not-allowed disabled:opacity-50"
             >
-              <span>{loading ? "Signing in..." : "Sign In"}</span>
+              <span>{loading ? "جارٍ تسجيل الدخول..." : "تسجيل الدخول"}</span>
 
               {!loading && (
                 <ArrowRight
@@ -173,19 +173,19 @@ export default function AdminLoginPage() {
           {/* FOOTER */}
           <div className="mt-7 border-t border-black/10 pt-6 text-center">
             <p className="text-sm text-black/45">
-              Don&apos;t have an admin account?{" "}
+              ليس لديك حساب مسؤول؟{" "}
               <Link
                 href="/admin/signup"
                 className="font-semibold text-[#181818] underline decoration-black/20 underline-offset-4 transition hover:decoration-black/60"
               >
-                Create one
+                أنشئ حسابًا
               </Link>
             </p>
           </div>
         </div>
 
         <p className="mt-5 text-center text-[11px] text-black/25">
-          Authorized dealership access only
+          الدخول مخصص لموظفي الوكالة المصرح لهم فقط
         </p>
       </div>
     </main>

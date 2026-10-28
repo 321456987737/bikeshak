@@ -40,7 +40,7 @@ const brands = [
 export default function BrandsMarquee() {
   return (
     <section
-      aria-label="Featured motorcycle brands"
+      aria-label="أبرز العلامات التجارية للدراجات النارية"
       className="border-b border-black/10 bg-white py-4"
     >
       <Marquee

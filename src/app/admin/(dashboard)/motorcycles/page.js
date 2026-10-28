@@ -18,6 +18,31 @@ const BIKE_TYPES = [
   "Other",
 ];
 
+const STATUS_LABELS = {
+  Available: "متاحة",
+  Reserved: "محجوزة",
+  Sold: "مباعة",
+};
+
+const CONDITION_LABELS = {
+  New: "جديدة",
+  Used: "مستعملة",
+};
+
+const BIKE_TYPE_LABELS = {
+  Sport: "رياضية",
+  Naked: "نيكد",
+  Cruiser: "كروزر",
+  Touring: "سياحية",
+  Adventure: "مغامرات",
+  "Dirt Bike": "دراجة طرق وعرة",
+  Scooter: "سكوتر",
+  Commuter: "تنقل يومي",
+  "Cafe Racer": "كافيه ريسر",
+  Electric: "كهربائية",
+  Other: "أخرى",
+};
+
 export default function AdminMotorcyclesPage() {
   const statusInitializedRef = useRef(false);
   const [motorcycles, setMotorcycles] = useState([]);
@@ -79,7 +104,7 @@ export default function AdminMotorcyclesPage() {
 
       if (!response.ok || !result.success) {
         throw new Error(
-          result.message || "Failed to load inventory",
+          result.message || "تعذّر تحميل المخزون.",
         );
       }
 
@@ -89,7 +114,7 @@ export default function AdminMotorcyclesPage() {
       console.error(loadError);
 
       setError(
-        loadError.message || "Failed to load inventory",
+        loadError.message || "تعذّر تحميل المخزون.",
       );
     } finally {
       setLoading(false);
@@ -143,7 +168,7 @@ export default function AdminMotorcyclesPage() {
 
       if (!response.ok || !result.success) {
         throw new Error(
-          result.message || "Failed to update status",
+          result.message || "تعذّر تحديث الحالة.",
         );
       }
 
@@ -162,7 +187,7 @@ export default function AdminMotorcyclesPage() {
 
       setError(
         updateError.message ||
-          "Failed to update status",
+          "تعذّر تحديث الحالة.",
       );
     } finally {
       setActionId(null);
@@ -192,7 +217,7 @@ export default function AdminMotorcyclesPage() {
       if (!response.ok || !result.success) {
         throw new Error(
           result.message ||
-            "Failed to update featured status",
+            "تعذّر تحديث حالة التمييز.",
         );
       }
 
@@ -211,7 +236,7 @@ export default function AdminMotorcyclesPage() {
 
       setError(
         toggleError.message ||
-          "Failed to update featured status",
+          "تعذّر تحديث حالة التمييز.",
       );
     } finally {
       setActionId(null);
@@ -220,7 +245,7 @@ export default function AdminMotorcyclesPage() {
 
   async function deleteMotorcycle(motorcycleId) {
     const confirmed = window.confirm(
-      "Are you sure you want to delete this motorcycle? This action cannot be undone.",
+      "هل أنت متأكد من حذف هذه الدراجة النارية؟ لا يمكن التراجع عن هذا الإجراء.",
     );
 
     if (!confirmed) {
@@ -242,7 +267,7 @@ export default function AdminMotorcyclesPage() {
 
       if (!response.ok || !result.success) {
         throw new Error(
-          result.message || "Failed to delete motorcycle",
+          result.message || "تعذّر حذف الدراجة النارية.",
         );
       }
 
@@ -258,7 +283,7 @@ export default function AdminMotorcyclesPage() {
       console.error(deleteError);
 
       setError(
-        deleteError.message || "Failed to delete motorcycle",
+        deleteError.message || "تعذّر حذف الدراجة النارية.",
       );
     } finally {
       setActionId(null);
@@ -274,15 +299,15 @@ export default function AdminMotorcyclesPage() {
       <div className="mb-6 flex flex-col gap-5 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
         <div className="min-w-0">
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-black/35">
-            Inventory
+            المخزون
           </p>
 
           <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Motorcycles
+            الدراجات النارية
           </h1>
 
           <p className="mt-2 max-w-xl text-sm leading-6 text-black/45">
-            Manage every motorcycle on the dealership website.
+            أدر جميع الدراجات النارية المعروضة على موقع الوكالة.
           </p>
         </div>
 
@@ -290,7 +315,7 @@ export default function AdminMotorcyclesPage() {
           href="/admin/motorcycles/new"
           className="inline-flex w-full shrink-0 items-center justify-center rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-black/80 active:scale-[0.98] sm:w-auto"
         >
-          + Add Motorcycle
+          + إضافة دراجة نارية
         </Link>
       </div>
 
@@ -319,7 +344,7 @@ export default function AdminMotorcyclesPage() {
             onChange={(event) =>
               setSearch(event.target.value)
             }
-            placeholder="Search make, model or stock number"
+            placeholder="ابحث عن الشركة أو الطراز أو رقم المخزون"
             className="h-11 w-full min-w-0 rounded-xl border border-black/15 px-4 text-sm outline-none placeholder:text-black/30 focus:border-black"
           />
 
@@ -330,10 +355,10 @@ export default function AdminMotorcyclesPage() {
             }
             className="h-11 w-full min-w-0 rounded-xl border border-black/15 bg-white px-3 text-sm outline-none focus:border-black"
           >
-            <option value="">All statuses</option>
-            <option value="Available">Available</option>
-            <option value="Reserved">Reserved</option>
-            <option value="Sold">Sold</option>
+            <option value="">جميع الحالات</option>
+            <option value="Available">متاحة</option>
+            <option value="Reserved">محجوزة</option>
+            <option value="Sold">مباعة</option>
           </select>
 
           <select
@@ -343,9 +368,9 @@ export default function AdminMotorcyclesPage() {
             }
             className="h-11 w-full min-w-0 rounded-xl border border-black/15 bg-white px-3 text-sm outline-none focus:border-black"
           >
-            <option value="">All conditions</option>
-            <option value="New">New</option>
-            <option value="Used">Used</option>
+            <option value="">جميع الحالات</option>
+            <option value="New">جديدة</option>
+            <option value="Used">مستعملة</option>
           </select>
 
           <select
@@ -353,10 +378,10 @@ export default function AdminMotorcyclesPage() {
             onChange={(event) => setBikeType(event.target.value)}
             className="h-11 w-full min-w-0 rounded-xl border border-black/15 bg-white px-3 text-sm outline-none focus:border-black"
           >
-            <option value="">All motorcycle types</option>
+            <option value="">جميع أنواع الدراجات</option>
             {BIKE_TYPES.map((type) => (
               <option key={type} value={type}>
-                {type}
+                {BIKE_TYPE_LABELS[type] || type}
               </option>
             ))}
           </select>
@@ -368,23 +393,23 @@ export default function AdminMotorcyclesPage() {
             }
             className="h-11 w-full min-w-0 rounded-xl border border-black/15 bg-white px-3 text-sm outline-none focus:border-black"
           >
-            <option value="newest">Newest first</option>
-            <option value="oldest">Oldest first</option>
+            <option value="newest">الأحدث أولًا</option>
+            <option value="oldest">الأقدم أولًا</option>
             <option value="price-low">
-              Price: Low to High
+              السعر: من الأقل إلى الأعلى
             </option>
             <option value="price-high">
-              Price: High to Low
+              السعر: من الأعلى إلى الأقل
             </option>
-            <option value="year-new">Newest year</option>
-            <option value="year-old">Oldest year</option>
+            <option value="year-new">أحدث سنة</option>
+            <option value="year-old">أقدم سنة</option>
           </select>
 
           <button
             type="submit"
             className="h-11 w-full rounded-xl bg-black px-5 text-sm font-semibold text-white transition hover:bg-black/80 active:scale-[0.98] sm:col-span-2 lg:col-span-1"
           >
-            Search
+            بحث
           </button>
         </form>
       </section>
@@ -398,13 +423,10 @@ export default function AdminMotorcyclesPage() {
 
         <div className="flex items-center justify-between border-b border-black/10 px-4 py-4 sm:px-6 sm:py-5">
           <div>
-            <h2 className="font-semibold">Inventory</h2>
+            <h2 className="font-semibold">المخزون</h2>
 
             <p className="mt-1 text-xs text-black/40">
-              {pagination.total}{" "}
-              {pagination.total === 1
-                ? "motorcycle"
-                : "motorcycles"}
+              إجمالي الدراجات النارية: {pagination.total}
             </p>
           </div>
         </div>
@@ -434,27 +456,27 @@ export default function AdminMotorcyclesPage() {
                 <thead>
                   <tr className="border-b border-black/10 text-left">
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Motorcycle
+                      الدراجة النارية
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Price
+                      السعر
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Mileage
+                      المسافة المقطوعة
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Status
+                      الحالة
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Featured
+                      مميزة
                     </th>
 
                     <th className="px-6 py-4 text-right text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Actions
+                      الإجراءات
                     </th>
                   </tr>
                 </thead>
@@ -560,7 +582,7 @@ export default function AdminMotorcyclesPage() {
                           />
                         ) : (
                           <div className="flex h-full w-full items-center justify-center text-[10px] font-medium uppercase tracking-wider text-black/25">
-                            No image
+                            لا توجد صورة
                           </div>
                         )}
                       </div>
@@ -573,7 +595,7 @@ export default function AdminMotorcyclesPage() {
                             </p>
 
                             <p className="mt-1 text-xs text-black/40">
-                              {motorcycle.year} · {motorcycle.condition}
+                              {motorcycle.year} · {CONDITION_LABELS[motorcycle.condition] || motorcycle.condition}
                             </p>
 
                             {motorcycle.stockNumber && (
@@ -585,7 +607,7 @@ export default function AdminMotorcyclesPage() {
 
                           {motorcycle.isFeatured && (
                             <span className="shrink-0 rounded-full bg-black px-2.5 py-1 text-[10px] font-semibold text-white">
-                              Featured
+                              مميزة
                             </span>
                           )}
                         </div>
@@ -602,7 +624,7 @@ export default function AdminMotorcyclesPage() {
                     <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
                       <div className="rounded-xl bg-black/[0.035] px-3 py-2.5">
                         <p className="text-[10px] uppercase tracking-wider text-black/35">
-                          Mileage
+                          المسافة المقطوعة
                         </p>
 
                         <p className="mt-1 text-xs font-semibold">
@@ -613,7 +635,7 @@ export default function AdminMotorcyclesPage() {
 
                       <div className="rounded-xl bg-black/[0.035] px-3 py-2.5">
                         <p className="text-[10px] uppercase tracking-wider text-black/35">
-                          Status
+                          الحالة
                         </p>
 
                         <div className="mt-1">
@@ -632,7 +654,7 @@ export default function AdminMotorcyclesPage() {
 
                       <div className="col-span-2 rounded-xl bg-black/[0.035] px-3 py-2.5 sm:col-span-1">
                         <p className="text-[10px] uppercase tracking-wider text-black/35">
-                          Featured
+                          مميزة
                         </p>
 
                         <div className="mt-1">
@@ -654,7 +676,7 @@ export default function AdminMotorcyclesPage() {
                         href={`/admin/motorcycles/${motorcycle._id}/edit`}
                         className="flex h-10 items-center justify-center rounded-xl border border-black/10 text-xs font-semibold transition hover:bg-black hover:text-white active:scale-[0.98]"
                       >
-                        Edit
+                        تعديل
                       </Link>
 
                       <button
@@ -665,7 +687,7 @@ export default function AdminMotorcyclesPage() {
                         }
                         className="h-10 rounded-xl border border-red-200 text-xs font-semibold text-red-600 transition hover:bg-red-600 hover:text-white disabled:cursor-not-allowed disabled:opacity-40 active:scale-[0.98]"
                       >
-                        {busy ? "Working..." : "Delete"}
+                        {busy ? "جارٍ التنفيذ..." : "حذف"}
                       </button>
                     </div>
                   </div>
@@ -690,7 +712,7 @@ export default function AdminMotorcyclesPage() {
             }
             className="rounded-full border border-black/10 bg-white px-3.5 py-2.5 text-xs font-medium transition hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:opacity-35 sm:px-5 sm:py-3 sm:text-sm"
           >
-            Previous
+            السابق
           </button>
 
           <div className="rounded-full bg-black px-3.5 py-2.5 text-xs font-semibold text-white sm:px-4 sm:py-3 sm:text-sm">
@@ -705,7 +727,7 @@ export default function AdminMotorcyclesPage() {
             }
             className="rounded-full border border-black/10 bg-white px-3.5 py-2.5 text-xs font-medium transition hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:opacity-35 sm:px-5 sm:py-3 sm:text-sm"
           >
-            Next
+            التالي
           </button>
         </div>
       )}
@@ -729,7 +751,7 @@ function MotorcycleInfo({ motorcycle }) {
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-[9px] uppercase tracking-wider text-black/25">
-            No image
+            لا توجد صورة
           </div>
         )}
       </div>
@@ -740,7 +762,7 @@ function MotorcycleInfo({ motorcycle }) {
         </p>
 
         <p className="mt-1 text-xs text-black/40">
-          {motorcycle.year} · {motorcycle.condition}
+          {motorcycle.year} · {CONDITION_LABELS[motorcycle.condition] || motorcycle.condition}
           {motorcycle.stockNumber
             ? ` · #${motorcycle.stockNumber}`
             : ""}
@@ -768,9 +790,9 @@ function StatusSelect({
       }
       className="rounded-lg border border-black/10 bg-white px-2.5 py-2 text-xs font-semibold outline-none focus:border-black disabled:opacity-40"
     >
-      <option value="Available">Available</option>
-      <option value="Reserved">Reserved</option>
-      <option value="Sold">Sold</option>
+      <option value="Available">{STATUS_LABELS.Available}</option>
+      <option value="Reserved">{STATUS_LABELS.Reserved}</option>
+      <option value="Sold">{STATUS_LABELS.Sold}</option>
     </select>
   );
 }
@@ -795,7 +817,7 @@ function FeaturedButton({
           : "bg-black/[0.05] text-black/50 hover:bg-black/[0.1]"
       }`}
     >
-      {featured ? "Featured" : "Feature"}
+      {featured ? "مميزة" : "تمييز"}
     </button>
   );
 }
@@ -815,7 +837,7 @@ function MotorcycleActions({
         href={`/admin/motorcycles/${motorcycle._id}/edit`}
         className="rounded-lg border border-black/10 px-3 py-2 text-xs font-semibold transition hover:bg-black hover:text-white"
       >
-        Edit
+        تعديل
       </Link>
 
       <button
@@ -824,7 +846,7 @@ function MotorcycleActions({
         onClick={() => onDelete(motorcycle._id)}
         className="rounded-lg border border-red-200 px-3 py-2 text-xs font-semibold text-red-600 transition hover:bg-red-600 hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
       >
-        {busy ? "Working..." : "Delete"}
+        {busy ? "جارٍ التنفيذ..." : "حذف"}
       </button>
     </div>
   );
@@ -903,19 +925,18 @@ function EmptyInventory() {
   return (
     <div className="px-5 py-16 text-center sm:px-6 sm:py-20">
       <h3 className="text-lg font-semibold">
-        No motorcycles found
+        لم يتم العثور على دراجات نارية
       </h3>
 
       <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-black/45">
-        Add your first motorcycle to start building
-        your dealership inventory.
+        أضف دراجتك النارية الأولى لبدء إنشاء مخزون وكالتك.
       </p>
 
       <Link
         href="/admin/motorcycles/new"
         className="mt-6 inline-flex rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-black/80"
       >
-        + Add Motorcycle
+        + إضافة دراجة نارية
       </Link>
     </div>
   );

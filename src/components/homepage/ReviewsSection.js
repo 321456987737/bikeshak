@@ -7,24 +7,24 @@ import { ArrowUpRight, Bike, MapPin, MessageCircle } from "lucide-react";
 const waysToGetStarted = [
   {
     id: 1,
-    title: "Explore the inventory",
+    title: "استكشف الدراجات المتوفرة",
     icon: Bike,
-    text: "Browse available motorcycles and compare their specifications, condition, and listed prices.",
-    category: "Available motorcycles",
+    text: "تصفّح الدراجات النارية المتوفرة وقارن بين مواصفاتها وحالتها وأسعارها.",
+    category: "دراجات نارية متوفرة",
   },
   {
     id: 2,
-    title: "Ask our team",
+    title: "تواصل مع فريقنا",
     icon: MessageCircle,
-    text: "Contact BIKESHACK with questions about a motorcycle or to arrange a showroom visit.",
-    category: "Personal assistance",
+    text: "تواصل مع BIKESHACK للاستفسار عن أي دراجة نارية أو لترتيب زيارة للمعرض.",
+    category: "مساعدة تناسب احتياجك",
   },
   {
     id: 3,
-    title: "Visit the showroom",
+    title: "زر المعرض",
     icon: MapPin,
-    text: "Find BIKESHACK in Riyadh and open the map for directions before you visit.",
-    category: "Riyadh, Saudi Arabia",
+    text: "تفضل بزيارة BIKESHACK في الرياض، وافتح الخريطة لمعرفة الاتجاهات قبل وصولك.",
+    category: "الرياض، المملكة العربية السعودية",
   },
 ];
 
@@ -54,7 +54,7 @@ export default function ReviewsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="mb-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-black/30 md:text-[10px]"
             >
-              Find the right motorcycle
+              اعثر على دراجتك المناسبة
             </motion.p>
 
             <motion.h2
@@ -64,9 +64,9 @@ export default function ReviewsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="font-bebas text-[clamp(4.5rem,9vw,9rem)] leading-[0.8] tracking-[-0.04em] text-black"
             >
-              YOUR NEXT RIDE
+              دراجتك القادمة
               <br />
-              STARTS HERE.
+              تبدأ من هنا
             </motion.h2>
 
             <motion.p
@@ -76,8 +76,8 @@ export default function ReviewsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="mt-6 max-w-md font-montserrat text-[10px] leading-[1.9] tracking-[0.04em] text-black/40 md:text-[11px]"
             >
-              Browse the collection, ask questions, or plan a visit to the
-              BIKESHACK showroom in Riyadh.
+              استكشف مجموعتنا، أو أرسل استفساراتك، أو خطط لزيارة معرض
+              BIKESHACK في الرياض.
             </motion.p>
           </div>
 
@@ -89,7 +89,7 @@ export default function ReviewsSection() {
             transition={{ duration: 0.5 }}
             className="group inline-flex w-fit items-center gap-3 border-b border-black/20 pb-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.16em] transition-colors hover:border-black md:text-[10px]"
           >
-            Talk to our team
+            تواصل مع فريقنا
             <ArrowUpRight
               size={14}
               strokeWidth={1.4}
@@ -147,14 +147,14 @@ export default function ReviewsSection() {
           className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
         >
           <p className="font-montserrat text-[9px] leading-[1.8] tracking-[0.04em] text-black/35">
-            Have questions? Contact our team directly.
+            لديك استفسار؟ تواصل مباشرة مع فريقنا.
           </p>
 
           <a
             href="/contact"
             className="group inline-flex w-fit items-center gap-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.14em] hover:text-black/55"
           >
-            Get in touch
+            تواصل معنا
             <ArrowUpRight
               size={13}
               strokeWidth={1.4}

@@ -64,14 +64,14 @@ function getDateOptions() {
 
     dates.push({
       value,
-      day: date.toLocaleDateString("en-US", {
+      day: date.toLocaleDateString("ar-SA-u-ca-gregory-nu-latn", {
         weekday: "short",
       }),
       number: date.getDate(),
-      month: date.toLocaleDateString("en-US", {
+      month: date.toLocaleDateString("ar-SA-u-ca-gregory-nu-latn", {
         month: "short",
       }),
-      full: date.toLocaleDateString("en-US", {
+      full: date.toLocaleDateString("ar-SA-u-ca-gregory-nu-latn", {
         weekday: "long",
         month: "long",
         day: "numeric",
@@ -280,12 +280,12 @@ export default function TestDrivePage() {
 
   function goToStepTwo() {
     if (!form.customerName.trim()) {
-      setError("Please enter your name.");
+      setError("اكتب اسمك.");
       return;
     }
 
     if (!form.phone.trim()) {
-      setError("Please enter your phone number.");
+      setError("اكتب رقم جوالك.");
       return;
     }
 
@@ -296,12 +296,12 @@ export default function TestDrivePage() {
 
   function goToStepThree() {
     if (!form.date) {
-      setError("Please select a date.");
+      setError("اختر التاريخ.");
       return;
     }
 
     if (!form.time) {
-      setError("Please select a time.");
+      setError("اختر الوقت.");
       return;
     }
 
@@ -326,30 +326,30 @@ export default function TestDrivePage() {
     event.preventDefault();
 
     if (!motorcycleId) {
-      setError("No motorcycle has been selected.");
+      setError("ما اخترت دراجة نارية.");
       return;
     }
 
     if (!form.customerName.trim()) {
-      setError("Please enter your name.");
+      setError("اكتب اسمك.");
       setStep(1);
       return;
     }
 
     if (!form.phone.trim()) {
-      setError("Please enter your phone number.");
+      setError("اكتب رقم جوالك.");
       setStep(1);
       return;
     }
 
     if (!form.date) {
-      setError("Please select a date.");
+      setError("اختر التاريخ.");
       setStep(2);
       return;
     }
 
     if (!form.time) {
-      setError("Please select a time.");
+      setError("اختر الوقت.");
       setStep(2);
       return;
     }
@@ -373,7 +373,7 @@ export default function TestDrivePage() {
 
       if (!response.ok) {
         throw new Error(
-          result.message || "Something went wrong. Please try again."
+          result.message || "حدث خطأ ما. حاول مرة أخرى."
         );
       }
 
@@ -382,7 +382,7 @@ export default function TestDrivePage() {
       scrollToTop();
     } catch (error) {
       setError(
-        error.message || "Something went wrong. Please try again."
+        error.message || "حدث خطأ ما. حاول مرة أخرى."
       );
     } finally {
       setSubmitting(false);
@@ -409,25 +409,24 @@ export default function TestDrivePage() {
         <section className="flex min-h-[75vh] items-center justify-center px-6">
           <div className="max-w-xl text-center">
             <p className="mb-5 font-montserrat text-[11px] uppercase tracking-[0.3em] text-black/45">
-              Test Ride
+              تجربة قيادة
             </p>
 
             <h1 className="font-bebas text-[64px] leading-[0.85] tracking-wide sm:text-[90px]">
-              MOTORCYCLE NOT
+              ما تم اختيار
               <br />
-              SELECTED
+              دراجة نارية
             </h1>
 
             <p className="mx-auto mt-7 max-w-md font-montserrat text-[13px] leading-6 text-black/55">
-              Please select a motorcycle from our collection before requesting a
-              test ride.
+              اختر دراجة نارية من مجموعتنا قبل طلب تجربة القيادة.
             </p>
 
             <Link
               href="/motorcycle"
               className="group mt-9 inline-flex items-center gap-3 bg-black px-7 py-4 font-montserrat text-[10px] font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-black/80"
             >
-              Browse motorcycles
+              تصفّح الدراجات النارية
 
               <ArrowUpRight
                 size={15}
@@ -504,28 +503,27 @@ export default function TestDrivePage() {
               </div>
 
               <p className="mb-5 font-montserrat text-[11px] uppercase tracking-[0.3em] text-white/55">
-                Request received
+                استلمنا طلبك
               </p>
 
               <h1 className="font-bebas text-[78px] leading-[0.82] tracking-wide text-white sm:text-[110px] lg:text-[145px]">
-                SEE YOU
+                نراك
                 <br />
-                BEHIND THE
+                على
                 <br />
-                WHEEL.
+                الطريق.
               </h1>
 
               <p className="mt-9 max-w-xl font-montserrat text-[14px] leading-7 text-white/70">
-                Your test drive request for the{" "}
-                <span className="text-white">{motorcycleName}</span> has been
-                received. Our team will get in touch with you to confirm the
-                appointment.
+                استلمنا طلب تجربة القيادة لـ{" "}
+                <span className="text-white">{motorcycleName}</span>.
+                سيتواصل معك فريقنا لتأكيد الموعد.
               </p>
 
               <div className="mt-12 grid max-w-2xl grid-cols-2 border-t border-white/20">
                 <div className="border-r border-white/20 py-6 pr-6">
                   <p className="font-montserrat text-[9px] uppercase tracking-[0.25em] text-white/40">
-                    Date
+                    التاريخ
                   </p>
 
                   <p className="mt-2 font-montserrat text-[13px] text-white">
@@ -535,7 +533,7 @@ export default function TestDrivePage() {
 
                 <div className="py-6 pl-6">
                   <p className="font-montserrat text-[9px] uppercase tracking-[0.25em] text-white/40">
-                    Time
+                    الوقت
                   </p>
 
                   <p className="mt-2 font-montserrat text-[13px] text-white">
@@ -549,7 +547,7 @@ export default function TestDrivePage() {
                   href={`/motorcycle/${motorcycle._id}`}
                   className="group inline-flex items-center gap-3 bg-white px-7 py-4 font-montserrat text-[10px] font-medium uppercase tracking-[0.2em] text-black transition-all duration-300 hover:bg-white/90"
                 >
-                  View motorcycle
+                  عرض الدراجة
 
                   <ArrowUpRight
                     size={15}
@@ -562,7 +560,7 @@ export default function TestDrivePage() {
                   href="/motorcycle"
                   className="inline-flex items-center gap-3 border border-white/30 px-7 py-4 font-montserrat text-[10px] font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:border-white"
                 >
-                  Browse motorcycles
+                  تصفّح الدراجات النارية
                 </Link>
               </div>
             </div>
@@ -632,7 +630,7 @@ export default function TestDrivePage() {
           <div className="w-full">
             <div className="mb-10 flex items-center justify-between border-b border-white/20 pb-5">
               <p className="font-montserrat text-[10px] uppercase tracking-[0.3em] text-white/55">
-                Test Ride Experience
+                تجربة قيادة
               </p>
 
               <p className="font-montserrat text-[10px] uppercase tracking-[0.25em] text-white/40">
@@ -642,7 +640,7 @@ export default function TestDrivePage() {
 
             <div className="max-w-5xl">
               <p className="mb-4 font-montserrat text-[11px] uppercase tracking-[0.25em] text-white/55">
-                {motorcycle.year} · {motorcycle.bikeType || "Motorcycle"}
+                {motorcycle.year} · {motorcycle.bikeType || "دراجة نارية"}
               </p>
 
               <h1 className="font-bebas text-[76px] leading-[0.82] tracking-wide text-white sm:text-[110px] lg:text-[150px]">
@@ -682,7 +680,7 @@ export default function TestDrivePage() {
             </span>
 
             <span className="ml-3 font-montserrat text-[10px] uppercase tracking-[0.18em]">
-              You
+              بياناتك
             </span>
           </button>
 
@@ -705,7 +703,7 @@ export default function TestDrivePage() {
             </span>
 
             <span className="ml-3 font-montserrat text-[10px] uppercase tracking-[0.18em]">
-              Date & Time
+              التاريخ والوقت
             </span>
           </button>
 
@@ -733,7 +731,7 @@ export default function TestDrivePage() {
             </span>
 
             <span className="ml-3 font-montserrat text-[10px] uppercase tracking-[0.18em]">
-              Final details
+              التفاصيل الأخيرة
             </span>
           </button>
         </div>
@@ -760,16 +758,15 @@ export default function TestDrivePage() {
               <div className="grid gap-14 lg:grid-cols-[0.35fr_1fr] lg:gap-24">
                 <div>
                   <p className="font-montserrat text-[10px] uppercase tracking-[0.3em] text-black/40">
-                    01 — Your details
+                    01 — بياناتك
                   </p>
 
                   <h2 className="mt-6 max-w-xs font-bebas text-[64px] leading-[0.85] tracking-wide sm:text-[82px]">
-                    LET&apos;S GET TO KNOW YOU.
+                    خلّنا نتعرّف عليك
                   </h2>
 
                   <p className="mt-7 max-w-sm font-montserrat text-[12px] leading-6 text-black/50">
-                    Tell us a little about yourself so our team can prepare
-                    everything for your visit.
+                    عرّفنا بنفسك حتى يستعد فريقنا لزيارتك.
                   </p>
                 </div>
 
@@ -779,7 +776,7 @@ export default function TestDrivePage() {
                     <label className="group block">
                       <span className="mb-3 flex items-center gap-2 font-montserrat text-[9px] uppercase tracking-[0.25em] text-black/45">
                         <User size={13} strokeWidth={1.4} />
-                        Full name
+                        الاسم الكامل
                       </span>
 
                       <input
@@ -791,7 +788,7 @@ export default function TestDrivePage() {
                             event.target.value
                           )
                         }
-                        placeholder="Your name"
+                        placeholder="اكتب اسمك"
                         className="w-full border-b border-black/15 bg-transparent px-0 py-4 font-montserrat text-[15px] outline-none transition-colors placeholder:text-black/25 focus:border-black"
                       />
                     </label>
@@ -800,7 +797,7 @@ export default function TestDrivePage() {
                     <label className="group block">
                       <span className="mb-3 flex items-center gap-2 font-montserrat text-[9px] uppercase tracking-[0.25em] text-black/45">
                         <Phone size={13} strokeWidth={1.4} />
-                        Phone number
+                        رقم الجوال
                       </span>
 
                       <input
@@ -812,7 +809,7 @@ export default function TestDrivePage() {
                             event.target.value
                           )
                         }
-                        placeholder="Your phone number"
+                        placeholder="اكتب رقم جوالك"
                         className="w-full border-b border-black/15 bg-transparent px-0 py-4 font-montserrat text-[15px] outline-none transition-colors placeholder:text-black/25 focus:border-black"
                       />
                     </label>
@@ -821,9 +818,9 @@ export default function TestDrivePage() {
                     <label className="group block md:col-span-2">
                       <span className="mb-3 flex items-center gap-2 font-montserrat text-[9px] uppercase tracking-[0.25em] text-black/45">
                         <Mail size={13} strokeWidth={1.4} />
-                        Email address
+                        البريد الإلكتروني
                         <span className="text-black/25">
-                          (optional)
+                          (اختياري)
                         </span>
                       </span>
 
@@ -856,7 +853,7 @@ export default function TestDrivePage() {
                       onClick={goToStepTwo}
                       className="group inline-flex items-center gap-4 bg-black px-8 py-5 font-montserrat text-[10px] font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-black/80"
                     >
-                      Continue
+                      متابعة
 
                       <ArrowRight
                         size={16}
@@ -885,16 +882,15 @@ export default function TestDrivePage() {
               <div className="grid gap-14 lg:grid-cols-[0.35fr_1fr] lg:gap-24">
                 <div>
                   <p className="font-montserrat text-[10px] uppercase tracking-[0.3em] text-black/40">
-                    02 — Your appointment
+                    02 — موعدك
                   </p>
 
                   <h2 className="mt-6 max-w-xs font-bebas text-[64px] leading-[0.85] tracking-wide sm:text-[82px]">
-                    WHEN WOULD YOU LIKE TO EXPERIENCE IT?
+                    متى تبي تجربها؟
                   </h2>
 
                   <p className="mt-7 max-w-sm font-montserrat text-[12px] leading-6 text-black/50">
-                    Choose a day and time that works for you. We&apos;ll take
-                    care of the rest.
+                    اختر اليوم والوقت المناسبين لك، واترك الباقي علينا.
                   </p>
                 </div>
 
@@ -903,7 +899,7 @@ export default function TestDrivePage() {
                   <div>
                     <div className="mb-6 flex items-center gap-3">
                       <span className="font-montserrat text-[9px] uppercase tracking-[0.25em] text-black/40">
-                        Select a date
+                        اختر التاريخ
                       </span>
 
                       <div className="h-px flex-1 bg-black/10" />
@@ -967,7 +963,7 @@ export default function TestDrivePage() {
                           size={13}
                           strokeWidth={1.4}
                         />
-                        Select a time
+                        اختر الوقت
                       </span>
 
                       <div className="h-px flex-1 bg-black/10" />
@@ -1021,7 +1017,7 @@ export default function TestDrivePage() {
                         className="transition-transform duration-300 group-hover:-translate-x-1"
                       />
 
-                      Back
+                      رجوع
                     </button>
 
                     <button
@@ -1081,10 +1077,10 @@ export default function TestDrivePage() {
                           strokeWidth={1.4}
                         />
 
-                        Message
+                        ملاحظات
 
                         <span className="text-black/25">
-                          (optional)
+                          (اختياري)
                         </span>
                       </span>
 
@@ -1096,7 +1092,7 @@ export default function TestDrivePage() {
                             event.target.value
                           )
                         }
-                        placeholder="Tell us anything you'd like us to know..."
+                        placeholder="اكتب أي تفاصيل تبي نعرفها..."
                         rows={8}
                         className="w-full resize-none border border-black/10 bg-[#fafafa] px-5 py-5 font-montserrat text-[13px] leading-6 outline-none transition-colors placeholder:text-black/25 focus:border-black/30"
                       />
@@ -1107,7 +1103,7 @@ export default function TestDrivePage() {
                       <div className="grid grid-cols-1 border-b border-black/10 sm:grid-cols-3">
                         <div className="border-b border-black/10 px-0 py-6 sm:border-b-0 sm:border-r sm:px-6">
                           <p className="font-montserrat text-[9px] uppercase tracking-[0.25em] text-black/40">
-                            Motorcycle
+                            الدراجة النارية
                           </p>
 
                           <p className="mt-2 font-montserrat text-[13px]">
@@ -1117,7 +1113,7 @@ export default function TestDrivePage() {
 
                         <div className="border-b border-black/10 px-0 py-6 sm:border-b-0 sm:border-r sm:px-6">
                           <p className="font-montserrat text-[9px] uppercase tracking-[0.25em] text-black/40">
-                            Date
+                            التاريخ
                           </p>
 
                           <p className="mt-2 font-montserrat text-[13px]">
@@ -1128,7 +1124,7 @@ export default function TestDrivePage() {
 
                         <div className="px-0 py-6 sm:px-6">
                           <p className="font-montserrat text-[9px] uppercase tracking-[0.25em] text-black/40">
-                            Time
+                            الوقت
                           </p>
 
                           <p className="mt-2 font-montserrat text-[13px]">
@@ -1167,8 +1163,8 @@ export default function TestDrivePage() {
                         className="group inline-flex items-center justify-center gap-4 bg-black px-9 py-5 font-montserrat text-[10px] font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-black/80 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         {submitting
-                          ? "Sending request..."
-                          : "Request test drive"}
+                          ? "جارٍ إرسال الطلب..."
+                          : "اطلب تجربة قيادة"}
 
                         {!submitting && (
                           <ArrowUpRight
@@ -1226,7 +1222,7 @@ export default function TestDrivePage() {
 
           <div className="px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
             <p className="font-montserrat text-[9px] uppercase tracking-[0.3em] text-black/40">
-              Your selected motorcycle
+              الدراجة التي اخترتها
             </p>
 
             <div className="mt-5 flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
@@ -1244,7 +1240,7 @@ export default function TestDrivePage() {
                 href={`/motorcycle/${motorcycle._id}`}
                 className="group inline-flex w-fit items-center gap-3 border-b border-black/20 pb-2 font-montserrat text-[10px] uppercase tracking-[0.2em] transition-colors hover:border-black"
               >
-                View motorcycle
+                عرض الدراجة
 
                 <ArrowUpRight
                   size={14}
@@ -1265,13 +1261,13 @@ export default function TestDrivePage() {
         <div className="mx-auto flex max-w-[1400px] flex-col justify-between gap-12 lg:flex-row lg:items-end">
           <div>
             <p className="font-montserrat text-[10px] uppercase tracking-[0.3em] text-white/40">
-              Still deciding?
+              ما زلت محتار؟
             </p>
 
             <h2 className="mt-5 max-w-3xl font-bebas text-[64px] leading-[0.85] tracking-wide sm:text-[90px]">
-              TAKE YOUR TIME.
+              خذ وقتك.
               <br />
-              FIND YOUR MOTORCYCLE.
+              واعثر على دراجتك.
             </h2>
           </div>
 
@@ -1279,7 +1275,7 @@ export default function TestDrivePage() {
             href="/motorcycle"
             className="group inline-flex w-fit items-center gap-4 border-b border-white/25 pb-3 font-montserrat text-[10px] uppercase tracking-[0.2em] text-white/70 transition-colors hover:border-white hover:text-white"
           >
-            Explore motorcycles
+            استكشف الدراجات النارية
 
             <ArrowUpRight
               size={16}

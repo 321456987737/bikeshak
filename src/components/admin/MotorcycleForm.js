@@ -29,6 +29,39 @@ const CONDITIONS = ["New", "Used"];
 
 const STATUSES = ["Available", "Reserved", "Sold"];
 
+const OPTION_LABELS = {
+  Sport: "رياضية",
+  Naked: "دراجة مكشوفة",
+  Cruiser: "كروزر",
+  Touring: "سياحية",
+  Adventure: "مغامرات",
+  "Dirt Bike": "دراجة للطرق الوعرة",
+  Scooter: "سكوتر",
+  Commuter: "للتنقل اليومي",
+  "Cafe Racer": "كافيه ريسر",
+  Electric: "كهربائية",
+  Other: "أخرى",
+  Petrol: "بنزين",
+  Manual: "يدوي",
+  Automatic: "أوتوماتيكي",
+  "Semi-automatic": "شبه أوتوماتيكي",
+  CVT: "ناقل حركة متغير باستمرار",
+  "Air-cooled": "تبريد بالهواء",
+  "Liquid-cooled": "تبريد بالسائل",
+  "Oil-cooled": "تبريد بالزيت",
+  Kick: "بالدواسة",
+  Both: "كلاهما",
+  Disc: "قرصي",
+  Drum: "أسطواني",
+  "Disc/Drum": "قرصي/أسطواني",
+  New: "جديدة",
+  Used: "مستعملة",
+  Available: "متاحة",
+  Reserved: "محجوزة",
+  Sold: "مباعة",
+  miles: "ميل",
+};
+
 const MAX_IMAGES = 15;
 
 const DEFAULT_FORM = {
@@ -159,7 +192,7 @@ export default function MotorcycleForm({ initialData = null }) {
     const remainingSlots = MAX_IMAGES - images.length;
 
     if (remainingSlots <= 0) {
-      setError(`You can upload a maximum of ${MAX_IMAGES} images.`);
+      setError(`يمكنك رفع ${MAX_IMAGES} صورة كحد أقصى.`);
       return;
     }
 
@@ -170,14 +203,14 @@ export default function MotorcycleForm({ initialData = null }) {
     );
 
     if (invalidFile) {
-      setError("Only JPG, PNG and WebP images are allowed.");
+      setError("يُسمح فقط بصور JPG وPNG وWebP.");
       return;
     }
 
     const tooLarge = filesToAdd.find((file) => file.size > 10 * 1024 * 1024);
 
     if (tooLarge) {
-      setError("Each image must be smaller than 10MB.");
+      setError("يجب ألا يتجاوز حجم كل صورة 10MB.");
       return;
     }
 
@@ -216,9 +249,7 @@ export default function MotorcycleForm({ initialData = null }) {
 
     if (selectedFiles.length > remainingSlots) {
       setError(
-        `Only ${remainingSlots} image${
-          remainingSlots === 1 ? "" : "s"
-        } could be added because the maximum is ${MAX_IMAGES}.`,
+        `تعذرت إضافة سوى ${remainingSlots} صورة لأن الحد الأقصى هو ${MAX_IMAGES}.`,
       );
     }
   }
@@ -274,7 +305,7 @@ export default function MotorcycleForm({ initialData = null }) {
     const result = await response.json();
 
     if (!response.ok || !result.success) {
-      throw new Error(result.message || "Failed to upload images");
+      throw new Error(result.message || "تعذر رفع الصور.");
     }
 
     return result.data.images || [];
@@ -298,7 +329,7 @@ export default function MotorcycleForm({ initialData = null }) {
     const result = await response.json();
 
     if (!response.ok || !result.success) {
-      throw new Error(result.message || "Failed to delete images");
+      throw new Error(result.message || "تعذر حذف الصور.");
     }
   }
 
@@ -313,23 +344,23 @@ export default function MotorcycleForm({ initialData = null }) {
 
     try {
       if (!form.make.trim()) {
-        throw new Error("Make is required.");
+        throw new Error("الشركة المصنّعة مطلوبة.");
       }
 
       if (!form.model.trim()) {
-        throw new Error("Model is required.");
+        throw new Error("الطراز مطلوب.");
       }
 
       if (!form.year) {
-        throw new Error("Year is required.");
+        throw new Error("سنة الصنع مطلوبة.");
       }
 
       if (!form.price) {
-        throw new Error("Price is required.");
+        throw new Error("السعر مطلوب.");
       }
 
       if (images.length > MAX_IMAGES) {
-        throw new Error(`A maximum of ${MAX_IMAGES} images is allowed.`);
+        throw new Error(`الحد الأقصى المسموح به هو ${MAX_IMAGES} صورة.`);
       }
 
       /*
@@ -356,7 +387,7 @@ export default function MotorcycleForm({ initialData = null }) {
        * Upload new files first.
        */
 
-      setSuccess("Uploading images...");
+      setSuccess("جارٍ رفع الصور...");
 
       const uploadedImages = await uploadNewImages();
 
@@ -451,7 +482,7 @@ export default function MotorcycleForm({ initialData = null }) {
         isFeatured: form.isFeatured,
       };
 
-      setSuccess(isEdit ? "Updating motorcycle..." : "Adding motorcycle...");
+      setSuccess(isEdit ? "جارٍ تحديث الدراجة النارية..." : "جارٍ إضافة الدراجة النارية...");
 
       const endpoint = isEdit
         ? `/api/admin/motorcycles/${initialData._id}`
@@ -471,7 +502,7 @@ export default function MotorcycleForm({ initialData = null }) {
 
       if (!response.ok || !result.success) {
         throw new Error(
-          result.message || `Failed to ${isEdit ? "update" : "create"} motorcycle`,
+          result.message || `تعذر ${isEdit ? "تحديث" : "إضافة"} الدراجة النارية.`,
         );
       }
 
@@ -489,13 +520,13 @@ export default function MotorcycleForm({ initialData = null }) {
           console.error("Removed image cleanup error:", deleteError);
 
           cleanupWarning =
-            " The motorcycle was saved, but some removed images could not be deleted from Cloudinary.";
+            " تم حفظ الدراجة النارية، لكن تعذر حذف بعض الصور من Cloudinary.";
         }
       }
 
       setSuccess(
         `${
-          isEdit ? "Motorcycle updated successfully." : "Motorcycle added successfully."
+          isEdit ? "تم تحديث الدراجة النارية بنجاح." : "تمت إضافة الدراجة النارية بنجاح."
         }${cleanupWarning}`,
       );
 
@@ -521,7 +552,7 @@ export default function MotorcycleForm({ initialData = null }) {
 
       setSuccess("");
 
-      setError(submitError.message || "Something went wrong.");
+      setError(submitError.message || "حدث خطأ ما.");
     } finally {
       setSubmitting(false);
     }
@@ -557,12 +588,12 @@ export default function MotorcycleForm({ initialData = null }) {
       ====================================================== */}
 
       <FormSection
-        title="Basic information"
-        description="Enter the main information customers will see about this motorcycle."
+        title="المعلومات الأساسية"
+        description="أدخل المعلومات الأساسية التي سيطّلع عليها العملاء عن هذه الدراجة النارية."
       >
         <div className="grid min-w-0 gap-5 sm:grid-cols-2">
           <InputField
-            label="Make"
+            label="الشركة المصنّعة"
             name="make"
             value={form.make}
             onChange={handleChange}
@@ -571,7 +602,7 @@ export default function MotorcycleForm({ initialData = null }) {
           />
 
           <InputField
-            label="Model"
+            label="الطراز"
             name="model"
             value={form.model}
             onChange={handleChange}
@@ -580,7 +611,7 @@ export default function MotorcycleForm({ initialData = null }) {
           />
 
           <InputField
-            label="Year"
+            label="سنة الصنع"
             name="year"
             type="number"
             value={form.year}
@@ -592,7 +623,7 @@ export default function MotorcycleForm({ initialData = null }) {
           />
 
           <InputField
-            label="Stock number"
+            label="رقم المخزون"
             name="stockNumber"
             value={form.stockNumber}
             onChange={handleChange}
@@ -606,12 +637,12 @@ export default function MotorcycleForm({ initialData = null }) {
       ====================================================== */}
 
       <FormSection
-        title="Pricing & mileage"
-        description="Set the motorcycle price and mileage information."
+        title="السعر والمسافة المقطوعة"
+        description="حدّد سعر الدراجة النارية ومعلومات المسافة المقطوعة."
       >
         <div className="grid min-w-0 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <InputField
-            label="Price"
+            label="السعر"
             name="price"
             type="number"
             value={form.price}
@@ -622,7 +653,7 @@ export default function MotorcycleForm({ initialData = null }) {
           />
 
           <SelectField
-            label="Currency"
+            label="العملة"
             name="currency"
             value={form.currency}
             onChange={handleChange}
@@ -631,7 +662,7 @@ export default function MotorcycleForm({ initialData = null }) {
 
           <div className="grid min-w-0 grid-cols-2 gap-3">
             <InputField
-              label="Mileage"
+              label="المسافة المقطوعة"
               name="mileage"
               type="number"
               value={form.mileage}
@@ -641,7 +672,7 @@ export default function MotorcycleForm({ initialData = null }) {
             />
 
             <SelectField
-              label="Unit"
+              label="الوحدة"
               name="mileageUnit"
               value={form.mileageUnit}
               onChange={handleChange}
@@ -656,12 +687,12 @@ export default function MotorcycleForm({ initialData = null }) {
       ====================================================== */}
 
       <FormSection
-        title="Motorcycle specifications"
-        description="Add the specifications customers can use to compare motorcycles."
+        title="مواصفات الدراجة النارية"
+        description="أضف المواصفات التي تساعد العملاء على مقارنة الدراجات النارية."
       >
         <div className="grid min-w-0 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <SelectField
-            label="Motorcycle type"
+            label="فئة الدراجة النارية"
             name="bikeType"
             value={form.bikeType}
             onChange={handleChange}
@@ -669,7 +700,7 @@ export default function MotorcycleForm({ initialData = null }) {
           />
 
           <SelectField
-            label="Fuel type"
+            label="نوع الوقود"
             name="fuelType"
             value={form.fuelType}
             onChange={handleChange}
@@ -677,7 +708,7 @@ export default function MotorcycleForm({ initialData = null }) {
           />
 
           <SelectField
-            label="Transmission"
+            label="ناقل الحركة"
             name="transmission"
             value={form.transmission}
             onChange={handleChange}
@@ -685,7 +716,7 @@ export default function MotorcycleForm({ initialData = null }) {
           />
 
           <SelectField
-            label="Condition"
+            label="الحالة"
             name="condition"
             value={form.condition}
             onChange={handleChange}
@@ -693,7 +724,7 @@ export default function MotorcycleForm({ initialData = null }) {
           />
 
           <InputField
-            label="Engine capacity (cc)"
+            label="سعة المحرك (cc)"
             name="engineCapacity"
             type="number"
             min="0"
@@ -703,15 +734,15 @@ export default function MotorcycleForm({ initialData = null }) {
           />
 
           <InputField
-            label="Engine type"
+            label="نوع المحرك"
             name="engineType"
             value={form.engineType}
             onChange={handleChange}
-            placeholder="Parallel twin"
+            placeholder="محرك ثنائي متوازٍ"
           />
 
           <SelectField
-            label="Cooling system"
+            label="نظام التبريد"
             name="coolingSystem"
             value={form.coolingSystem}
             onChange={handleChange}
@@ -719,31 +750,31 @@ export default function MotorcycleForm({ initialData = null }) {
           />
 
           <InputField
-            label="Exterior color"
+            label="اللون الخارجي"
             name="exteriorColor"
             value={form.exteriorColor}
             onChange={handleChange}
-            placeholder="Black"
+            placeholder="أسود"
           />
 
           <InputField
-            label="Engine number"
+            label="رقم المحرك"
             name="engineNumber"
             value={form.engineNumber}
             onChange={handleChange}
-            placeholder="Engine number"
+            placeholder="رقم المحرك"
           />
 
           <InputField
-            label="Chassis number"
+            label="رقم الهيكل"
             name="chassisNumber"
             value={form.chassisNumber}
             onChange={handleChange}
-            placeholder="Chassis number"
+            placeholder="رقم الهيكل"
           />
 
           <SelectField
-            label="Starting system"
+            label="نظام التشغيل"
             name="startingSystem"
             value={form.startingSystem}
             onChange={handleChange}
@@ -751,7 +782,7 @@ export default function MotorcycleForm({ initialData = null }) {
           />
 
           <SelectField
-            label="Brake type"
+            label="نوع المكابح"
             name="brakeType"
             value={form.brakeType}
             onChange={handleChange}
@@ -776,8 +807,8 @@ export default function MotorcycleForm({ initialData = null }) {
       ====================================================== */}
 
       <FormSection
-        title="Description"
-        description="Write the description that will appear on the motorcycle details page."
+        title="الوصف"
+        description="اكتب الوصف الذي سيظهر في صفحة تفاصيل الدراجة النارية."
       >
         <textarea
           name="description"
@@ -785,7 +816,7 @@ export default function MotorcycleForm({ initialData = null }) {
           onChange={handleChange}
           rows={7}
           maxLength={5000}
-          placeholder="Tell customers about this motorcycle, its condition, history and notable details..."
+          placeholder="عرّف العملاء بهذه الدراجة النارية وحالتها وتاريخها وأبرز تفاصيلها..."
           className="w-full min-w-0 resize-y rounded-xl border border-black/15 px-4 py-3.5 text-sm leading-6 outline-none transition placeholder:text-black/30 focus:border-black sm:px-4 sm:py-4"
         />
       </FormSection>
@@ -795,8 +826,8 @@ export default function MotorcycleForm({ initialData = null }) {
       ====================================================== */}
 
       <FormSection
-        title="Features & equipment"
-        description="Enter one feature per line."
+        title="المزايا والتجهيزات"
+        description="أدخل ميزة واحدة في كل سطر."
       >
         <textarea
           name="features"
@@ -804,10 +835,10 @@ export default function MotorcycleForm({ initialData = null }) {
           onChange={handleChange}
           rows={8}
           placeholder={`Apple CarPlay
-Leather seats
-360° camera
-Adaptive cruise control
-Panoramic roof`}
+مقاعد جلدية
+كاميرا بزاوية 360°
+مثبت سرعة متكيف
+سقف بانورامي`}
           className="w-full min-w-0 resize-y rounded-xl border border-black/15 px-4 py-3.5 text-sm leading-6 outline-none placeholder:text-black/30 focus:border-black sm:px-4 sm:py-4"
         />
       </FormSection>
@@ -817,8 +848,8 @@ Panoramic roof`}
       ====================================================== */}
 
       <FormSection
-        title="Motorcycle images"
-        description={`Upload up to ${MAX_IMAGES} images. The first image is used as the primary motorcycle image.`}
+        title="صور الدراجة النارية"
+        description={`ارفع حتى ${MAX_IMAGES} صورة. ستُستخدم الصورة الأولى بوصفها الصورة الرئيسية للدراجة النارية.`}
       >
         <div className="space-y-5">
           {/* Upload */}
@@ -829,11 +860,11 @@ Panoramic roof`}
             </div>
 
             <p className="mt-3 text-sm font-semibold sm:mt-4">
-              Choose motorcycle images
+              اختر صور الدراجة النارية
             </p>
 
             <p className="mt-1 text-[11px] leading-5 text-black/40 sm:text-xs">
-              JPG, PNG or WebP · Maximum 10MB each
+              JPG أو PNG أو WebP · الحد الأقصى 10MB للصورة
             </p>
 
             <input
@@ -849,12 +880,12 @@ Panoramic roof`}
 
           <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <p className="text-xs text-black/45">
-              {images.length} / {MAX_IMAGES} images selected
+              تم اختيار {images.length} من أصل {MAX_IMAGES} صورة
             </p>
 
             {images.length > 0 && (
               <p className="text-xs text-black/40">
-                First image = primary image
+                الصورة الأولى هي الصورة الرئيسية
               </p>
             )}
           </div>
@@ -880,14 +911,14 @@ Panoramic roof`}
                   {/* Primary */}
 
                   <div className="absolute left-3 top-3 rounded-full bg-white px-3 py-1.5 text-[10px] font-semibold shadow-sm sm:text-[11px]">
-                    Primary image
+                    الصورة الرئيسية
                   </div>
 
                   {/* Saved */}
 
                   {images[0].isExisting && (
                     <div className="absolute right-3 top-3 rounded-full bg-black px-3 py-1.5 text-[10px] font-semibold text-white sm:text-[11px]">
-                      Saved
+                      محفوظة
                     </div>
                   )}
                 </div>
@@ -920,7 +951,7 @@ Panoramic roof`}
                     onClick={() => removeImage(0)}
                     className="rounded-lg border border-red-200 px-3 py-2 text-xs font-semibold text-red-600 transition hover:bg-red-600 hover:text-white disabled:opacity-40"
                   >
-                    Remove
+                    إزالة
                   </button>
                 </div>
               </div>
@@ -958,7 +989,7 @@ Panoramic roof`}
 
                           {image.isExisting && (
                             <div className="absolute right-2 top-2 rounded-full bg-black px-2 py-1 text-[9px] font-semibold text-white sm:text-[10px]">
-                              Saved
+                              محفوظة
                             </div>
                           )}
                         </div>
@@ -994,7 +1025,7 @@ Panoramic roof`}
                             onClick={() => removeImage(index)}
                             className="rounded-md border border-red-200 px-2 py-1.5 text-[10px] font-semibold text-red-600 transition hover:bg-red-600 hover:text-white disabled:opacity-40"
                           >
-                            Remove
+                            إزالة
                           </button>
                         </div>
                       </div>
@@ -1012,12 +1043,12 @@ Panoramic roof`}
       ====================================================== */}
 
       <FormSection
-        title="Inventory settings"
-        description="Control how this motorcycle is displayed on the website."
+        title="إعدادات المخزون"
+        description="تحكّم في طريقة عرض هذه الدراجة النارية على الموقع."
       >
         <div className="grid min-w-0 gap-5 md:grid-cols-2">
           <SelectField
-            label="Status"
+            label="الحالة"
             name="status"
             value={form.status}
             onChange={handleChange}
@@ -1035,11 +1066,11 @@ Panoramic roof`}
 
             <span className="min-w-0">
               <span className="block text-sm font-semibold">
-                Featured motorcycle
+                دراجة نارية مميزة
               </span>
 
               <span className="mt-0.5 block text-xs leading-5 text-black/40">
-                Show this motorcycle in the Home page featured section.
+                اعرض هذه الدراجة النارية ضمن قسم المميزة في الصفحة الرئيسية.
               </span>
             </span>
           </label>
@@ -1055,7 +1086,7 @@ Panoramic roof`}
           href="/admin/motorcycles"
           className="flex h-12 w-full items-center justify-center rounded-full border border-black/15 px-7 text-sm font-semibold transition hover:bg-black hover:text-white active:scale-[0.98] sm:w-auto"
         >
-          Cancel
+          إلغاء
         </Link>
 
         <button
@@ -1065,11 +1096,11 @@ Panoramic roof`}
         >
           {submitting
             ? isEdit
-              ? "Updating..."
-              : "Adding..."
+              ? "جارٍ التحديث..."
+              : "جارٍ الإضافة..."
             : isEdit
-              ? "Update Motorcycle"
-              : "Add Motorcycle"}
+              ? "تحديث الدراجة النارية"
+              : "إضافة دراجة نارية"}
         </button>
       </div>
     </form>
@@ -1157,7 +1188,7 @@ function SelectField({ label, name, value, onChange, options }) {
       >
         {options.map((option) => (
           <option key={option} value={option}>
-            {option}
+            {OPTION_LABELS[option] || option}
           </option>
         ))}
       </select>

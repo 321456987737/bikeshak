@@ -16,27 +16,27 @@ import Image from "next/image";
 
 const navigation = [
   {
-    label: "Dashboard",
+    label: "لوحة التحكم",
     href: "/admin",
     icon: LayoutDashboard,
   },
   {
-    label: "Motorcycles",
+    label: "الدراجات النارية",
     href: "/admin/motorcycles",
     icon: Bike,
   },
   {
-    label: "Accessories",
+    label: "الإكسسوارات",
     href: "/admin/accessories",
     icon: Package,
   },
   {
-    label: "Inquiries",
+    label: "الاستفسارات",
     href: "/admin/inquiries",
     icon: MessageSquare,
   },
   {
-    label: "Test Drives",
+    label: "تجارب القيادة",
     href: "/admin/test-drives",
     icon: CalendarCheck,
   },
@@ -79,10 +79,10 @@ export default function AdminSidebar() {
           <Link
             href="/admin"
             className="flex items-center gap-3"
-            aria-label="Admin dashboard"
+            aria-label="لوحة تحكم الإدارة"
           >
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl  text-sm font-bold text-white">
-              <Image src="/logo.png" alt="Logo" width={40} height={40} className="" />
+              <Image src="/logo.png" alt="الشعار" width={40} height={40} className="" />
             </div>
 
             <div className="min-w-0">
@@ -91,7 +91,7 @@ export default function AdminSidebar() {
               </p>
 
               <p className="truncate text-xs text-black/40">
-                Admin panel
+                لوحة الإدارة
               </p>
             </div>
           </Link>
@@ -100,11 +100,11 @@ export default function AdminSidebar() {
         {/* Navigation */}
 
         <nav
-          aria-label="Admin navigation"
+          aria-label="التنقل في لوحة الإدارة"
           className="flex-1 overflow-y-auto p-4"
         >
           <p className="mb-3 px-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-black/35">
-            Management
+            الإدارة
           </p>
 
           <div className="space-y-1">
@@ -149,7 +149,7 @@ export default function AdminSidebar() {
               className="shrink-0"
             />
 
-            <span>View Website</span>
+            <span>عرض الموقع</span>
           </Link>
         </div>
       </aside>
@@ -159,7 +159,7 @@ export default function AdminSidebar() {
       ====================================================== */}
 
       <nav
-        aria-label="Mobile admin navigation"
+        aria-label="التنقل في لوحة الإدارة على الجوال"
         className="fixed bottom-3 left-3 right-3 z-50 h-[78px] rounded-[22px] border border-white/10 bg-[#181818]/95 shadow-[0_12px_35px_rgba(0,0,0,0.28)] backdrop-blur-xl lg:hidden"
         style={{
           paddingBottom: "max(8px, env(safe-area-inset-bottom))",

@@ -1,26 +1,26 @@
 export const ACCESSORY_CATEGORIES = [
   {
     value: "helmets",
-    label: "Helmets",
-    description: "Protection meets performance.",
+    label: "خوذ",
+    description: "حماية وأداء في كل رحلة.",
     image: "/images/accessories/helmet.jpg",
   },
   {
     value: "riding-gear",
-    label: "Riding Gear",
-    description: "Gear up for every journey.",
+    label: "ملابس ومستلزمات القيادة",
+    description: "استعد لكل رحلة.",
     image: "/images/accessories/gear.webp",
   },
   {
     value: "spare-parts",
-    label: "Spare Parts",
-    description: "Parts built for the ride.",
+    label: "قطع غيار",
+    description: "قطع مصممة لترافقك في الطريق.",
     image: "/images/accessories/parts.jpg",
   },
   {
     value: "bike-accessories",
-    label: "Bike Accessories",
-    description: "Upgrade every detail.",
+    label: "إكسسوارات الدراجات",
+    description: "أضف لمستك إلى كل تفصيل.",
     image: "/images/accessories/BikeAccessories.webp",
   },
 ];

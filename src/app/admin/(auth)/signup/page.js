@@ -63,13 +63,13 @@ export default function AdminSignupPage() {
 
       if (!response.ok) {
         setError(
-          data.message || "Failed to create admin account."
+          data.message || "تعذّر إنشاء حساب المسؤول."
         );
         setLoading(false);
         return;
       }
 
-      setSuccess("Account created. Redirecting to login...");
+      setSuccess("تم إنشاء الحساب. جارٍ تحويلك إلى صفحة تسجيل الدخول...");
 
       setTimeout(() => {
         router.replace("/admin/login");
@@ -77,7 +77,7 @@ export default function AdminSignupPage() {
     } catch (error) {
       console.error("SIGNUP ERROR:", error);
 
-      setError("Something went wrong. Please try again.");
+      setError("حدث خطأ ما. يُرجى المحاولة مرة أخرى.");
       setLoading(false);
     }
   }
@@ -96,15 +96,15 @@ export default function AdminSignupPage() {
 
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-black/35">
-                BIKESHACK · ADMINISTRATION
+                BIKESHACK · الإدارة
               </p>
 
               <h1 className="mt-1.5 text-2xl font-semibold tracking-tight text-[#181818] sm:text-3xl">
-                Create admin account
+                إنشاء حساب مسؤول
               </h1>
 
               <p className="mt-1.5 text-sm text-black/45">
-                Set up the administrator account for your dealership.
+                أنشئ حساب المسؤول الخاص بوكالتك.
               </p>
             </div>
           </div>
@@ -119,12 +119,11 @@ export default function AdminSignupPage() {
 
             <div>
               <p className="text-xs font-semibold text-black/70">
-                One-time setup
+                إعداد لمرة واحدة
               </p>
 
               <p className="mt-1 text-[11px] leading-5 text-black/40">
-                Your private setup key is required to create the initial
-                administrator account.
+                يلزم إدخال مفتاح الإعداد الخاص لإنشاء حساب المسؤول الأول.
               </p>
             </div>
           </div>
@@ -139,7 +138,7 @@ export default function AdminSignupPage() {
                   htmlFor="name"
                   className="mb-2 block text-sm font-medium text-black/75"
                 >
-                  Full name
+                  الاسم الكامل
                 </label>
 
                 <div className="relative">
@@ -155,7 +154,7 @@ export default function AdminSignupPage() {
                     type="text"
                     value={form.name}
                     onChange={handleChange}
-                    placeholder="Admin name"
+                    placeholder="اسم المسؤول"
                     autoComplete="name"
                     required
                     className="h-13 w-full rounded-2xl border border-black/10 bg-[#fafafa] pl-11 pr-4 text-sm text-black outline-none transition placeholder:text-black/25 hover:border-black/20 focus:border-black/30 focus:bg-white focus:ring-4 focus:ring-black/[0.03]"
@@ -169,7 +168,7 @@ export default function AdminSignupPage() {
                   htmlFor="email"
                   className="mb-2 block text-sm font-medium text-black/75"
                 >
-                  Email address
+                  البريد الإلكتروني
                 </label>
 
                 <div className="relative">
@@ -185,7 +184,7 @@ export default function AdminSignupPage() {
                     type="email"
                     value={form.email}
                     onChange={handleChange}
-                    placeholder="Admin email address"
+                    placeholder="البريد الإلكتروني للمسؤول"
                     autoComplete="email"
                     required
                     className="h-13 w-full rounded-2xl border border-black/10 bg-[#fafafa] pl-11 pr-4 text-sm text-black outline-none transition placeholder:text-black/25 hover:border-black/20 focus:border-black/30 focus:bg-white focus:ring-4 focus:ring-black/[0.03]"
@@ -202,7 +201,7 @@ export default function AdminSignupPage() {
                   htmlFor="password"
                   className="mb-2 block text-sm font-medium text-black/75"
                 >
-                  Password
+                  كلمة المرور
                 </label>
 
                 <div className="relative">
@@ -218,7 +217,7 @@ export default function AdminSignupPage() {
                     type={showPassword ? "text" : "password"}
                     value={form.password}
                     onChange={handleChange}
-                    placeholder="Minimum 8 characters"
+                    placeholder="٨ أحرف على الأقل"
                     autoComplete="new-password"
                     minLength={8}
                     required
@@ -232,7 +231,7 @@ export default function AdminSignupPage() {
                     }
                     className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-xl text-black/35 transition hover:bg-black/[0.05] hover:text-black"
                     aria-label={
-                      showPassword ? "Hide password" : "Show password"
+                      showPassword ? "إخفاء كلمة المرور" : "إظهار كلمة المرور"
                     }
                   >
                     {showPassword ? (
@@ -250,7 +249,7 @@ export default function AdminSignupPage() {
                   htmlFor="setupKey"
                   className="mb-2 block text-sm font-medium text-black/75"
                 >
-                  Setup key
+                  مفتاح الإعداد
                 </label>
 
                 <div className="relative">
@@ -266,7 +265,7 @@ export default function AdminSignupPage() {
                     type={showSetupKey ? "text" : "password"}
                     value={form.setupKey}
                     onChange={handleChange}
-                    placeholder="Enter setup key"
+                    placeholder="أدخل مفتاح الإعداد"
                     required
                     className="h-13 w-full rounded-2xl border border-black/10 bg-[#fafafa] pl-11 pr-14 text-sm text-black outline-none transition placeholder:text-black/25 hover:border-black/20 focus:border-black/30 focus:bg-white focus:ring-4 focus:ring-black/[0.03]"
                   />
@@ -279,8 +278,8 @@ export default function AdminSignupPage() {
                     className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-xl text-black/35 transition hover:bg-black/[0.05] hover:text-black"
                     aria-label={
                       showSetupKey
-                        ? "Hide setup key"
-                        : "Show setup key"
+                        ? "إخفاء مفتاح الإعداد"
+                        : "إظهار مفتاح الإعداد"
                     }
                   >
                     {showSetupKey ? (
@@ -315,8 +314,8 @@ export default function AdminSignupPage() {
             >
               <span>
                 {loading
-                  ? "Creating account..."
-                  : "Create Admin Account"}
+                  ? "جارٍ إنشاء الحساب..."
+                  : "إنشاء حساب مسؤول"}
               </span>
 
               {!loading && (
@@ -332,19 +331,19 @@ export default function AdminSignupPage() {
           {/* LOGIN */}
           <div className="mt-6 border-t border-black/10 pt-5 text-center">
             <p className="text-sm text-black/45">
-              Already have an admin account?{" "}
+              لديك حساب مسؤول بالفعل؟{" "}
               <Link
                 href="/admin/login"
                 className="font-semibold text-[#181818] underline decoration-black/20 underline-offset-4 hover:decoration-black/60"
               >
-                Sign in
+                سجّل الدخول
               </Link>
             </p>
           </div>
         </div>
 
         <p className="mt-4 text-center text-[11px] text-black/25">
-          Private dealership administration
+          إدارة خاصة بالوكالة
         </p>
       </div>
     </main>

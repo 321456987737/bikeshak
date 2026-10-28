@@ -7,39 +7,39 @@ import { useState } from "react";
 const faqs = [
   {
     id: 1,
-    question: "Are all motorcycles available for viewing?",
+    question: "هل يمكن مشاهدة جميع الدراجات النارية؟",
     answer:
-      "Our available motorcycles can be viewed at the showroom. We recommend contacting our team before visiting so we can confirm availability and have your preferred motorcycle ready.",
+      "يمكنك مشاهدة الدراجات النارية المتوفرة في المعرض. ننصحك بالتواصل مع فريقنا قبل الزيارة للتأكد من توفر الدراجة التي تفضلها وتجهيزها لك.",
   },
   {
     id: 2,
-    question: "Can I book a test drive?",
+    question: "هل يمكنني حجز تجربة قيادة؟",
     answer:
-      "Yes. You can request a test ride for eligible motorcycles through our website or by contacting our team directly. We will arrange a suitable date and time.",
+      "نعم، يمكنك طلب تجربة قيادة للدراجات المؤهلة عبر موقعنا أو بالتواصل مباشرة مع فريقنا. وسنرتب لك موعدًا مناسبًا.",
   },
   {
     id: 3,
-    question: "Do you accept trade-ins?",
+    question: "هل تقبلون استبدال الدراجات؟",
     answer:
-      "Yes. We can review your current motorcycle as part of a trade-in. Share its details with our team and we will guide you through the valuation process.",
+      "نعم، يمكننا تقييم دراجتك الحالية ضمن عملية الاستبدال. أرسل تفاصيلها إلى فريقنا وسنرشدك خلال خطوات التقييم.",
   },
   {
     id: 4,
-    question: "Do you offer motorcycle financing?",
+    question: "هل توفرون تمويلًا للدراجات النارية؟",
     answer:
-      "Financing options may be available depending on the motorcycle and your requirements. Contact our team to discuss the available options for your purchase.",
+      "قد تتوفر خيارات تمويل بحسب الدراجة النارية واحتياجاتك. تواصل مع فريقنا لمناقشة الخيارات المتاحة لشرائك.",
   },
   {
     id: 5,
-    question: "Can I reserve a motorcycle?",
+    question: "هل يمكنني حجز دراجة نارية؟",
     answer:
-      "Selected motorcycles may be reserved for a limited period. Reservation availability and terms vary by motorcycle, so please contact us for current details.",
+      "يمكن حجز بعض الدراجات النارية لفترة محدودة. تختلف إمكانية الحجز وشروطه من دراجة لأخرى، لذا تواصل معنا لمعرفة التفاصيل الحالية.",
   },
   {
     id: 6,
-    question: "Do you offer motorcycle delivery?",
+    question: "هل توفرون خدمة توصيل الدراجات النارية؟",
     answer:
-      "Delivery arrangements can be discussed with our team based on the motorcycle and destination. Contact us and we will provide the available delivery options.",
+      "يمكنك مناقشة ترتيبات التوصيل مع فريقنا بحسب الدراجة والوجهة. تواصل معنا لمعرفة خيارات التوصيل المتاحة.",
   },
 ];
 
@@ -84,7 +84,7 @@ export default function FAQSection() {
               }}
               className="mb-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-black/30 md:text-[10px]"
             >
-              Need to know
+              معلومات تهمك
             </motion.p>
 
             {/* TITLE */}
@@ -109,7 +109,7 @@ export default function FAQSection() {
               }}
               className="font-bebas text-[clamp(5rem,10vw,10rem)] leading-[0.78] tracking-[-0.045em] text-black"
             >
-              FAQs
+              الأسئلة الشائعة
             </motion.h2>
 
             {/* DESCRIPTION */}
@@ -134,8 +134,8 @@ export default function FAQSection() {
               }}
               className="mt-7 max-w-sm font-montserrat text-[10px] leading-[1.8] tracking-[0.06em] text-black/40 md:text-[11px]"
             >
-              Everything you need to know before finding your next motorcycle.
-              For anything else, our team is always here to help.
+              إليك أهم ما تحتاج إلى معرفته قبل اختيار دراجتك النارية القادمة.
+              وإذا كان لديك أي استفسار آخر، يسعد فريقنا بمساعدتك.
             </motion.p>
           </div>
 

@@ -51,14 +51,14 @@ async function getMotorcycles(searchParams) {
   );
 
   if (!response.ok) {
-    throw new Error("Failed to load motorcycles");
+    throw new Error("تعذّر تحميل الدراجات النارية.");
   }
 
   const result = await response.json();
 
   if (!result.success) {
     throw new Error(
-      result.message || "Failed to load motorcycles"
+      result.message || "تعذّر تحميل الدراجات النارية."
     );
   }
 

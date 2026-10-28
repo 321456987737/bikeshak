@@ -19,56 +19,56 @@ const SERVICES = [
   {
     number: "01",
     image: "/images/motorcycle/motorcycle1.jpg",
-    title: "Motorcycle Sales",
+    title: "بيع الدراجات النارية",
     description:
-      "Explore our carefully selected collection and let our team help you find a motorcycle that fits your lifestyle, preferences and budget.",
+      "استكشف مجموعتنا المختارة بعناية، ودع فريقنا يساعدك في العثور على دراجة تناسب أسلوب حياتك وتفضيلاتك وميزانيتك.",
     icon: Bike,
-    label: "Find your motorcycle",
+    label: "اعثر على دراجتك",
   },
   {
     number: "02",
     image: "/images/motorcycle/motorcycle2.jpg",
-    title: "Test Rides",
+    title: "تجارب القيادة",
     description:
-      "A motorcycle should feel right before you buy it. Schedule a test ride and experience your preferred model for yourself.",
+      "من المهم أن تختبر الدراجة قبل شرائها. احجز تجربة قيادة واكتشف بنفسك الطراز الذي تفضله.",
     icon: ClipboardCheck,
-    label: "Experience the ride",
+    label: "جرّب القيادة",
   },
   {
     number: "03",
     image: "/images/motorcycle/motorcycle3.jpg",
-    title: "Trade-In Enquiries",
+    title: "استفسارات الاستبدال",
     description:
-      "Thinking about upgrading? Contact our team to ask whether trade-in options are available for your motorcycle.",
+      "تفكر في الترقية؟ تواصل مع فريقنا للاستفسار عن خيارات استبدال دراجتك.",
     icon: Handshake,
-    label: "Upgrade your motorcycle",
+    label: "طوّر دراجتك",
   },
   {
     number: "04",
     image: "/images/motorcycle/motorcycle4.jpg",
-    title: "Payment Options",
+    title: "خيارات الدفع",
     description:
-      "Ask our team about payment options and any requirements before moving forward with a purchase.",
+      "استفسر من فريقنا عن خيارات الدفع والمتطلبات قبل إتمام عملية الشراء.",
     icon: CircleDollarSign,
-    label: "Explore your options",
+    label: "اكتشف خياراتك",
   },
   {
     number: "05",
     image: "/images/motorcycle/motorcycle5.jpg",
-    title: "Motorcycle Details",
+    title: "تفاصيل الدراجات النارية",
     description:
-      "Review the listed specifications and contact our team if you need more information about a motorcycle's condition or features.",
+      "اطّلع على المواصفات المدرجة، وتواصل مع فريقنا إذا احتجت إلى مزيد من المعلومات عن حالة الدراجة أو ميزاتها.",
     icon: Wrench,
-    label: "Know your motorcycle",
+    label: "تعرّف على دراجتك",
   },
   {
     number: "06",
     image: "/images/motorcycle/motorcycle1.jpg",
-    title: "Customer Support",
+    title: "خدمة العملاء",
     description:
-      "From your first question to your final decision, contact our team by phone or through the inquiry form.",
+      "من أول استفسار إلى قرارك النهائي، تواصل مع فريقنا هاتفيًا أو عبر نموذج الاستفسار.",
     icon: MessageCircle,
-    label: "Talk to our team",
+    label: "تواصل مع فريقنا",
   },
 ];
 
@@ -101,7 +101,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0">
           <Image
             src={HERO_IMAGE}
-            alt="Premium motorcycle"
+            alt="دراجة نارية فاخرة"
             fill
             priority
             sizes="100vw"
@@ -123,7 +123,7 @@ export default function ServicesPage() {
               className="max-w-4xl"
             >
               <p className="mb-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-white/55 md:text-[10px]">
-                The dealership experience
+                تجربة متكاملة في المعرض
               </p>
 
               <motion.h1
@@ -133,13 +133,12 @@ export default function ServicesPage() {
                 transition={{ duration: 0.7, ease: "easeOut" }}
                 className="font-bebas text-[clamp(4.5rem,9vw,9rem)] leading-[0.78] tracking-[-0.05em] text-white"
               >
-                Services
+                خدماتنا
               </motion.h1>
 
               <p className="mt-6 max-w-lg font-montserrat text-[10px] leading-[1.8] tracking-[0.04em] text-white/55 md:text-[11px]">
-                More than finding a motorcycle. From your first enquiry to
-                getting behind the wheel, we are here to make the
-                experience simple.
+                خدماتنا تتجاوز مجرد العثور على دراجة نارية. من أول استفسار
+                وحتى تجربة القيادة، نحن هنا لنجعل تجربتك سهلة.
               </p>
             </motion.div>
           </div>
@@ -158,7 +157,7 @@ export default function ServicesPage() {
               viewport={viewport}
             >
               <p className="font-montserrat text-[10px] uppercase tracking-[0.3em] text-black/30">
-                Our approach
+                نهجنا
               </p>
             </motion.div>
 
@@ -170,9 +169,9 @@ export default function ServicesPage() {
                 viewport={viewport}
                 className="max-w-6xl font-bebas text-[clamp(3.8rem,7vw,8rem)] leading-[0.78] tracking-[-0.045em]"
               >
-                The right motorcycle is only
+                الدراجة المناسبة ليست سوى
                 <br />
-                part of the experience.
+                جزء من التجربة
               </motion.h2>
 
               <motion.p
@@ -183,9 +182,9 @@ export default function ServicesPage() {
                 transition={{ duration: 0.6, delay: 0.12 }}
                 className="mt-8 max-w-2xl font-montserrat text-[11px] leading-[1.9] tracking-[0.03em] text-black/45 md:text-[13px]"
               >
-                Explore the available motorcycles, ask our team about a model,
-                or arrange a test ride. We can help you understand the
-                information available for each motorcycle before you decide.
+                استكشف الدراجات المتوفرة، أو استفسر من فريقنا عن أحد الطرازات،
+                أو رتّب تجربة قيادة. نساعدك على فهم المعلومات المتاحة عن كل
+                دراجة قبل اتخاذ قرارك.
               </motion.p>
             </div>
           </div>
@@ -205,11 +204,11 @@ export default function ServicesPage() {
                 viewport={viewport}
               >
                 <p className="font-montserrat text-[10px] uppercase tracking-[0.3em] text-black/30">
-                  What we offer
+                  ما نقدمه
                 </p>
 
                 <h2 className="mt-3 font-bebas text-5xl leading-none tracking-[-0.035em] md:text-7xl">
-                  Our Services
+                  خدماتنا
                 </h2>
               </motion.div>
 
@@ -220,7 +219,7 @@ export default function ServicesPage() {
                 viewport={viewport}
                 className="hidden font-montserrat text-[9px] uppercase tracking-[0.2em] text-black/25 sm:block"
               >
-                06 Services
+                ٦ خدمات
               </motion.span>
             </div>
           </div>
@@ -249,41 +248,41 @@ export default function ServicesPage() {
               viewport={viewport}
             >
               <p className="font-montserrat text-[10px] uppercase tracking-[0.3em] text-white/30">
-                Why choose us
+                لماذا تختارنا؟
               </p>
 
               <h2 className="mt-5 font-bebas text-[clamp(4rem,7vw,7rem)] leading-[0.78] tracking-[-0.045em]">
-                Simple.
+                بكل سهولة.
                 <br />
-                Personal.
+                باهتمام شخصي.
                 <br />
-                Straightforward.
+                ووضوح.
               </h2>
             </motion.div>
 
             <div className="grid border-t border-white/10 sm:grid-cols-2">
               <Feature
                 number="01"
-                title="Selected motorcycles"
-                text="A collection focused on quality, condition and value."
+                title="دراجات مختارة"
+                text="مجموعة نركز فيها على الجودة والحالة والقيمة."
               />
 
               <Feature
                 number="02"
-                title="Personal service"
-                text="Speak directly with our team whenever you need help."
+                title="خدمة شخصية"
+                text="تواصل مباشرة مع فريقنا متى احتجت إلى المساعدة."
               />
 
               <Feature
                 number="03"
-                title="Clear process"
-                text="No unnecessary complications. Just straightforward communication."
+                title="إجراءات واضحة"
+                text="بلا تعقيد غير ضروري؛ تواصل واضح ومباشر."
               />
 
               <Feature
                 number="04"
-                title="After-sales support"
-                text="Our relationship doesn't have to end when you drive away."
+                title="دعم ما بعد البيع"
+                text="علاقتنا بك لا تنتهي بمجرد مغادرتك على دراجتك."
               />
             </div>
           </div>
@@ -302,18 +301,18 @@ export default function ServicesPage() {
               viewport={viewport}
             >
               <p className="font-montserrat text-[10px] uppercase tracking-[0.3em] text-black/30">
-                Start your search
+                ابدأ رحلة البحث
               </p>
 
               <h2 className="mt-5 max-w-5xl font-bebas text-[clamp(4rem,8vw,8rem)] leading-[0.78] tracking-[-0.05em]">
-                Your next motorcycle
+                دراجتك النارية القادمة
                 <br />
-                is waiting.
+                بانتظارك.
               </h2>
 
               <p className="mt-7 max-w-xl font-montserrat text-[11px] leading-[1.9] tracking-[0.03em] text-black/45 md:text-[13px]">
-                Explore our current inventory or contact our team to
-                discuss what you are looking for.
+                استكشف الدراجات المتوفرة حاليًا أو تواصل مع فريقنا لمناقشة
+                ما تبحث عنه.
               </p>
             </motion.div>
 
@@ -329,7 +328,7 @@ export default function ServicesPage() {
                   href="/motorcycle"
                   className="group inline-flex items-center gap-3 bg-black px-6 py-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.18em] text-white transition-all duration-300 hover:bg-black/80 md:text-[10px]"
                 >
-                  Browse inventory
+                  تصفّح الدراجات
 
                   <ArrowUpRight
                     size={14}
@@ -342,7 +341,7 @@ export default function ServicesPage() {
                   href="/contact"
                   className="group inline-flex items-center gap-3 border border-black/15 px-6 py-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.18em] text-black transition-all duration-300 hover:border-black md:text-[10px]"
                 >
-                  Contact us
+                  تواصل معنا
 
                   <ArrowUpRight
                     size={14}

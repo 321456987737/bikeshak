@@ -17,11 +17,11 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 const navLinks = [
-  { href: "/", label: "Home", icon: Home },
-  { href: "/motorcycle", label: "Motorcycle", icon: Bike },
-  { href: "/services", label: "Services", icon: Wrench },
-  { href: "/about", label: "About", icon: Info },
-  { href: "/contact", label: "Contact", icon: Phone },
+  { href: "/", label: "الرئيسية", icon: Home },
+  { href: "/motorcycle", label: "الدراجات النارية", icon: Bike },
+  { href: "/services", label: "خدماتنا", icon: Wrench },
+  { href: "/about", label: "من نحن", icon: Info },
+  { href: "/contact", label: "تواصل معنا", icon: Phone },
 ];
 
 const navSpring = {
@@ -110,13 +110,13 @@ export default function Header() {
 
           <Link
             href="/"
-            aria-label="BIKESHACK home"
+            aria-label="الصفحة الرئيسية لـ BIKESHACK"
             className="flex shrink-0 items-center gap-3"
           >
-            <Image src="/logo.png" alt="BIKESHACK logo" width={85} height={85} />
+            <Image src="/logo.png" alt="شعار BIKESHACK" width={85} height={85} />
             </Link>
           <nav
-            aria-label="Main navigation"
+            aria-label="التنقل الرئيسي"
             className="flex items-center gap-8"
           >
             {navLinks.map((link) => {
@@ -156,7 +156,7 @@ export default function Header() {
               href="/motorcycle"
               className="rounded-full bg-white px-5 py-3 text-sm font-medium text-[#181818] transition hover:bg-white/90"
             >
-              View motorcycles
+              تصفّح الدراجات النارية
             </Link>
 
             {/* Admin */}
@@ -166,7 +166,7 @@ export default function Header() {
                 href="/admin"
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2.5 text-xs font-medium text-white transition active:scale-95"
               >
-                Admin Panel
+                لوحة الإدارة
               </Link>
             )}
           </div>
@@ -190,7 +190,7 @@ export default function Header() {
 
           <Link
             href="/"
-            aria-label="BIKESHACK home"
+            aria-label="الصفحة الرئيسية لـ BIKESHACK"
             className="flex shrink-0 items-center gap-2.5"
           >
             <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-sm font-bold text-[#181818]">
@@ -203,7 +203,7 @@ export default function Header() {
               </p>
 
               <p className="text-[10px] text-white/50">
-                Motorcycle showroom
+                معرض دراجات نارية
               </p>
             </div>
           </Link>
@@ -213,7 +213,7 @@ export default function Header() {
               href="/admin"
               className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2.5 text-xs font-medium text-white transition active:scale-95"
             >
-              Admin Panel
+              لوحة الإدارة
             </Link>
           )}
         </div>
@@ -224,7 +224,7 @@ export default function Header() {
       ====================================================== */}
 
       <nav
-        aria-label="Mobile navigation"
+        aria-label="التنقل عبر الجوال"
         className="fixed  bottom-3 left-3 right-3 z-50 h-[82px] rounded-[22px] border border-white/10 bg-[#181818]/95 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl md:hidden"
         style={{
           paddingBottom:

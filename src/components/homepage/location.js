@@ -20,7 +20,7 @@ export default function LocationSection() {
       <div className="absolute inset-0">
         <img
           src="/images/motorcycle/motorcycle1.jpg"
-          alt="Motorcycle showroom"
+          alt="معرض للدراجات النارية"
           className="h-full w-full object-cover"
         />
       </div>
@@ -64,7 +64,7 @@ export default function LocationSection() {
             }}
             className="mb-6 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-white/55 md:mb-8 md:text-[10px]"
           >
-            Visit {BUSINESS_NAME} · {SHOWROOM_LOCATION}
+            زر {BUSINESS_NAME} · {SHOWROOM_LOCATION}
           </motion.p>
 
           {/* MAIN TITLE */}
@@ -89,7 +89,7 @@ export default function LocationSection() {
             }}
             className="max-w-6xl font-bebas text-[clamp(4rem,10vw,10rem)] leading-[0.82] tracking-[-0.045em]"
           >
-            A Showroom Experience
+            تجربة مميزة في المعرض
           </motion.h2>
 
           {/* CTA */}
@@ -121,7 +121,7 @@ export default function LocationSection() {
                 href="/motorcycle"
                 className="group inline-flex items-center gap-3 border border-white/35 bg-white px-6 py-3.5 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-black transition-all duration-300 hover:bg-transparent hover:text-white md:px-7 md:py-4"
               >
-                Browse motorcycles
+                تصفّح الدراجات النارية
                 <ArrowUpRight
                   size={15}
                   strokeWidth={1.3}
@@ -136,7 +136,7 @@ export default function LocationSection() {
                 className="inline-flex items-center gap-3 border border-white/35 px-6 py-3.5 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-white transition-colors hover:bg-white/10 md:px-7 md:py-4"
               >
                 <MapPin size={15} strokeWidth={1.3} />
-                Get directions
+                احصل على الاتجاهات
               </a>
 
               <a
@@ -144,7 +144,7 @@ export default function LocationSection() {
                 className="inline-flex items-center gap-3 border border-white/35 px-6 py-3.5 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-white transition-colors hover:bg-white/10 md:px-7 md:py-4"
               >
                 <Phone size={15} strokeWidth={1.3} />
-                Call {BUSINESS_PHONE}
+                اتصل على {BUSINESS_PHONE}
               </a>
             </div>
           </motion.div>

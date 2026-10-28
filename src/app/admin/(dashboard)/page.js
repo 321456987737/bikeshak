@@ -2,6 +2,21 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+
+const STATUS_LABELS = {
+  Available: "متاحة",
+  Reserved: "محجوزة",
+  Sold: "مباعة",
+  New: "جديد",
+  Contacted: "تم التواصل",
+  "In Progress": "قيد المتابعة",
+  Closed: "مغلق",
+  Pending: "قيد الانتظار",
+  Confirmed: "مؤكد",
+  Completed: "مكتمل",
+  Cancelled: "ملغي",
+};
+
 export default function AdminDashboardPage() {
  
 
@@ -26,7 +41,7 @@ export default function AdminDashboardPage() {
 
         if (!response.ok) {
           throw new Error(
-            "Failed to load dashboard"
+            "تعذّر تحميل لوحة التحكم."
           );
         }
 
@@ -35,7 +50,7 @@ export default function AdminDashboardPage() {
         if (!result.success) {
           throw new Error(
             result.message ||
-              "Failed to load dashboard"
+              "تعذّر تحميل لوحة التحكم."
           );
         }
 
@@ -46,7 +61,7 @@ export default function AdminDashboardPage() {
         );
 
         setError(
-          "We couldn't load the dashboard."
+          "تعذّر تحميل لوحة التحكم."
         );
       } finally {
         setLoading(false);
@@ -62,15 +77,15 @@ export default function AdminDashboardPage() {
     <div className="mx-auto max-w-7xl md:pb-0 pb-20">
       <div className="mb-8">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/35">
-          Overview
+          نظرة عامة
         </p>
 
         <h1 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
-          Dashboard
+          لوحة التحكم
         </h1>
 
         <p className="mt-2 text-sm text-black/45">
-          Manage your dealership website and inventory.
+          أدر موقع وكالتك ومخزونها.
         </p>
       </div>
 
@@ -83,7 +98,7 @@ export default function AdminDashboardPage() {
       {/* Main Stats */}
       <div className="grid gap-4 grid-cols-2 xl:grid-cols-4">
         <StatCard
-          title="Total Motorcycles"
+          title="إجمالي الدراجات النارية"
           value={
             loading ? "—" : stats?.totalMotorcycles ?? 0
           }
@@ -91,7 +106,7 @@ export default function AdminDashboardPage() {
         />
 
         <StatCard
-          title="Available"
+          title="متاحة"
           value={
             loading
               ? "—"
@@ -101,7 +116,7 @@ export default function AdminDashboardPage() {
         />
 
         <StatCard
-          title="Sold"
+          title="مباعة"
           value={
             loading ? "—" : stats?.soldMotorcycles ?? 0
           }
@@ -109,7 +124,7 @@ export default function AdminDashboardPage() {
         />
 
         <StatCard
-          title="New Inquiries"
+          title="استفسارات جديدة"
           value={
             loading
               ? "—"
@@ -122,7 +137,7 @@ export default function AdminDashboardPage() {
       {/* Secondary Stats */}
       <div className="mt-4 grid gap-4 grid-cols-2 xl:grid-cols-4">
         <MiniStat
-          title="Reserved Motorcycles"
+          title="دراجات نارية محجوزة"
           value={
             loading
               ? "—"
@@ -131,7 +146,7 @@ export default function AdminDashboardPage() {
         />
 
         <MiniStat
-          title="Total Inquiries"
+          title="إجمالي الاستفسارات"
           value={
             loading
               ? "—"
@@ -140,7 +155,7 @@ export default function AdminDashboardPage() {
         />
 
         <MiniStat
-          title="Pending Test Drives"
+          title="طلبات تجربة بانتظار التأكيد"
           value={
             loading
               ? "—"
@@ -149,7 +164,7 @@ export default function AdminDashboardPage() {
         />
 
         <MiniStat
-          title="Confirmed Test Drives"
+          title="طلبات تجربة مؤكدة"
           value={
             loading
               ? "—"
@@ -162,33 +177,33 @@ export default function AdminDashboardPage() {
       <section className="mt-8">
         <div className="mb-4">
           <h2 className="text-lg font-semibold">
-            Quick actions
+            إجراءات سريعة
           </h2>
         </div>
 
         <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
           <QuickAction
             href="/admin/motorcycles/new"
-            title="Add Motorcycle"
-            description="Add a new motorcycle to your inventory."
+            title="إضافة دراجة نارية"
+            description="أضف دراجة نارية جديدة إلى مخزونك."
           />
 
           <QuickAction
             href="/admin/inquiries"
-            title="View Inquiries"
-            description="See customers interested in your motorcycles."
+            title="عرض الاستفسارات"
+            description="اطّلع على العملاء المهتمين بدراجاتك النارية."
           />
 
           <QuickAction
             href="/admin/test-drives"
-            title="Test Drives"
-            description="Manage upcoming test-drive requests."
+            title="تجارب القيادة"
+            description="أدر طلبات تجارب القيادة القادمة."
           />
 
           <QuickAction
             href="/admin/businesses"
-            title="Business Profile"
-            description="Update dealership information."
+            title="ملف الوكالة"
+            description="حدّث معلومات الوكالة."
           />
         </div>
       </section>
@@ -239,7 +254,7 @@ function StatCard({
       </p>
 
       <p className="mt-4 text-xs font-medium text-black/35">
-        View details →
+        عرض التفاصيل ←
       </p>
     </Link>
   );
@@ -296,11 +311,11 @@ function RecentMotorcycles({
       <div className="flex items-center justify-between border-b border-black/10 px-6 py-5">
         <div>
           <h2 className="font-semibold">
-            Recent Motorcycles
+            أحدث الدراجات النارية
           </h2>
 
           <p className="mt-1 text-xs text-black/40">
-            Recently added motorcycles
+            الدراجات النارية المضافة مؤخرًا
           </p>
         </div>
 
@@ -308,7 +323,7 @@ function RecentMotorcycles({
           href="/admin/motorcycles"
           className="text-xs font-semibold underline underline-offset-4"
         >
-          View all
+          عرض الكل
         </Link>
       </div>
 
@@ -349,7 +364,7 @@ function RecentMotorcycles({
             </div>
           ))
         ) : (
-          <EmptyRow text="No motorcycles added yet." />
+          <EmptyRow text="لم تتم إضافة أي دراجات نارية بعد." />
         )}
       </div>
     </section>
@@ -365,11 +380,11 @@ function RecentInquiries({
       <div className="flex items-center justify-between border-b border-black/10 px-6 py-5">
         <div>
           <h2 className="font-semibold">
-            Recent Inquiries
+            أحدث الاستفسارات
           </h2>
 
           <p className="mt-1 text-xs text-black/40">
-            Latest customer messages
+            أحدث رسائل العملاء
           </p>
         </div>
 
@@ -377,7 +392,7 @@ function RecentInquiries({
           href="/admin/inquiries"
           className="text-xs font-semibold underline underline-offset-4"
         >
-          View all
+          عرض الكل
         </Link>
       </div>
 
@@ -402,7 +417,7 @@ function RecentInquiries({
 
                   {inquiry.motorcycleId && (
                     <p className="mt-2 truncate text-xs text-black/55">
-                      Interested in{" "}
+                      مهتم بـ{" "}
                       <span className="font-medium">
                         {inquiry.motorcycleId.make}{" "}
                         {inquiry.motorcycleId.model}
@@ -418,7 +433,7 @@ function RecentInquiries({
             </div>
           ))
         ) : (
-          <EmptyRow text="No inquiries yet." />
+          <EmptyRow text="لا توجد استفسارات بعد." />
         )}
       </div>
     </section>
@@ -434,11 +449,11 @@ function RecentTestDrives({
       <div className="flex items-center justify-between border-b border-black/10 px-6 py-5">
         <div>
           <h2 className="font-semibold">
-            Recent Test Drives
+            أحدث تجارب القيادة
           </h2>
 
           <p className="mt-1 text-xs text-black/40">
-            Latest test-drive requests
+            أحدث طلبات تجارب القيادة
           </p>
         </div>
 
@@ -446,7 +461,7 @@ function RecentTestDrives({
           href="/admin/test-drives"
           className="text-xs font-semibold underline underline-offset-4"
         >
-          View all
+          عرض الكل
         </Link>
       </div>
 
@@ -484,7 +499,7 @@ function RecentTestDrives({
             </div>
           ))
         ) : (
-          <EmptyRow text="No test-drive requests yet." />
+          <EmptyRow text="لا توجد طلبات تجارب قيادة بعد." />
         )}
       </div>
     </section>
@@ -496,7 +511,7 @@ function StatusBadge({
 }) {
   return (
     <span className="shrink-0 rounded-full bg-black/[0.05] px-3 py-1.5 text-[11px] font-semibold text-black/60">
-      {status}
+      {STATUS_LABELS[status] || status}
     </span>
   );
 }

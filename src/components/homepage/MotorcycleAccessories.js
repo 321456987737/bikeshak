@@ -25,7 +25,7 @@ export default function MotorcycleAccessories() {
               transition={{ duration: 0.4 }}
               className="mb-3 font-montserrat text-[9px] font-medium uppercase tracking-[0.32em] text-white/40 md:text-[10px]"
             >
-              Everything for the ride
+              كل ما تحتاجه لرحلتك
             </motion.p>
 
             <motion.h2
@@ -35,7 +35,7 @@ export default function MotorcycleAccessories() {
               transition={{ duration: 0.5, delay: 0.04 }}
               className="font-bebas text-5xl leading-[0.88] tracking-[-0.035em] sm:text-6xl md:text-7xl lg:text-[clamp(5rem,7vw,7.5rem)]"
             >
-              Motorcycle Accessories
+              إكسسوارات الدراجات النارية
             </motion.h2>
           </div>
 
@@ -43,7 +43,7 @@ export default function MotorcycleAccessories() {
             href="/motorcycle?inventory=accessories"
             className="group inline-flex w-fit items-center gap-3 border-b border-white/25 pb-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.18em] text-white/65 transition-colors duration-300 hover:border-white hover:text-white"
           >
-            View all accessories
+            عرض جميع الإكسسوارات
             <ArrowUpRight
               size={15}
               strokeWidth={1.4}
@@ -69,7 +69,7 @@ export default function MotorcycleAccessories() {
               <Link
                 href={`/motorcycle?inventory=accessories&category=${category.value}`}
                 className="block h-full"
-                aria-label={`Browse ${category.label}`}
+                aria-label={`تصفّح ${category.label}`}
               >
                 {/* Image */}
                 <div className="relative aspect-[4/5] overflow-hidden border border-white/10 bg-white/[0.035]">
@@ -112,7 +112,7 @@ export default function MotorcycleAccessories() {
             href="/motorcycle?inventory=accessories"
             className="group inline-flex min-h-12 items-center justify-center gap-3 border border-white/30 px-6 py-4 font-montserrat text-[9px] font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:border-white hover:bg-white hover:text-black sm:px-8"
           >
-            Explore all accessories
+            استكشف جميع الإكسسوارات
             <ArrowUpRight
               size={15}
               strokeWidth={1.4}

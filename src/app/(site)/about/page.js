@@ -21,7 +21,7 @@ export default function AboutPage() {
       <section className="relative h-[40dvh] min-h-[320px] overflow-hidden bg-[#e8e8e5] md:min-h-[440px]">
         <Image
           src="/images/motorcycle/motorcycle1.jpg"
-          alt="Motorcycle at BIKESHACK"
+          alt="دراجة نارية في BIKESHACK"
           fill
           priority
           sizes="100vw"
@@ -37,18 +37,17 @@ export default function AboutPage() {
         <div className="relative z-10 mx-auto flex h-full max-w-[1800px] items-end px-6 pb-10 md:px-10 md:pb-14 lg:px-14">
           <ScrollReveal className="max-w-4xl" y={20}>
             <p className="mb-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-white/55 md:text-[10px]">
-              The story behind the dealership
+              حكاية المعرض
             </p>
 
             <h1 className="font-bebas text-[clamp(4.5rem,9vw,9rem)] leading-[0.78] tracking-[-0.05em] text-white">
-              About Us
+              من نحن
             </h1>
 
             <p className="mt-6 max-w-lg font-montserrat text-[10px] leading-[1.8] tracking-[0.04em] text-white/55 md:text-[11px]">
-              Built on a passion for motorcycles and a commitment to quality, we
-              bring riders and their perfect motorcycles together. From
-              carefully selected bikes to trusted service, we make every step of
-              your riding journey feel special.
+              انطلقنا من شغفنا بالدراجات النارية وحرصنا على الجودة، لنجمع
+              الدراجين بدراجاتهم المناسبة. من الدراجات المختارة بعناية إلى
+              الخدمة الموثوقة، نحرص على أن تكون كل خطوة في رحلتك مميزة.
             </p>
           </ScrollReveal>
         </div>
@@ -63,19 +62,19 @@ export default function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
             <ScrollReveal>
               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/35 md:text-xs">
-                Who we are
+                من نحن
               </p>
 
               <h2 className="mt-5 max-w-4xl font-bebas text-5xl leading-[0.95] tracking-wide md:text-7xl lg:text-8xl">
-                A dealership that keeps things simple.
+                معرض يجعل تجربتك سهلة
               </h2>
             </ScrollReveal>
 
             <ScrollReveal className="flex items-end" delay={0.1}>
               <p className="max-w-xl font-montserrat text-sm leading-7 text-black/55 md:text-base md:leading-8">
-                BIKESHACK is a motorcycle showroom in Riyadh. Explore the
-                available motorcycles, review their details, and contact our
-                team with questions or to arrange a visit.
+                BIKESHACK معرض للدراجات النارية في الرياض. استكشف الدراجات
+                المتوفرة واطّلع على تفاصيلها، وتواصل مع فريقنا للاستفسار أو
+                لترتيب زيارة.
               </p>
             </ScrollReveal>
           </div>
@@ -93,7 +92,7 @@ export default function AboutPage() {
             <ScrollReveal className="relative min-h-[380px] overflow-hidden bg-[#ededeb] md:min-h-[520px]">
               <Image
                 src="/images/motorcycle/motorcycle2.jpg"
-                alt="Motorcycle at the dealership"
+                alt="دراجة نارية في المعرض"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 hover:scale-105"
@@ -103,7 +102,7 @@ export default function AboutPage() {
 
               <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10">
                 <span className="font-montserrat text-[9px] font-medium uppercase tracking-[0.25em] text-white drop-shadow-md">
-                  Our philosophy
+                  رؤيتنا
                 </span>
               </div>
             </ScrollReveal>
@@ -119,20 +118,19 @@ export default function AboutPage() {
                 </span>
 
                 <h2 className="mt-6 max-w-xl font-bebas text-5xl leading-[0.95] tracking-wide md:text-6xl lg:text-7xl">
-                  Your search should feel easy.
+                  رحلة البحث عن دراجتك لازم تكون سهلة
                 </h2>
 
                 <div className="mt-8 max-w-xl space-y-5 font-montserrat text-sm leading-7 text-black/55">
                   <p>
-                    Finding your next motorcycle should not feel complicated.
-                    That is why we focus on giving you the information you need
-                    and making it easy to connect with our team.
+                    العثور على دراجتك النارية القادمة ما يحتاج يكون أمرًا
+                    معقدًا. لذلك نحرص على تزويدك بالمعلومات التي تحتاج إليها
+                    وتسهيل تواصلك مع فريقنا.
                   </p>
 
                   <p>
-                    Browse our current inventory, explore individual
-                    motorcycles, arrange a test drive and speak directly with
-                    our dealership whenever you are ready.
+                    تصفّح الدراجات المتوفرة، واستكشف تفاصيل كل دراجة، ورتّب
+                    تجربة قيادة، وتحدث مباشرة مع فريق المعرض متى ما كنت جاهزًا.
                   </p>
                 </div>
               </div>
@@ -143,7 +141,7 @@ export default function AboutPage() {
                 </div>
 
                 <span className="font-montserrat text-[10px] font-medium uppercase tracking-[0.2em] text-black/45">
-                  Simple by design
+                  البساطة في كل التفاصيل
                 </span>
               </div>
             </ScrollReveal>
@@ -161,18 +159,18 @@ export default function AboutPage() {
             {/* LEFT */}
             <ScrollReveal>
               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/35 md:text-xs">
-                Our approach
+                نهجنا
               </p>
 
               <h2 className="mt-5 font-bebas text-6xl leading-[0.9] tracking-wide md:text-8xl">
-                What
+                ما
                 <br />
-                matters.
+                يهمنا
               </h2>
 
               <p className="mt-7 max-w-sm font-montserrat text-sm leading-7 text-black/50">
-                We believe a good dealership experience starts with clarity,
-                honest communication and motorcycles worth considering.
+                نؤمن أن تجربة المعرض المميزة تبدأ بالوضوح والتواصل الصادق
+                والدراجات التي تستحق اهتمامك.
               </p>
             </ScrollReveal>
 
@@ -181,32 +179,32 @@ export default function AboutPage() {
               <AboutFeature
                 number="01"
                 icon={Bike}
-                title="Quality motorcycles"
-                description="We showcase motorcycles currently available through our dealership with the details you need to make an informed decision."
+                title="دراجات نارية بجودة عالية"
+                description="نعرض الدراجات المتوفرة لدينا مع التفاصيل التي تساعدك على اتخاذ قرار مناسب."
                 delay={0}
               />
 
               <AboutFeature
                 number="02"
                 icon={ShieldCheck}
-                title="Straightforward service"
-                description="From your first question to your test drive, our goal is to keep the process clear and comfortable."
+                title="خدمة واضحة ومباشرة"
+                description="من استفسارك الأول إلى تجربة القيادة، نحرص على أن تكون خطواتك واضحة ومريحة."
                 delay={0.08}
               />
 
               <AboutFeature
                 number="03"
                 icon={Users}
-                title="Personal attention"
-                description="Every customer has different needs. Our team is here to understand what you're looking for."
+                title="اهتمام شخصي"
+                description="لكل عميل احتياجاته، وفريقنا هنا ليفهم ما تبحث عنه."
                 delay={0.16}
               />
 
               <AboutFeature
                 number="04"
                 icon={MapPin}
-                title="Local dealership"
-                description="Visit us in person, explore our motorcycles and speak directly with our team."
+                title="معرض محلي"
+                description="تفضل بزيارتنا واستكشف دراجاتنا وتحدث مباشرة مع فريقنا."
                 delay={0.24}
               />
             </div>
@@ -223,40 +221,38 @@ export default function AboutPage() {
           <div className="grid gap-16 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
             <ScrollReveal>
               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-white/35 md:text-xs">
-                Why choose us
+                لماذا تختارنا؟
               </p>
 
               <h2 className="mt-5 max-w-lg font-bebas text-6xl leading-[0.9] tracking-wide md:text-8xl">
-                Less
+                تعقيد أقل،
                 <br />
-                complication.
-                <br />
-                More clarity.
+                ووضوح أكثر.
               </h2>
             </ScrollReveal>
 
             <div className="grid gap-10 sm:grid-cols-2">
               <ValueItem
-                title="Transparent"
-                description="Clear motorcycle information and a straightforward way to get in touch."
+                title="شفافية"
+                description="معلومات واضحة عن الدراجات وطريقة سهلة للتواصل معنا."
                 delay={0}
               />
 
               <ValueItem
-                title="Customer focused"
-                description="We take the time to understand what you're actually looking for."
+                title="اهتمام بالعميل"
+                description="نخصص الوقت لفهم ما تبحث عنه فعلًا."
                 delay={0.08}
               />
 
               <ValueItem
-                title="Convenient"
-                description="Explore inventory online before making the trip to the dealership."
+                title="سهولة وراحة"
+                description="استكشف الدراجات عبر الإنترنت قبل زيارة المعرض."
                 delay={0.16}
               />
 
               <ValueItem
-                title="Local"
-                description="A real dealership and a real team ready to help."
+                title="قريبون منك"
+                description="معرض حقيقي وفريق مستعد لمساعدتك."
                 delay={0.24}
               />
             </div>
@@ -278,18 +274,18 @@ export default function AboutPage() {
 
             <ScrollReveal className="relative z-10 max-w-3xl">
               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/35 md:text-xs">
-                Find your next motorcycle
+                اعثر على دراجتك النارية القادمة
               </p>
 
               <h2 className="mt-5 font-bebas text-6xl leading-[0.9] tracking-wide md:text-8xl">
-                Ready to find
+                مستعد للعثور على
                 <br />
-                your motorcycle?
+                دراجتك؟
               </h2>
 
               <p className="mt-6 max-w-xl font-montserrat text-sm leading-7 text-black/50 md:text-base">
-                Explore our current collection and discover the motorcycles
-                available through BIKESHACK.
+                استكشف مجموعتنا الحالية واكتشف الدراجات النارية المتوفرة لدى
+                BIKESHACK.
               </p>
 
               <div className="mt-9 flex flex-wrap gap-3">
@@ -297,7 +293,7 @@ export default function AboutPage() {
                   href="/motorcycle"
                   className="group inline-flex items-center gap-4 bg-black px-6 py-4 font-montserrat text-[10px] font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-black/80"
                 >
-                  Browse motorcycles
+                  تصفّح الدراجات النارية
                   <ArrowUpRight
                     size={16}
                     strokeWidth={1.5}
@@ -309,7 +305,7 @@ export default function AboutPage() {
                   href="/contact"
                   className="group inline-flex items-center gap-4 border border-black/15 bg-white px-6 py-4 font-montserrat text-[10px] font-semibold uppercase tracking-[0.18em] text-black transition-colors hover:border-black/30"
                 >
-                  Contact us
+                  تواصل معنا
                   <ArrowUpRight
                     size={16}
                     strokeWidth={1.5}

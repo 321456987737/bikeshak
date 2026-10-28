@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { translateLabel } from "@/lib/localization";
 
 export default function MotorcycleCard({ motorcycle }) {
   const image = motorcycle.images?.[0];
@@ -23,12 +24,12 @@ export default function MotorcycleCard({ motorcycle }) {
             />
           ) : (
             <div className="flex h-full items-center justify-center text-sm text-black/40">
-              No image available
+              لا توجد صورة
             </div>
           )}
 
           <div className="absolute left-4 top-4 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-black shadow-sm">
-            {motorcycle.condition}
+            {translateLabel(motorcycle.condition)}
           </div>
 
           {motorcycle.isFeatured && (
@@ -59,9 +60,9 @@ export default function MotorcycleCard({ motorcycle }) {
         </div>
 
         <div className="flex flex-wrap gap-x-4 gap-y-2 border-t border-black/10 pt-4 text-xs text-black/55">
-          <span>{motorcycle.transmission}</span>
-          <span>{motorcycle.fuelType}</span>
-          <span>{motorcycle.bikeType}</span>
+          <span>{translateLabel(motorcycle.transmission)}</span>
+          <span>{translateLabel(motorcycle.fuelType)}</span>
+          <span>{translateLabel(motorcycle.bikeType)}</span>
         </div>
       </div>
     </article>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ACCESSORY_CATEGORIES } from "@/lib/accessory-categories";
+import { translateLabel } from "@/lib/localization";
 import { motion } from "framer-motion";
 const PAGE_SIZE = 12;
 
@@ -58,14 +59,14 @@ export default function AccessoryBrowser({
         });
         const result = await response.json();
         if (!response.ok || !result.success) {
-          throw new Error(result.message || "Failed to load accessories");
+          throw new Error(result.message || "تعذّر تحميل الإكسسوارات.");
         }
         setAccessories(result.data.accessories);
         setPagination(result.data.pagination);
       } catch (loadError) {
         if (loadError.name === "AbortError") return;
         console.error("Accessories page load error:", loadError);
-        setError("We couldn't load accessories. Please try again.");
+        setError("تعذّر تحميل الإكسسوارات. حاول مرة أخرى.");
       } finally {
         if (!controller.signal.aborted) setLoading(false);
       }
@@ -92,7 +93,7 @@ export default function AccessoryBrowser({
         <div className="absolute inset-0">
           <Image
             src={"/images/accessories/BikeAccessories.webp"}
-            alt="Featured motorcycle"
+            alt="دراجة نارية مميزة"
             fill
             priority
             sizes="100vw"
@@ -122,15 +123,15 @@ export default function AccessoryBrowser({
               className="max-w-3xl"
             >
               <p className="mb-3 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-white/60 md:text-[10px]">
-                   Everything for the ride 
+                   كل ما تحتاجه لرحلتك
               </p>
 
               <h1 className="font-bebas text-[clamp(4rem,8vw,8rem)] leading-[0.8] tracking-[-0.045em] text-white">
-                Accessories
+                الإكسسوارات
               </h1>
 
               <p className="mt-5 max-w-xl font-montserrat text-[10px] leading-[1.8] tracking-[0.05em] text-white/60 md:text-[11px]">
-                  Browse our accessories, riding gear and parts available in  store.
+                  تصفّح الإكسسوارات ومستلزمات القيادة وقطع الغيار المتوفرة في المعرض.
               </p>
             </motion.div>
           </div>
@@ -160,7 +161,7 @@ export default function AccessoryBrowser({
               onClick={() => updateCategory("")}
               className={`rounded-full border px-4 py-2 text-xs font-medium transition ${!category ? "border-black bg-black text-white" : "border-black/15 hover:border-black"}`}
             >
-              All accessories
+              جميع الإكسسوارات
             </button>
             {ACCESSORY_CATEGORIES.map((item) => (
               <button
@@ -182,14 +183,14 @@ export default function AccessoryBrowser({
               <input
                 value={searchInput}
                 onChange={(event) => setSearchInput(event.target.value)}
-                placeholder="Search accessories"
+                placeholder="ابحث عن الإكسسوارات"
                 className="min-w-0 flex-1 bg-transparent px-1 text-sm outline-none placeholder:text-black/35"
               />
               <button
                 type="submit"
                 className="px-3 text-xs font-semibold uppercase tracking-wide"
               >
-                Search
+                بحث
               </button>
             </form>
           </div>
@@ -204,16 +205,16 @@ export default function AccessoryBrowser({
             </div>
             <div className="min-w-0 md:col-start-1 md:row-start-1">
               <p className="font-montserrat text-[9px] uppercase tracking-[0.25em] text-black/35">
-                In stock
+                متوفر
               </p>
               <h2 className="mt-2 font-bebas text-3xl leading-none sm:text-4xl">
-                {pagination.total} products
+                {pagination.total} منتج
               </h2>
             </div>
             <div className="flex justify-end md:col-start-3 md:row-start-1">
               <div className="flex flex-col items-end gap-2 sm:flex-row sm:items-center">
                 {loading && accessories.length > 0 && (
-                  <span className="text-xs text-black/40">Updating...</span>
+                  <span className="text-xs text-black/40">جارٍ التحديث...</span>
                 )}
                 <select
                   value={sort}
@@ -221,13 +222,13 @@ export default function AccessoryBrowser({
                     setSort(event.target.value);
                     setPage(1);
                   }}
-                  aria-label="Sort accessories"
+                  aria-label="ترتيب الإكسسوارات"
                   className="h-10 max-w-full rounded-lg border border-black/15 bg-white px-2 text-[10px] uppercase tracking-wide sm:px-3 sm:text-xs"
                 >
-                  <option value="newest">Newest first</option>
-                  <option value="price-low">Price: Low to High</option>
-                  <option value="price-high">Price: High to Low</option>
-                  <option value="name">Name</option>
+                  <option value="newest">الأحدث أولًا</option>
+                  <option value="price-low">السعر: من الأقل للأعلى</option>
+                  <option value="price-high">السعر: من الأعلى للأقل</option>
+                  <option value="name">الاسم</option>
                 </select>
               </div>
             </div>
@@ -242,13 +243,13 @@ export default function AccessoryBrowser({
             </p>
           ) : loading && accessories.length === 0 ? (
             <p className="py-16 text-center text-sm text-black/45">
-              Loading accessories...
+              جارٍ تحميل الإكسسوارات...
             </p>
           ) : accessories.length === 0 ? (
             <div className="py-16 text-center">
-              <p className="font-medium">No accessories found</p>
+              <p className="font-medium">ما لقينا إكسسوارات</p>
               <p className="mt-2 text-sm text-black/45">
-                Try another category or search term.
+                جرّب فئة ثانية أو غيّر كلمات البحث.
               </p>
             </div>
           ) : (
@@ -272,7 +273,7 @@ export default function AccessoryBrowser({
                         />
                       ) : (
                         <div className="flex h-full items-center justify-center text-xs uppercase tracking-widest text-black/30">
-                          No image
+                          لا توجد صورة
                         </div>
                       )}
                       <span className="absolute left-3 top-3 bg-white px-3 py-2 text-[9px] font-medium uppercase tracking-wider">
@@ -294,7 +295,7 @@ export default function AccessoryBrowser({
                         </p>
                       )}
                       <p className="mt-3 text-[9px] uppercase tracking-wider text-black/35">
-                        {item.stockQuantity} in stock
+                        {item.stockQuantity} متوفر
                       </p>
                     </div>
                   </article>
@@ -311,10 +312,10 @@ export default function AccessoryBrowser({
                 onClick={() => setPage((current) => current - 1)}
                 className="rounded-full border border-black/15 px-4 py-2 text-sm disabled:opacity-40"
               >
-                Previous
+                السابق
               </button>
               <span className="text-xs text-black/45">
-                Page {pagination.page} of {pagination.totalPages}
+                الصفحة {pagination.page} من {pagination.totalPages}
               </span>
               <button
                 type="button"
@@ -322,7 +323,7 @@ export default function AccessoryBrowser({
                 onClick={() => setPage((current) => current + 1)}
                 className="rounded-full border border-black/15 px-4 py-2 text-sm disabled:opacity-40"
               >
-                Next
+                التالي
               </button>
             </div>
           )}

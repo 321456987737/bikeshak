@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/animations/Reveal";
 import { BUSINESS_NAME, SHOWROOM_LOCATION } from "@/lib/business";
+import { translateLabel } from "@/lib/localization";
 
 async function getMotorcycle(id) {
   const baseUrl =
@@ -107,7 +108,7 @@ export default async function Page({ params }) {
               href="/"
               className="transition-colors duration-300 hover:text-black"
             >
-              Home
+              الرئيسية
             </Link>
 
             <span>/</span>
@@ -116,7 +117,7 @@ export default async function Page({ params }) {
               href="/motorcycle"
               className="transition-colors duration-300 hover:text-black"
             >
-              Motorcycles
+              الدراجات النارية
             </Link>
 
             <span>/</span>
@@ -130,7 +131,7 @@ export default async function Page({ params }) {
             href="/motorcycle"
             className="group hidden items-center gap-2 font-montserrat text-[9px] font-medium uppercase tracking-[0.18em] text-black/45 transition-colors duration-300 hover:text-black sm:flex md:text-[10px]"
           >
-            Back to motorcycles
+            العودة إلى الدراجات النارية
             <ArrowUpRight
               size={14}
               strokeWidth={1.2}
@@ -163,7 +164,7 @@ export default async function Page({ params }) {
 
                       <div className="absolute left-4 top-4">
                         <span className="bg-white px-3 py-2 font-montserrat text-[9px] font-medium uppercase tracking-[0.16em] text-black md:text-[10px]">
-                          {motorcycle.condition}
+                          {translateLabel(motorcycle.condition)}
                         </span>
                       </div>
                     </div>
@@ -191,7 +192,7 @@ export default async function Page({ params }) {
                 ) : (
                   <div className="flex aspect-[16/9] items-center justify-center bg-[#f1f1ef]">
                     <span className="font-montserrat text-[10px] uppercase tracking-[0.22em] text-black/25 md:text-[11px]">
-                      No images available
+                      لا توجد صور
                     </span>
                   </div>
                 )}
@@ -204,7 +205,7 @@ export default async function Page({ params }) {
               <div className="lg:sticky lg:top-8 lg:h-fit">
                 <div className="border-t border-black/10 pt-6">
                   <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.28em] text-black/35 md:text-[11px]">
-                    {motorcycle.bikeType} · {motorcycle.condition}
+                    {translateLabel(motorcycle.bikeType)} · {translateLabel(motorcycle.condition)}
                   </p>
 
                   <p className="mt-7 font-montserrat text-[11px] font-medium uppercase tracking-[0.28em] text-black/40 md:text-xs">
@@ -222,12 +223,12 @@ export default async function Page({ params }) {
                       {formattedMileage} {motorcycle.mileageUnit}
                     </span>
                     <span className="h-[3px] w-[3px] rounded-full bg-black/20" />
-                    <span>{motorcycle.transmission}</span>
+                    <span>{translateLabel(motorcycle.transmission)}</span>
                   </div>
 
                   <div className="mt-8 border-y border-black/10 py-6">
                     <p className="font-montserrat text-[9px] uppercase tracking-[0.22em] text-black/30 md:text-[10px]">
-                      Asking price
+                      السعر المطلوب
                     </p>
 
                     <p className="mt-2 font-montserrat text-2xl font-medium tracking-[-0.02em] md:text-3xl lg:text-4xl">
@@ -240,7 +241,7 @@ export default async function Page({ params }) {
                       href={`/contact?motorcycle=${motorcycle._id}`}
                       className="group flex items-center justify-center gap-3 bg-black px-6 py-4 font-montserrat text-[10px] font-medium uppercase tracking-[0.18em] text-white transition-all duration-300 hover:bg-black/80 md:text-[11px]"
                     >
-                      Enquire about this motorcycle
+                      استفسر عن هذه الدراجة
                       <ArrowUpRight
                         size={15}
                         strokeWidth={1.3}
@@ -252,7 +253,7 @@ export default async function Page({ params }) {
                       href={`/test-drive?motorcycle=${motorcycle._id}`}
                       className="group flex items-center justify-center gap-3 border border-black/15 px-6 py-4 font-montserrat text-[10px] font-medium uppercase tracking-[0.18em] transition-all duration-300 hover:border-black hover:bg-black hover:text-white md:text-[11px]"
                     >
-                      Book a test ride
+                      احجز تجربة قيادة
                       <ArrowUpRight
                         size={15}
                         strokeWidth={1.3}
@@ -263,9 +264,9 @@ export default async function Page({ params }) {
 
                   <div className="mt-6 flex items-center justify-between font-montserrat text-[9px] uppercase tracking-[0.18em] text-black/30 md:text-[10px]">
                     <span>
-                      Stock {motorcycle.stockNumber || "Available"}
+                      رقم المخزون {motorcycle.stockNumber || "متاحة"}
                     </span>
-                    <span>{motorcycle.status}</span>
+                    <span>                    {translateLabel(motorcycle.status)}</span>
                   </div>
                 </div>
               </div>
@@ -282,52 +283,52 @@ export default async function Page({ params }) {
             <Reveal>
               <div>
                 <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/30 md:text-[11px]">
-                  The motorcycle
+                  الدراجة النارية
                 </p>
 
                 <h2 className="mt-3 font-bebas text-5xl leading-[0.85] tracking-[-0.035em] md:text-6xl">
-                  About this
+                  معلومات عن
                   <br />
-                  motorcycle
+                  الدراجة
                 </h2>
 
                 <p className="mt-7 max-w-xl whitespace-pre-line font-montserrat text-[11px] leading-[1.9] tracking-[0.035em] text-black/45 md:text-[13px] md:leading-[1.85]">
                   {motorcycle.description ||
-                    "Contact our dealership for more information about this motorcycle."}
+                    "تواصل مع المعرض لمزيد من المعلومات عن هذه الدراجة النارية."}
                 </p>
               </div>
             </Reveal>
 
             <Reveal delay={0.12}>
               <div className="border-t border-black/10">
-                <SpecRow label="Make" value={motorcycle.make} />
-                <SpecRow label="Model" value={motorcycle.model} />
-                <SpecRow label="Year" value={motorcycle.year} />
+                <SpecRow label="الشركة المصنّعة" value={motorcycle.make} />
+                <SpecRow label="الطراز" value={motorcycle.model} />
+                <SpecRow label="سنة الصنع" value={motorcycle.year} />
 
                 <SpecRow
-                  label="Mileage"
+                  label="المسافة المقطوعة"
                   value={`${formattedMileage} ${motorcycle.mileageUnit}`}
                 />
 
                 <SpecRow
-                  label="Transmission"
-                  value={motorcycle.transmission}
+                  label="ناقل الحركة"
+                  value={translateLabel(motorcycle.transmission)}
                 />
 
-                <SpecRow label="Fuel type" value={motorcycle.fuelType} />
+                <SpecRow label="نوع الوقود" value={translateLabel(motorcycle.fuelType)} />
 
                 <SpecRow
-                  label="Motorcycle type"
-                  value={motorcycle.bikeType}
+                  label="نوع الدراجة"
+                  value={translateLabel(motorcycle.bikeType)}
                 />
 
                 <SpecRow
-                  label="Exterior"
+                  label="اللون الخارجي"
                   value={motorcycle.exteriorColor || "—"}
                 />
 
                 <SpecRow
-                  label="Engine capacity"
+                  label="سعة المحرك"
                   value={
                     motorcycle.engineCapacity != null
                       ? `${motorcycle.engineCapacity} cc`
@@ -336,28 +337,28 @@ export default async function Page({ params }) {
                 />
 
                 <SpecRow
-                  label="Engine type"
+                  label="نوع المحرك"
                   value={motorcycle.engineType || "—"}
                 />
 
                 <SpecRow
-                  label="Cooling system"
-                  value={motorcycle.coolingSystem || "—"}
+                  label="نظام التبريد"
+                  value={translateLabel(motorcycle.coolingSystem || "—")}
                 />
 
                 <SpecRow
-                  label="Starting system"
-                  value={motorcycle.startingSystem || "—"}
+                  label="نظام التشغيل"
+                  value={translateLabel(motorcycle.startingSystem || "—")}
                 />
 
                 <SpecRow
-                  label="Brake type"
-                  value={motorcycle.brakeType || "—"}
+                  label="نوع المكابح"
+                  value={translateLabel(motorcycle.brakeType || "—")}
                 />
 
                 <SpecRow
-                  label="ABS"
-                  value={motorcycle.abs ? "Yes" : "No"}
+                  label="نظام منع انغلاق المكابح (ABS)"
+                  value={motorcycle.abs ? "نعم" : "لا"}
                 />
               </div>
             </Reveal>
@@ -374,16 +375,16 @@ export default async function Page({ params }) {
               <div className="mb-10 flex items-end justify-between">
                 <div>
                   <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/30 md:text-[11px]">
-                    Equipment
+                    التجهيزات
                   </p>
 
                   <h2 className="mt-3 font-bebas text-5xl leading-none tracking-[-0.03em] md:text-6xl">
-                    Features
+                    الميزات
                   </h2>
                 </div>
 
                 <span className="hidden font-montserrat text-[9px] uppercase tracking-[0.2em] text-black/25 sm:block md:text-[10px]">
-                  {motorcycle.features.length} items
+                  {motorcycle.features.length} ميزة
                 </span>
               </div>
             </Reveal>
@@ -418,19 +419,18 @@ export default async function Page({ params }) {
             <Reveal>
               <div>
                 <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-white/30 md:text-[11px]">
-                  The dealership
+                  معرضنا
                 </p>
 
                 <h2 className="mt-4 max-w-4xl font-bebas text-[clamp(4rem,8vw,8rem)] leading-[0.8] tracking-[-0.045em]">
-                  Come see it
+                  تعرّف عليها
                   <br />
-                  in person.
+                  عن قرب.
                 </h2>
 
                 <p className="mt-7 max-w-xl font-montserrat text-[11px] leading-[1.9] tracking-[0.035em] text-white/35 md:text-[13px] md:leading-[1.85]">
-                  Visit our showroom to experience the motorcycle in
-                  person and speak with our team about ownership,
-                  financing, trade-ins, and test drives.
+                  زر معرضنا لتجربة الدراجة عن قرب، وتحدث مع فريقنا عن الشراء
+                  وخيارات الدفع والاستبدال وتجارب القيادة.
                 </p>
               </div>
             </Reveal>
@@ -446,7 +446,7 @@ export default async function Page({ params }) {
                     href="/contact"
                     className="group inline-flex items-center gap-3 bg-white px-5 py-3.5 font-montserrat text-[9px] font-medium uppercase tracking-[0.18em] text-black transition-all duration-300 hover:bg-white/85 md:text-[10px]"
                   >
-                    Contact {BUSINESS_NAME}
+                    تواصل مع {BUSINESS_NAME}
                     <ArrowUpRight
                       size={14}
                       strokeWidth={1.2}
@@ -469,11 +469,11 @@ export default async function Page({ params }) {
               <div className="mb-10 flex items-end justify-between gap-6">
                 <div>
                   <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/30 md:text-[11px]">
-                    Fresh to the collection
+                    وصلت حديثًا إلى مجموعتنا
                   </p>
 
                   <h2 className="mt-3 font-bebas text-5xl leading-[0.85] tracking-[-0.035em] sm:text-6xl md:text-7xl">
-                    Latest Arrivals
+                    أحدث الدراجات
                   </h2>
                 </div>
 
@@ -481,7 +481,7 @@ export default async function Page({ params }) {
                   href="/motorcycle"
                   className="group hidden items-center gap-2 border-b border-black/20 pb-2 font-montserrat text-[9px] font-medium uppercase tracking-[0.18em] text-black/50 transition-colors duration-300 hover:border-black hover:text-black sm:flex md:text-[10px]"
                 >
-                  View all motorcycles
+                  عرض جميع الدراجات
                   <ArrowUpRight
                     size={14}
                     strokeWidth={1.2}
@@ -511,7 +511,7 @@ export default async function Page({ params }) {
                 href="/motorcycle"
                 className="group inline-flex items-center gap-3 bg-black px-6 py-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-white"
               >
-                View all motorcycles
+                عرض جميع الدراجات
                 <ArrowUpRight
                   size={14}
                   strokeWidth={1.2}
@@ -573,13 +573,13 @@ function LatestMotorcycleCard({ motorcycle, index }) {
           />
         ) : (
           <div className="flex h-full items-center justify-center font-montserrat text-[10px] uppercase tracking-[0.2em] text-black/25">
-            No image
+            لا توجد صورة
           </div>
         )}
 
         <div className="absolute left-3 top-3">
           <span className="bg-white px-3 py-2 font-montserrat text-[8px] font-medium uppercase tracking-[0.15em] text-black md:text-[9px]">
-            {motorcycle.condition}
+            {translateLabel(motorcycle.condition)}
           </span>
         </div>
 
@@ -624,7 +624,7 @@ function LatestMotorcycleCard({ motorcycle, index }) {
 
           <span className="h-[3px] w-[3px] rounded-full bg-black/20" />
 
-          <span>{motorcycle.bikeType}</span>
+          <span>{translateLabel(motorcycle.bikeType)}</span>
         </div>
       </div>
     </Link>

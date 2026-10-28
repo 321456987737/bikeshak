@@ -16,41 +16,41 @@ const slides = [
   {
     id: 1,
     image: "/images/motorcycle/motorcycle1.jpg",
-    eyebrow: "YOUR NEXT RIDE STARTS HERE",
-    title: "FIND YOUR NEXT BIKES.",
+    eyebrow: "مشوارك القادم يبدأ من هنا",
+    title: "اكتشف دراجتك القادمة",
     description:
-      "Explore a carefully selected collection of premium motorcycles, versatile commuters, and everyday favorites.",
-    cta: "Explore Motorcycles",
+      "استكشف مجموعة مختارة بعناية من الدراجات النارية الفاخرة، ودراجات التنقل العملية، وخيارات تناسب استخدامك اليومي.",
+    cta: "استكشف الدراجات النارية",
     href: "/motorcycle",
-    secondaryCta: "Book a Test Ride",
+    secondaryCta: "احجز تجربة قيادة",
     secondaryHref: "/test-drive",
-    category: "DISCOVER OUR COLLECTION",
+    category: "اكتشف مجموعتنا",
   },
   {
     id: 2,
     image: "/images/motorcycle/motorcycle2.jpg",
-    eyebrow: "RIDE SOMETHING EXCEPTIONAL",
-    title: "QUALITY YOU CAN FEEL.",
+    eyebrow: "عِش تجربة قيادة استثنائية",
+    title: "جودة تلمسها بنفسك",
     description:
-      "Discover motorcycles selected for their performance, comfort, and character. Your next journey begins here.",
-    cta: "View All Motorcycles",
+      "اكتشف دراجات نارية اختيرت لأدائها وراحتها وطابعها المميز. رحلتك القادمة تبدأ من هنا.",
+    cta: "تصفّح جميع الدراجات",
     href: "/motorcycle",
-    secondaryCta: "Contact Showroom",
+    secondaryCta: "تواصل مع المعرض",
     secondaryHref: "/contact",
-    category: "QUALITY MEETS CONFIDENCE",
+    category: "جودة تبعث على الثقة",
   },
   {
     id: 3,
     image: "/images/motorcycle/motorcycle3.jpg",
-    eyebrow: "YOUR JOURNEY. YOUR CHOICE.",
-    title: "THE RIGHT BIKE. RIGHT HERE.",
+    eyebrow: "رحلتك.. واختيارك",
+    title: "دراجتك المناسبة بانتظارك",
     description:
-      "From nimble urban rides to powerful touring motorcycles, find the perfect fit for your lifestyle and next adventure.",
-    cta: "Find Your Motorcycle",
+      "من الدراجات العملية للتنقل داخل المدينة إلى دراجات الرحلات القوية، اعثر على ما يناسب أسلوب حياتك ومغامرتك القادمة.",
+    cta: "اعثر على دراجتك",
     href: "/motorcycle",
-    secondaryCta: "Book a Test Ride",
+    secondaryCta: "احجز تجربة قيادة",
     secondaryHref: "/test-drive",
-    category: "EXPLORE THE POSSIBILITIES",
+    category: "اكتشف خياراتك",
   },
 ];
 
@@ -111,7 +111,7 @@ export default function HeroSection() {
 
   return (
     <section
-      aria-label="Discover our vehicle inventory"
+      aria-label="اكتشف الدراجات النارية المتوفرة"
       className="relative h-[80dvh] min-h-[500px] w-full overflow-hidden bg-[#171717] text-white md:h-[88svh] md:min-h-[680px] md:max-h-[1000px]"
     >
       {/* BACKGROUND CAROUSEL */}
@@ -125,7 +125,7 @@ export default function HeroSection() {
             >
               <Image
                 src={slide.image}
-                alt={`${slide.category} — featured motorcycle`}
+                alt={`${slide.category} — دراجة نارية مميزة`}
                 fill
                 priority={slide.id === 1}
                 sizes="100vw"
@@ -304,7 +304,7 @@ export default function HeroSection() {
               <button
                 type="button"
                 onClick={scrollPrev}
-                aria-label="Previous vehicle slide"
+                aria-label="الشريحة السابقة"
                 className="flex h-11 w-11 items-center justify-center border border-white/25 text-white transition-colors hover:bg-white hover:text-[#171717] active:scale-95"
               >
                 <ArrowLeft size={18} strokeWidth={1.6} />
@@ -313,7 +313,7 @@ export default function HeroSection() {
               <button
                 type="button"
                 onClick={scrollNext}
-                aria-label="Next vehicle slide"
+                aria-label="الشريحة التالية"
                 className="flex h-11 w-11 items-center justify-center border border-white/25 text-white transition-colors hover:bg-white hover:text-[#171717] active:scale-95"
               >
                 <ArrowRight size={18} strokeWidth={1.6} />

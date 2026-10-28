@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 const Page = () => {
   return (
     <div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>جارٍ التحميل...</div>}>
         <ServicesPage/>
       </Suspense>
     </div>

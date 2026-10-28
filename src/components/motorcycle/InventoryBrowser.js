@@ -21,12 +21,12 @@ export default function InventoryBrowser({
   const inventorySelector = (
     <div
       role="group"
-      aria-label="Choose inventory"
+      aria-label="اختر نوع المعروضات"
       className="inline-flex items-center rounded-full border border-black/10 bg-[#f7f7f5] p-1"
     >
       {[
-        { value: "motorcycles", label: "Motorcycles" },
-        { value: "accessories", label: "Accessories" },
+        { value: "motorcycles", label: "الدراجات النارية" },
+        { value: "accessories", label: "الإكسسوارات" },
       ].map((item) => (
         <button
           key={item.value}

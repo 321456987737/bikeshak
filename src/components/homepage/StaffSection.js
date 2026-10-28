@@ -14,43 +14,43 @@ import {
 const staff = [
   {
     id: 1,
-    name: "Team Member One",
-    role: "Showroom Manager",
+    name: "عضو الفريق الأول",
+    role: "مدير المعرض",
     image: "/images/people/1.webp",
     description:
-      "Helping customers find the right motorcycle and enjoy a smooth showroom experience.",
+      "مساعدة العملاء في العثور على الدراجة المناسبة والاستمتاع بتجربة مريحة في المعرض.",
   },
   {
     id: 2,
-    name: "Team Member Two",
-    role: "Sales Consultant",
+    name: "عضو الفريق الثاني",
+    role: "مستشار مبيعات",
     image: "/images/people/2.webp",
     description:
-      "Guiding customers through motorcycle details, available options, and showroom visits.",
+      "إرشاد العملاء إلى تفاصيل الدراجات والخيارات المتاحة وترتيب زيارات المعرض.",
   },
   {
     id: 3,
-    name: "Team Member Three",
-    role: "Motorcycle Specialist",
+    name: "عضو الفريق الثالث",
+    role: "مختص بالدراجات النارية",
     image: "/images/people/3.jpg",
     description:
-      "Helping customers understand motorcycle specifications and choose with confidence.",
+      "مساعدة العملاء على فهم مواصفات الدراجات والاختيار بثقة.",
   },
   {
     id: 4,
-    name: "Team Member Four",
-    role: "Sales Consultant",
+    name: "عضو الفريق الرابع",
+    role: "مستشار مبيعات",
     image: "/images/people/4.webp",
     description:
-      "Helping customers explore the inventory and find a motorcycle that suits their needs.",
+      "مساعدة العملاء على استكشاف المخزون والعثور على دراجة تناسب احتياجاتهم.",
   },
   {
     id: 5,
-    name: "Team Member Five",
-    role: "Customer Relations",
+    name: "عضو الفريق الخامس",
+    role: "علاقات العملاء",
     image: "/images/people/5.webp",
     description:
-      "Making every customer interaction clear, welcoming, and straightforward.",
+      "جعل كل تواصل مع العملاء واضحًا ومرحبًا ومباشرًا.",
   },
   
 ];
@@ -121,7 +121,7 @@ export default function StaffSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="mb-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-black/30 md:text-[10px]"
             >
-              The people behind the experience
+              الفريق الذي يصنع التجربة
             </motion.p>
 
             <motion.h2
@@ -131,9 +131,9 @@ export default function StaffSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="font-bebas text-[clamp(4.5rem,9vw,9rem)] leading-[0.8] tracking-[-0.04em]"
             >
-              GOOD PEOPLE.
+              فريق مميز.
               <br />
-              GREAT SERVICE.
+              خدمة رائعة.
             </motion.h2>
           </div>
 
@@ -145,16 +145,15 @@ export default function StaffSection() {
             className="max-w-md lg:justify-self-end"
           >
             <p className="font-montserrat text-[10px] leading-[1.9] tracking-[0.05em] text-black/45 md:text-[11px]">
-              Behind every great showroom experience is a team that cares
-              about getting the details right. Meet the people ready to help
-              you find your next motorcycle.
+              وراء كل تجربة رائعة في المعرض فريق يهتم بأدق التفاصيل. تعرّف
+              على الأشخاص المستعدين لمساعدتك في العثور على دراجتك القادمة.
             </p>
 
             <a
               href="/contact"
               className="group mt-6 inline-flex items-center gap-3 border-b border-black/20 pb-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.15em] transition-colors hover:border-black md:text-[10px]"
             >
-              Meet us at the showroom
+              نلقاك في المعرض
               <ArrowUpRight
                 size={14}
                 strokeWidth={1.4}
@@ -171,7 +170,7 @@ export default function StaffSection() {
             type="button"
             onClick={scrollPrev}
             disabled={!emblaApi?.canScrollPrev()}
-            aria-label="Previous team members"
+            aria-label="أعضاء الفريق السابقون"
             className="absolute left-0 top-[35%] z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-black/15 bg-[#f7f7f5] text-black transition-all duration-300 hover:bg-black hover:text-white disabled:pointer-events-none disabled:opacity-30 md:h-12 md:w-12"
           >
             <ArrowLeft size={17} strokeWidth={1.3} />
@@ -182,7 +181,7 @@ export default function StaffSection() {
             type="button"
             onClick={scrollNext}
             disabled={!emblaApi?.canScrollNext()}
-            aria-label="Next team members"
+            aria-label="أعضاء الفريق التاليون"
             className="absolute right-0 top-[35%] z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-black/15 bg-[#f7f7f5] text-black transition-all duration-300 hover:bg-black hover:text-white disabled:pointer-events-none disabled:opacity-30 md:h-12 md:w-12"
           >
             <ArrowRight size={17} strokeWidth={1.3} />
@@ -220,7 +219,7 @@ export default function StaffSection() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
 
                       <span className="absolute left-4 top-4 border border-white/30 bg-black/20 px-3 py-2 font-montserrat text-[8px] uppercase tracking-[0.2em] text-white backdrop-blur-sm">
-                        Team / {String(person.id).padStart(2, "0")}
+                        الفريق / {String(person.id).padStart(2, "0")}
                       </span>
 
                       <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-3">
@@ -260,7 +259,7 @@ export default function StaffSection() {
         {/* CAROUSEL FOOTER */}
         <div className="mt-8 flex items-center justify-between gap-6 border-t border-black/10 pt-6">
           <p className="font-montserrat text-[8px] uppercase tracking-[0.2em] text-black/35 md:text-[9px]">
-            Demo Auto · Sample team profiles
+            ملفّات تعريفية بأعضاء الفريق
           </p>
 
           <div className="flex items-center gap-5">
@@ -268,7 +267,7 @@ export default function StaffSection() {
             <div
               className="h-px w-16 overflow-hidden bg-black/10 sm:w-28"
               role="progressbar"
-              aria-label="Team carousel progress"
+              aria-label="تقدّم عرض أعضاء الفريق"
               aria-valuemin={1}
               aria-valuemax={Math.max(snapCount, 1)}
               aria-valuenow={selectedIndex + 1}

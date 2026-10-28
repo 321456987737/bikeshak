@@ -5,21 +5,21 @@ import { ArrowUpRight } from "lucide-react";
 const stats = [
   {
     id: 1,
-    value: "Browse",
-    label: "Motorcycle inventory",
-    description: "Explore the motorcycles currently listed in our collection.",
+    value: "تصفّح",
+    label: "الدراجات النارية",
+    description: "استكشف الدراجات النارية المعروضة حاليًا ضمن مجموعتنا.",
   },
   {
     id: 2,
-    value: "Ask",
-    label: "Get more details",
-    description: "Contact our team with questions about an available motorcycle.",
+    value: "استفسر",
+    label: "اعرف المزيد",
+    description: "تواصل مع فريقنا للاستفسار عن الدراجات النارية المتوفرة.",
   },
   {
     id: 3,
-    value: "Visit",
-    label: "Riyadh showroom",
-    description: "Find BIKESHACK in Riyadh, Saudi Arabia, and plan your visit.",
+    value: "زُرنا",
+    label: "معرض الرياض",
+    description: "تفضل بزيارة BIKESHACK في الرياض، المملكة العربية السعودية.",
   },
 ];
 const reveal = {
@@ -48,7 +48,7 @@ export default function StatsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="mb-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-black/35 md:text-[10px]"
             >
-              A simple way to get started
+              بداية سهلة
             </motion.p>
 
             <motion.h2
@@ -58,9 +58,9 @@ export default function StatsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="font-bebas text-[clamp(4.5rem,9vw,9rem)] leading-[0.8] tracking-[-0.04em] text-black"
             >
-              FIND YOUR NEXT
+              اعثر على
               <br />
-              MOTORCYCLE.
+              دراجتك القادمة
             </motion.h2>
 
             <motion.p
@@ -70,8 +70,8 @@ export default function StatsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="mt-6 max-w-md font-montserrat text-[10px] leading-[1.9] tracking-[0.04em] text-black/45 md:text-[11px]"
             >
-              Explore our inventory online, then contact us or visit the
-              showroom in Riyadh.
+              استكشف الدراجات المتوفرة عبر موقعنا، ثم تواصل معنا أو زر معرضنا
+              في الرياض.
             </motion.p>
           </div>
 
@@ -83,7 +83,7 @@ export default function StatsSection() {
             transition={{ duration: 0.5 }}
             className="group inline-flex w-fit items-center gap-3 border-b border-black/20 pb-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.16em] transition-colors hover:border-black md:text-[10px]"
           >
-            Discover our showroom
+            اكتشف معرضنا
             <ArrowUpRight
               size={14}
               strokeWidth={1.4}
@@ -145,11 +145,11 @@ export default function StatsSection() {
           className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
         >
           <p className="font-montserrat text-[9px] leading-[1.8] tracking-[0.04em] text-black/35">
-            More than motorcycles. A standard of service you can trust.
+            أكثر من مجرد دراجات نارية؛ خدمة يمكنك الوثوق بها.
           </p>
 
           <span className="font-montserrat text-[9px] uppercase tracking-[0.14em] text-black/40">
-            BIKESHACK · Riyadh, Saudi Arabia
+            BIKESHACK · الرياض، المملكة العربية السعودية
           </span>
         </motion.div>
       </div>

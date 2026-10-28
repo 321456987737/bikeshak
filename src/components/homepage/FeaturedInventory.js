@@ -6,10 +6,11 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { ArrowUpRight, RefreshCw } from "lucide-react";
 import { motion } from "framer-motion";
+import { translateLabel } from "@/lib/localization";
 
 function formatPrice(price, currency) {
   if (typeof price !== "number") {
-    return "Price on request";
+    return "السعر عند الطلب";
   }
 
   try {
@@ -38,7 +39,7 @@ function MotorcycleCard({ motorcycle, index }) {
   const imageAlt =
     motorcycle.images?.find((image) => image?.url)?.alt ||
     title ||
-    "Featured motorcycle";
+    "دراجة نارية مميزة";
 
   return (
     <motion.article
@@ -54,7 +55,7 @@ function MotorcycleCard({ motorcycle, index }) {
       <Link
         href={motorcycle._id ? `/motorcycle/${motorcycle._id}` : "/motorcycle"}
         className="block h-full"
-        aria-label={`View ${title}`}
+        aria-label={`عرض ${title}`}
       >
         {/* Motorcycle image */}
         <div className="relative aspect-[4/3] overflow-hidden bg-[#ebeae6]">
@@ -69,7 +70,7 @@ function MotorcycleCard({ motorcycle, index }) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
 
           <span className="absolute left-1 top-1 border border-white/35 bg-black/35 px-2 py-1 font-montserrat text-[8px] font-medium uppercase tracking-[0.18em] text-white backdrop-blur-sm">
-            {motorcycle.bikeType || "Featured motorcycle"}
+            {translateLabel(motorcycle.bikeType || "دراجة نارية مميزة")}
           </span>
 
           <span className="absolute bottom-2 right-2 flex h-6 w-6 items-center justify-center border border-white/50 bg-white text-black transition-colors duration-300 group-hover:bg-black group-hover:text-white">
@@ -81,7 +82,7 @@ function MotorcycleCard({ motorcycle, index }) {
         <div className="border-b border-black/15 py-5 sm:py-6">
           <div className="mb-2 flex items-center justify-between gap-4">
             <p className="min-w-0 truncate font-montserrat text-[8px] font-medium uppercase tracking-[0.25em] text-black/45 sm:text-[9px]">
-              {motorcycle.make || "Selected motorcycle"}
+              {motorcycle.make || "دراجة مختارة"}
             </p>
 
             {motorcycle.year && (
@@ -92,18 +93,20 @@ function MotorcycleCard({ motorcycle, index }) {
           </div>
 
           <h3 className="font-bebas text-3xl leading-[0.95] tracking-[-0.02em] sm:text-4xl">
-            {motorcycle.model || "Motorcycle details"}
+            {motorcycle.model || "تفاصيل الدراجة النارية"}
           </h3>
 
           <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 font-montserrat text-[8px] uppercase tracking-[0.14em] text-black/40">
-            {motorcycle.transmission && <span>{motorcycle.transmission}</span>}
+            {motorcycle.transmission && (
+              <span>{translateLabel(motorcycle.transmission)}</span>
+            )}
 
             {motorcycle.fuelType && (
               <>
                 {motorcycle.transmission && (
                   <span className="h-[3px] w-[3px] rounded-full bg-black/25" />
                 )}
-                <span>{motorcycle.fuelType}</span>
+                <span>{translateLabel(motorcycle.fuelType)}</span>
               </>
             )}
 
@@ -120,7 +123,7 @@ function MotorcycleCard({ motorcycle, index }) {
 
           <div className="mt-6 flex items-end justify-between gap-3 border-t border-black/10 pt-5">
             <span className="font-montserrat text-[8px] uppercase tracking-[0.2em] text-black/40">
-              Asking price
+              السعر المطلوب
             </span>
 
             <span className="text-right font-montserrat text-sm font-semibold tracking-[0.01em]">
@@ -175,7 +178,7 @@ export default function FeaturedInventory() {
 
       if (!response.ok || !result.success) {
         throw new Error(
-          result.message || "Unable to load featured motorcycles."
+          result.message || "تعذّر تحميل الدراجات النارية المميزة."
         );
       }
 
@@ -193,7 +196,7 @@ export default function FeaturedInventory() {
       console.error("Featured inventory fetch error:", fetchError);
 
       setError(
-        "We couldn't load the featured motorcycles. Please try again."
+        "تعذّر تحميل الدراجات النارية المميزة. حاول مرة أخرى."
       );
 
       setStatus("error");
@@ -232,7 +235,7 @@ useEffect(() => {
               transition={{ duration: 0.4 }}
               className="mb-3 font-montserrat text-[9px] font-medium uppercase tracking-[0.32em] text-black/40 md:text-[10px]"
             >
-              A carefully selected collection
+              مجموعة مختارة بعناية
             </motion.p>
 
             <motion.h2
@@ -242,7 +245,7 @@ useEffect(() => {
               transition={{ duration: 0.5, delay: 0.04 }}
               className="font-bebas text-5xl leading-[0.88] tracking-[-0.035em] sm:text-6xl md:text-7xl lg:text-[clamp(5rem,7vw,7.5rem)]"
             >
-              Featured Motorcycles
+              الدراجات النارية المميزة
             </motion.h2>
           </div>
 
@@ -250,7 +253,7 @@ useEffect(() => {
             href="/motorcycle"
             className="group inline-flex w-fit items-center gap-3 border-b border-black/25 pb-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.18em] text-black/65 transition-colors duration-300 hover:border-black hover:text-black"
           >
-            Explore all motorcycles
+            استكشف جميع الدراجات
 
             <ArrowUpRight
               size={15}
@@ -283,21 +286,21 @@ useEffect(() => {
               className="mt-5 inline-flex items-center gap-2 border border-black/25 px-5 py-3 font-montserrat text-[9px] font-semibold uppercase tracking-[0.16em] transition-colors duration-300 hover:border-black hover:bg-[#181818] hover:text-white"
             >
               <RefreshCw size={13} strokeWidth={1.5} />
-              Try again
+              حاول مرة أخرى
             </button>
           </div>
         ) : status === "empty" ? (
           /* Empty state */
           <div className="flex min-h-64 flex-col items-center justify-center border border-black/10 px-6 text-center">
             <p className="font-montserrat text-[10px] uppercase tracking-[0.2em] text-black/45">
-              No featured motorcycles are available right now.
+              لا تتوفر دراجات نارية مميزة حاليًا.
             </p>
 
             <Link
               href="/motorcycle"
               className="mt-5 border-b border-black/30 pb-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.18em] text-black/70 transition-colors hover:border-black hover:text-black"
             >
-              Browse all motorcycles
+              تصفّح جميع الدراجات
             </Link>
           </div>
         ) : (
@@ -319,7 +322,7 @@ useEffect(() => {
             href="/motorcycle"
             className="group inline-flex min-h-12 items-center justify-center gap-3 bg-[#181818] px-6 py-4 font-montserrat text-[9px] font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-black/75 sm:px-8"
           >
-            View all motorcycles
+            عرض جميع الدراجات
 
             <ArrowUpRight
               size={15}

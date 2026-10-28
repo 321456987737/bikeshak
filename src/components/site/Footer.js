@@ -13,11 +13,11 @@ import {
 import Image from "next/image";
 
 const navigation = [
-  { label: "Home", href: "/" },
-  { label: "Motorcycles", href: "/motorcycle" },
-  { label: "Services", href: "/services" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "الرئيسية", href: "/" },
+  { label: "الدراجات النارية", href: "/motorcycle" },
+  { label: "خدماتنا", href: "/services" },
+  { label: "من نحن", href: "/about" },
+  { label: "تواصل معنا", href: "/contact" },
 ];
 
 export default function Footer() {
@@ -36,7 +36,7 @@ export default function Footer() {
                 transition={{ duration: 0.45 }}
                 className="mb-5 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-white/40 md:text-[10px]"
               >
-                Your next motorcycle awaits
+                دراجتك النارية القادمة بانتظارك
               </motion.p>
 
               <motion.h2
@@ -50,9 +50,9 @@ export default function Footer() {
                 }}
                 className="max-w-5xl font-bebas text-[clamp(4.5rem,10vw,10rem)] leading-[0.78] tracking-[-0.045em]"
               >
-                Find Your Next
+                اعثر على دراجتك
                 <br />
-                Motorcycle.
+                القادمة
               </motion.h2>
             </div>
 
@@ -66,7 +66,7 @@ export default function Footer() {
                 href="/motorcycle"
                 className="group inline-flex items-center gap-4 border border-white bg-white px-7 py-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-black transition-all duration-300 hover:bg-transparent hover:text-white md:px-8 md:py-5"
               >
-                Explore motorcycles
+                استكشف الدراجات النارية
 
                 <ArrowUpRight
                   size={15}
@@ -95,13 +95,13 @@ export default function Footer() {
               href="/"
               className="inline-block  font-bebas text-4xl tracking-[0.02em] transition-opacity duration-300 hover:opacity-70 md:text-5xl"
             >
-                <Image src="/logo.png" alt="BIKESHACK logo" width={120} height={120} />
+                <Image src="/logo.png" alt="شعار BIKESHACK" width={120} height={120} />
               {BUSINESS_NAME}
             </Link>
 
             <p className="mt-5 max-w-sm font-montserrat text-[10px] leading-[1.9] tracking-[0.05em] text-white/45 md:text-[11px]">
-              Explore our motorcycle collection and contact {BUSINESS_NAME}
-              about available bikes or a showroom visit.
+              استكشف مجموعة الدراجات النارية لدينا وتواصل مع {BUSINESS_NAME}
+              للاستفسار عن الدراجات المتوفرة أو زيارة المعرض.
             </p>
 
             <a
@@ -110,7 +110,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="group mt-6 inline-flex items-center gap-2 font-montserrat text-[9px] font-medium uppercase tracking-[0.16em] text-white/55 transition-colors hover:text-white"
             >
-              Visit our showroom
+              تفضل بزيارة معرضنا
 
               <ArrowUpRight
                 size={14}
@@ -129,7 +129,7 @@ export default function Footer() {
             transition={{ duration: 0.5, delay: 0.08 }}
           >
             <p className="mb-6 font-montserrat text-[9px] font-medium uppercase tracking-[0.3em] text-white/35">
-              Explore
+              استكشف
             </p>
 
             <nav className="flex flex-col items-start">
@@ -164,13 +164,13 @@ export default function Footer() {
             transition={{ duration: 0.5, delay: 0.16 }}
           >
             <p className="mb-6 font-montserrat text-[9px] font-medium uppercase tracking-[0.3em] text-white/35">
-              Visit
+              زورونا
             </p>
 
             <div className="space-y-5">
               <div>
                 <p className="font-montserrat text-[9px] uppercase tracking-[0.16em] text-white/35">
-                  Showroom
+                  المعرض
                 </p>
 
                 <p className="mt-2 font-montserrat text-[10px] leading-[1.9] tracking-[0.04em] text-white/60 md:text-[11px]">
@@ -188,7 +188,7 @@ export default function Footer() {
               >
                 <MapPin size={14} strokeWidth={1.3} />
 
-                View on Google Maps
+                اعرض الموقع على خرائط Google
 
                 <ArrowUpRight
                   size={12}
@@ -203,7 +203,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="block font-montserrat text-[10px] tracking-[0.04em] text-white/45 transition-colors hover:text-white md:text-[11px]"
               >
-                Get directions
+                احصل على الاتجاهات
               </a>
             </div>
           </motion.div>
@@ -217,13 +217,13 @@ export default function Footer() {
             transition={{ duration: 0.5, delay: 0.24 }}
           >
             <p className="mb-6 font-montserrat text-[9px] font-medium uppercase tracking-[0.3em] text-white/35">
-              Contact
+              تواصل معنا
             </p>
 
             <div className="space-y-5">
               <div>
                 <p className="font-montserrat text-[9px] uppercase tracking-[0.16em] text-white/35">
-                  Phone
+                  الهاتف
                 </p>
 
                 <a
@@ -237,13 +237,13 @@ export default function Footer() {
 
               <div className="border-t border-white/10 pt-5">
                 <p className="font-montserrat text-[9px] uppercase tracking-[0.16em] text-white/35">
-                  Opening hours
+                  أوقات العمل
                 </p>
 
                 <p className="mt-2 font-montserrat text-[10px] leading-[1.9] tracking-[0.04em] text-white/55 md:text-[11px]">
-                  Please contact us for
+                  يرجى التواصل معنا لمعرفة
                   <br />
-                  current opening hours.
+                  أوقات العمل الحالية.
                 </p>
               </div>
             </div>
@@ -254,7 +254,7 @@ export default function Footer() {
 
         <div className="flex flex-col gap-7 py-7 md:flex-row md:items-center md:justify-between md:py-8">
           <p className="font-montserrat text-[8px] uppercase tracking-[0.18em] text-white/35">
-            © {new Date().getFullYear()} {BUSINESS_NAME}. All rights reserved.
+            © {new Date().getFullYear()} {BUSINESS_NAME}. جميع الحقوق محفوظة.
           </p>
 
           <button
@@ -267,7 +267,7 @@ export default function Footer() {
             }}
             className="group flex cursor-pointer items-center gap-2 font-montserrat text-[8px] uppercase tracking-[0.18em] text-white/45 transition-colors duration-300 hover:text-white"
           >
-            Back to top
+            العودة إلى الأعلى
 
             <ArrowUpRight
               size={13}

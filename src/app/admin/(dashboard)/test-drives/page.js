@@ -16,6 +16,13 @@ const STATUS_OPTIONS = [
   "Cancelled",
 ];
 
+const STATUS_LABELS = {
+  Pending: "قيد الانتظار",
+  Confirmed: "مؤكد",
+  Completed: "مكتمل",
+  Cancelled: "ملغي",
+};
+
 const INITIAL_PAGINATION = {
   page: 1,
   limit: 15,
@@ -119,7 +126,7 @@ export default function AdminTestDrivesPage() {
         ) {
           throw new Error(
             result.message ||
-              "Failed to load test drives"
+            "تعذّر تحميل طلبات تجارب القيادة."
           );
         }
 
@@ -166,7 +173,7 @@ export default function AdminTestDrivesPage() {
 
         setError(
           requestError.message ||
-            "Failed to load test drives"
+          "تعذّر تحميل طلبات تجارب القيادة."
         );
 
         setLoading(false);
@@ -320,7 +327,7 @@ export default function AdminTestDrivesPage() {
       ) {
         throw new Error(
           result.message ||
-            "Failed to update status"
+            "تعذّر تحديث الحالة."
         );
       }
 
@@ -352,7 +359,7 @@ export default function AdminTestDrivesPage() {
 
       setError(
         updateError.message ||
-          "Failed to update status"
+          "تعذّر تحديث الحالة."
       );
     } finally {
       setActionId(null);
@@ -370,16 +377,15 @@ export default function AdminTestDrivesPage() {
       {/* Page header */}
       <div className="mb-6 sm:mb-8">
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/35 sm:text-xs">
-          Appointments
+          المواعيد
         </p>
 
         <h1 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl">
-          Test Drives
+          تجارب القيادة
         </h1>
 
         <p className="mt-2 max-w-2xl text-sm leading-6 text-black/45">
-          Manage customer test-drive
-          requests and appointments.
+          أدر طلبات تجارب القيادة ومواعيد العملاء.
         </p>
       </div>
 
@@ -402,7 +408,7 @@ export default function AdminTestDrivesPage() {
               htmlFor="test-drive-search"
               className="sr-only"
             >
-              Search
+              بحث
             </label>
 
             <input
@@ -414,7 +420,7 @@ export default function AdminTestDrivesPage() {
                   event.target.value
                 )
               }
-              placeholder="Search customer, phone or email"
+              placeholder="ابحث باسم العميل أو الهاتف أو البريد الإلكتروني"
               className="h-11 w-full rounded-xl border border-black/10 bg-white px-4 text-sm outline-none transition placeholder:text-black/30 focus:border-black"
             />
           </div>
@@ -425,7 +431,7 @@ export default function AdminTestDrivesPage() {
               htmlFor="test-drive-status"
               className="sr-only"
             >
-              Status
+              الحالة
             </label>
 
             <select
@@ -437,7 +443,7 @@ export default function AdminTestDrivesPage() {
               className="h-11 w-full rounded-xl border border-black/10 bg-white px-3 text-sm outline-none transition focus:border-black"
             >
               <option value="">
-                All statuses
+                جميع الحالات
               </option>
 
               {STATUS_OPTIONS.map(
@@ -446,7 +452,7 @@ export default function AdminTestDrivesPage() {
                     key={option}
                     value={option}
                   >
-                    {option}
+                    {STATUS_LABELS[option] || option}
                   </option>
                 )
               )}
@@ -459,7 +465,7 @@ export default function AdminTestDrivesPage() {
               htmlFor="test-drive-date"
               className="sr-only"
             >
-              Date
+              التاريخ
             </label>
 
             <input
@@ -480,8 +486,8 @@ export default function AdminTestDrivesPage() {
             className="h-11 w-full rounded-xl bg-black px-6 text-sm font-semibold text-white transition hover:bg-black/80 disabled:cursor-not-allowed disabled:opacity-60 lg:w-auto"
           >
             {loading
-              ? "Loading..."
-              : "Search"}
+              ? "جارٍ التحميل..."
+              : "بحث"}
           </button>
         </form>
       </section>
@@ -492,14 +498,11 @@ export default function AdminTestDrivesPage() {
         <div className="flex items-center justify-between border-b border-black/10 px-4 py-4 sm:px-6 sm:py-5">
           <div>
             <h2 className="font-semibold">
-              Test-drive requests
+              طلبات تجارب القيادة
             </h2>
 
             <p className="mt-1 text-xs text-black/40">
-              {pagination.total}{" "}
-              {pagination.total === 1
-                ? "request"
-                : "requests"}
+              إجمالي الطلبات: {pagination.total}
             </p>
           </div>
 
@@ -524,23 +527,23 @@ export default function AdminTestDrivesPage() {
                 <thead>
                   <tr className="border-b border-black/10 text-left">
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Customer
+                      العميل
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Motorcycle
+                      الدراجة النارية
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Appointment
+                      الموعد
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Status
+                      الحالة
                     </th>
 
                     <th className="px-6 py-4 text-right text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Action
+                      الإجراء
                     </th>
                   </tr>
                 </thead>
@@ -634,7 +637,7 @@ export default function AdminTestDrivesPage() {
               }
               className="rounded-full border border-black/10 bg-white px-4 py-2.5 text-xs font-medium transition hover:border-black/20 disabled:cursor-not-allowed disabled:opacity-35 sm:px-5 sm:py-3 sm:text-sm"
             >
-              Previous
+              السابق
             </button>
 
             <div className="rounded-full bg-black px-4 py-2.5 text-xs font-semibold text-white sm:px-4 sm:py-3 sm:text-sm">
@@ -654,7 +657,7 @@ export default function AdminTestDrivesPage() {
               }
               className="rounded-full border border-black/10 bg-white px-4 py-2.5 text-xs font-medium transition hover:border-black/20 disabled:cursor-not-allowed disabled:opacity-35 sm:px-5 sm:py-3 sm:text-sm"
             >
-              Next
+              التالي
             </button>
           </div>
         )}
@@ -749,7 +752,7 @@ function DesktopTestDriveRow({
           </Link>
         ) : (
           <span className="text-sm text-black/40">
-            Motorcycle unavailable
+            الدراجة النارية غير متاحة
           </span>
         )}
       </td>
@@ -785,7 +788,7 @@ function DesktopTestDriveRow({
           onClick={onOpen}
           className="rounded-lg border border-black/10 px-4 py-2 text-xs font-semibold transition hover:bg-black hover:text-white"
         >
-          View
+          عرض
         </button>
       </td>
     </tr>
@@ -865,7 +868,7 @@ function MobileTestDriveCard({
           </Link>
         ) : (
           <p className="text-sm text-black/40">
-            Motorcycle unavailable
+            الدراجة النارية غير متاحة
           </p>
         )}
       </div>
@@ -873,7 +876,7 @@ function MobileTestDriveCard({
       {/* Date / time */}
       <div className="mt-4 grid grid-cols-2 gap-3">
         <InfoBlock
-          label="Date"
+          label="التاريخ"
           value={formatDateOnly(
             testDrive.date
           )}
@@ -881,7 +884,7 @@ function MobileTestDriveCard({
         />
 
         <InfoBlock
-          label="Time"
+          label="الوقت"
           value={formatTime(
             testDrive.time
           )}
@@ -896,14 +899,14 @@ function MobileTestDriveCard({
           onClick={onOpen}
           className="flex-1 rounded-xl bg-black px-4 py-3 text-sm font-semibold text-white transition hover:bg-black/80"
         >
-          View details
+          عرض التفاصيل
         </button>
 
         <a
           href={`tel:${testDrive.phone}`}
           className="rounded-xl border border-black/10 px-4 py-3 text-sm font-semibold transition hover:bg-black hover:text-white"
         >
-          Call
+          اتصال
         </a>
       </div>
     </article>
@@ -940,7 +943,7 @@ function StatusSelect({
             key={status}
             value={status}
           >
-            {status}
+            {STATUS_LABELS[status] || status}
           </option>
         )
       )}
@@ -1000,7 +1003,7 @@ function TestDriveModal({
         <div className="flex shrink-0 items-start justify-between gap-5 border-b border-black/10 px-5 py-5 sm:px-8 sm:py-6">
           <div className="min-w-0">
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-black/35 sm:text-xs">
-              Test-drive request
+              طلب تجربة قيادة
             </p>
 
             <h2
@@ -1014,7 +1017,7 @@ function TestDriveModal({
           <button
             type="button"
             onClick={onClose}
-            aria-label="Close modal"
+            aria-label="إغلاق النافذة"
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black/10 text-lg transition hover:bg-black hover:text-white"
           >
             ×
@@ -1025,27 +1028,27 @@ function TestDriveModal({
         <div className="overflow-y-auto px-5 py-5 sm:px-8 sm:py-7">
           <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
             <InfoBlock
-              label="Phone"
+              label="الهاتف"
               value={testDrive.phone}
             />
 
             <InfoBlock
-              label="Email"
+              label="البريد الإلكتروني"
               value={
                 testDrive.email ||
-                "Not provided"
+                "غير متوفر"
               }
             />
 
             <InfoBlock
-              label="Date"
+              label="التاريخ"
               value={formatDateOnly(
                 testDrive.date
               )}
             />
 
             <InfoBlock
-              label="Time"
+              label="الوقت"
               value={formatTime(
                 testDrive.time
               )}
@@ -1056,7 +1059,7 @@ function TestDriveModal({
           {testDrive.motorcycleId && (
             <div className="mt-5 rounded-2xl bg-black/[0.035] p-4 sm:mt-6 sm:p-5">
               <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-black/35 sm:text-xs">
-                Motorcycle
+                الدراجة النارية
               </p>
 
               <div className="mt-3 flex items-center justify-between gap-3 sm:mt-4 sm:gap-4">
@@ -1089,7 +1092,7 @@ function TestDriveModal({
                   rel="noreferrer"
                   className="shrink-0 rounded-lg border border-black/10 px-3 py-2 text-xs font-semibold transition hover:bg-black hover:text-white"
                 >
-                  View
+                  عرض
                 </Link>
               </div>
             </div>
@@ -1098,13 +1101,13 @@ function TestDriveModal({
           {/* Message */}
           <div className="mt-5 sm:mt-6">
             <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-black/35 sm:text-xs">
-              Customer message
+              رسالة العميل
             </p>
 
             <div className="mt-3 rounded-2xl border border-black/10 p-4 sm:p-5">
               <p className="whitespace-pre-line text-sm leading-7 text-black/60">
                 {testDrive.message ||
-                  "No additional message."}
+                  "لا توجد رسالة إضافية."}
               </p>
             </div>
           </div>
@@ -1112,7 +1115,7 @@ function TestDriveModal({
           {/* Status */}
           <div className="mt-5 sm:mt-6">
             <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.15em] text-black/35 sm:text-xs">
-              Status
+              الحالة
             </p>
 
             <StatusSelect
@@ -1133,7 +1136,7 @@ function TestDriveModal({
             href={`tel:${testDrive.phone}`}
             className="rounded-full bg-black px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-black/80 sm:px-5 sm:py-3"
           >
-            Call customer
+            الاتصال بالعميل
           </a>
 
           {testDrive.email && (
@@ -1141,7 +1144,7 @@ function TestDriveModal({
               href={`mailto:${testDrive.email}`}
               className="rounded-full border border-black/10 px-4 py-2.5 text-sm font-semibold transition hover:bg-black hover:text-white sm:px-5 sm:py-3"
             >
-              Email customer
+              مراسلة العميل
             </a>
           )}
 
@@ -1150,7 +1153,7 @@ function TestDriveModal({
             onClick={onClose}
             className="rounded-full border border-black/10 px-4 py-2.5 text-sm font-semibold sm:px-5 sm:py-3"
           >
-            Close
+            إغلاق
           </button>
         </div>
       </div>
@@ -1291,13 +1294,11 @@ function EmptyState() {
   return (
     <div className="px-5 py-16 text-center sm:px-6 sm:py-20">
       <h3 className="text-lg font-semibold">
-        No test-drive requests found
+        لم يتم العثور على طلبات تجارب قيادة
       </h3>
 
       <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-black/45">
-        Customer test-drive
-        requests will appear here
-        when they submit the form.
+        ستظهر طلبات تجارب القيادة هنا عند إرسال العملاء للنموذج.
       </p>
     </div>
   );

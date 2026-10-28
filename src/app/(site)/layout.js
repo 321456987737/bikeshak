@@ -3,8 +3,8 @@ import Header from "@/components/site/Header";
 import CarStartup from "@/components/startinganimation";
 import { BUSINESS_NAME, SHOWROOM_LOCATION } from "@/lib/business";
 export const metadata = {
-  title: `${BUSINESS_NAME} | Motorcycle Dealership`,
-  description: `Explore motorcycle inventory and contact ${BUSINESS_NAME} in ${SHOWROOM_LOCATION}.`,
+  title: `${BUSINESS_NAME} | معرض دراجات نارية`,
+  description: `استكشف الدراجات النارية المتوفرة وتواصل مع ${BUSINESS_NAME} في ${SHOWROOM_LOCATION}.`,
 };
 
 export default function mainlayout({ children }) {

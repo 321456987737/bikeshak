@@ -70,7 +70,7 @@ export default function ContactPage() {
           ...current,
           message:
             current.message ||
-            `Hello, I'm interested in the ${selectedMotorcycle.year} ${selectedMotorcycle.make} ${selectedMotorcycle.model} motorcycle. Please send me more information.`,
+            `مرحبًا، أنا مهتم بدراجة ${selectedMotorcycle.year} ${selectedMotorcycle.make} ${selectedMotorcycle.model}. أرجو تزويدي بمزيد من المعلومات.`,
         }));
       } catch (loadError) {
         if (!cancelled) {
@@ -120,11 +120,11 @@ export default function ContactPage() {
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(result.message || "Failed to send inquiry.");
+        throw new Error(result.message || "تعذّر إرسال استفسارك.");
       }
 
       setSuccess(
-        `Thank you for contacting ${BUSINESS_NAME}. Your inquiry has been received, and our team will get back to you.`,
+        `شكرًا لتواصلك مع ${BUSINESS_NAME}. استلمنا استفسارك وسيتواصل معك فريقنا.`,
       );
 
       setForm({
@@ -135,7 +135,7 @@ export default function ContactPage() {
       });
     } catch (submitError) {
       setError(
-        submitError.message || "Something went wrong. Please try again.",
+        submitError.message || "حدث خطأ ما. حاول مرة أخرى.",
       );
     } finally {
       setSubmitting(false);
@@ -149,7 +149,7 @@ export default function ContactPage() {
       <section className="relative h-[40dvh] min-h-[320px] overflow-hidden bg-[#e8e8e5] md:min-h-[440px]">
         <Image
           src="/images/motorcycle/motorcycle1.jpg"
-          alt="Motorcycle at BIKESHACK"
+          alt="دراجة نارية في BIKESHACK"
           fill
           priority
           sizes="100vw"
@@ -162,18 +162,17 @@ export default function ContactPage() {
         <div className="relative z-10 mx-auto flex h-full max-w-[1800px] items-end px-6 pb-10 md:px-10 md:pb-14 lg:px-14">
           <ScrollReveal className="max-w-4xl" y={20}>
             <p className="mb-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-white/65 md:text-[10px]">
-              We are here to help
+              نحن هنا لمساعدتك
             </p>
 
             <h1 className="font-bebas text-[clamp(4.5rem,9vw,9rem)] leading-[0.78] tracking-[-0.05em] text-white">
-              Contact Us
+              تواصل معنا
             </h1>
 
             <p className="mt-6 max-w-lg font-montserrat text-[10px] leading-[1.8] tracking-[0.04em] text-white/65 md:text-[11px]">
-              Have a question about a motorcycle? Our team is here to help
-              you explore your options, learn more about our inventory, and
-              take the next step towards your next ride. Call us or send us
-              an inquiry today.
+              هل لديك استفسار عن دراجة نارية؟ فريقنا هنا لمساعدتك على استكشاف
+              الخيارات ومعرفة المزيد عن الدراجات المتوفرة واتخاذ الخطوة التالية
+              نحو دراجتك القادمة. اتصل بنا أو أرسل استفسارك اليوم.
             </p>
           </ScrollReveal>
         </div>
@@ -186,22 +185,21 @@ export default function ContactPage() {
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
             <ScrollReveal>
               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/40 md:text-xs">
-                Contact BIKESHACK
+                تواصل مع BIKESHACK
               </p>
 
               <h2 className="mt-5 max-w-4xl font-bebas text-5xl leading-[0.95] tracking-wide md:text-7xl lg:text-8xl">
-                Questions?
+                عندك استفسار؟
                 <br />
-                We are here.
+                نحن هنا لمساعدتك
               </h2>
             </ScrollReveal>
 
             <ScrollReveal className="flex items-end" delay={0.1}>
               <p className="max-w-xl font-montserrat text-sm leading-7 text-black/60 md:text-base md:leading-8">
-                Looking for your next motorcycle, need more information
-                about a model, or want to arrange a showroom visit? Get in
-                touch with our team. We are here to answer your questions
-                and help you find the right ride.
+                تبحث عن دراجتك القادمة، أو تحتاج إلى معلومات عن أحد الطرازات،
+                أو ترغب في ترتيب زيارة للمعرض؟ تواصل مع فريقنا، فنحن هنا
+                للإجابة عن استفساراتك ومساعدتك في اختيار الدراجة المناسبة.
               </p>
             </ScrollReveal>
           </div>
@@ -221,11 +219,11 @@ export default function ContactPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/40">
-                    Contact details
+                    بيانات التواصل
                   </p>
 
                   <h3 className="mt-3 font-bebas text-4xl tracking-wide md:text-5xl">
-                    Reach us
+                    تواصل معنا
                   </h3>
                 </div>
 
@@ -237,7 +235,7 @@ export default function ContactPage() {
               <div className="mt-10 space-y-0">
                 <ContactInfo
                   icon={Phone}
-                  label="Call us"
+                  label="اتصل بنا"
                   value={BUSINESS_PHONE}
                   href={`tel:${BUSINESS_PHONE}`}
                   delay={0}
@@ -245,7 +243,7 @@ export default function ContactPage() {
 
                 <ContactInfo
                   icon={MapPin}
-                  label="Showroom"
+                  label="المعرض"
                   value={`${BUSINESS_NAME}, ${SHOWROOM_LOCATION}`}
                   href={SHOWROOM_MAP_URL}
                   delay={0.08}
@@ -254,7 +252,7 @@ export default function ContactPage() {
 
               <div className="mt-8 border-t border-black/10 pt-7">
                 <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.2em] text-black/40">
-                  Need directions?
+                  تحتاج إلى الاتجاهات؟
                 </p>
 
                 <a
@@ -263,7 +261,7 @@ export default function ContactPage() {
                   rel="noopener noreferrer"
                   className="group mt-4 inline-flex items-center gap-3 font-montserrat text-xs font-semibold uppercase tracking-[0.15em] transition-colors hover:text-black/55"
                 >
-                  Open Google Maps
+                  افتح خرائط Google
                   <ArrowUpRight
                     size={16}
                     strokeWidth={1.4}
@@ -284,16 +282,16 @@ export default function ContactPage() {
               <div className="flex items-start justify-between gap-6">
                 <div>
                   <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/40">
-                    Send an inquiry
+                    أرسل استفسارك
                   </p>
 
                   <h3 className="mt-3 font-bebas text-4xl tracking-wide md:text-5xl">
-                    Tell us what you need.
+                    أخبرنا بما تحتاج إليه
                   </h3>
 
                   <p className="mt-3 max-w-lg font-montserrat text-xs leading-6 text-black/50 md:text-sm">
-                    Fill in your details and tell us how we can help.
-                    Our team will get back to you.
+                    أدخل بياناتك وأخبرنا كيف يمكننا مساعدتك، وسيتواصل معك
+                    فريقنا.
                   </p>
                 </div>
 
@@ -329,7 +327,7 @@ export default function ContactPage() {
 
                     <div className="flex flex-1 flex-col justify-center p-5">
                       <p className="font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-black/40">
-                        Your motorcycle inquiry
+                        استفسارك عن الدراجة النارية
                       </p>
 
                       <h4 className="mt-2 font-bebas text-3xl tracking-wide">
@@ -381,7 +379,7 @@ export default function ContactPage() {
                     htmlFor="customerName"
                     className="mb-2 block font-montserrat text-[10px] font-semibold uppercase tracking-[0.18em] text-black/55"
                   >
-                    Full name
+                    الاسم الكامل
                   </label>
 
                   <input
@@ -393,7 +391,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     maxLength={100}
-                    placeholder="Your full name"
+                    placeholder="اكتب اسمك الكامل"
                     className="h-14 w-full border-b border-black/15 bg-transparent px-1 font-montserrat text-sm outline-none transition-colors placeholder:text-black/30 focus:border-black"
                   />
                 </div>
@@ -404,7 +402,7 @@ export default function ContactPage() {
                       htmlFor="phone"
                       className="mb-2 block font-montserrat text-[10px] font-semibold uppercase tracking-[0.18em] text-black/55"
                     >
-                      Phone number
+                      رقم الجوال
                     </label>
 
                     <input
@@ -416,7 +414,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       maxLength={30}
-                      placeholder="Your phone number"
+                      placeholder="اكتب رقم جوالك"
                       className="h-14 w-full border-b border-black/15 bg-transparent px-1 font-montserrat text-sm outline-none transition-colors placeholder:text-black/30 focus:border-black"
                     />
                   </div>
@@ -428,7 +426,7 @@ export default function ContactPage() {
                     >
                       Email{" "}
                       <span className="font-normal text-black/35">
-                        (optional)
+                        (اختياري)
                       </span>
                     </label>
 
@@ -451,7 +449,7 @@ export default function ContactPage() {
                     htmlFor="message"
                     className="mb-2 block font-montserrat text-[10px] font-semibold uppercase tracking-[0.18em] text-black/55"
                   >
-                    How can we help?
+                    كيف نقدر نساعدك؟
                   </label>
 
                   <textarea
@@ -462,7 +460,7 @@ export default function ContactPage() {
                     required
                     maxLength={2000}
                     rows={6}
-                    placeholder="Tell us which motorcycle you're interested in or ask us a question..."
+                    placeholder="اكتب اسم الدراجة التي تهمك أو أرسل استفسارك..."
                     className="w-full resize-y border-b border-black/15 bg-transparent px-1 py-3 font-montserrat text-sm leading-7 outline-none transition-colors placeholder:text-black/30 focus:border-black"
                   />
 
@@ -476,7 +474,7 @@ export default function ContactPage() {
                   disabled={submitting}
                   className="group inline-flex w-full items-center justify-between gap-4 bg-black px-6 py-5 font-montserrat text-[10px] font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-black/80 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  <span>{submitting ? "Sending..." : "Send inquiry"}</span>
+                  <span>{submitting ? "جارٍ الإرسال..." : "إرسال الاستفسار"}</span>
 
                   <Send
                     size={17}
@@ -486,7 +484,7 @@ export default function ContactPage() {
                 </button>
 
                 <p className="font-montserrat text-[10px] leading-5 text-black/40">
-                  Your information will be used to respond to your inquiry.
+                  سنستخدم بياناتك للرد على استفسارك.
                 </p>
               </form>
             </ScrollReveal>
@@ -504,21 +502,21 @@ export default function ContactPage() {
           <div className="mb-10 grid gap-6 md:grid-cols-2 md:items-end">
             <ScrollReveal>
               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/40 md:text-xs">
-                Find us
+                موقعنا
               </p>
 
               <h2 className="mt-4 font-bebas text-5xl leading-[0.9] tracking-wide md:text-7xl lg:text-8xl">
-                Visit {BUSINESS_NAME}.
+                زر {BUSINESS_NAME}.
                 <br />
-                Let&apos;s get you riding.
+                وانطلق في رحلتك.
               </h2>
             </ScrollReveal>
 
             <ScrollReveal delay={0.12}>
               <p className="max-w-xl font-montserrat text-sm leading-7 text-black/60 md:justify-self-end md:text-base md:leading-8">
-                Looking for your next motorcycle? Visit {BUSINESS_NAME} in{" "}
-                {SHOWROOM_LOCATION} to explore our motorcycles, ask questions,
-                and speak with our team about finding the right ride.
+                تبحث عن دراجتك القادمة؟ زر {BUSINESS_NAME} في{" "}
+                {SHOWROOM_LOCATION} لاستكشاف الدراجات وطرح استفساراتك والتحدث
+                مع فريقنا لمساعدتك في اختيار الدراجة المناسبة.
               </p>
             </ScrollReveal>
           </div>
@@ -533,7 +531,7 @@ export default function ContactPage() {
                 </div>
 
                 <p className="mt-8 font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-white/45">
-                  Our location
+                  موقعنا
                 </p>
 
                 <h3 className="mt-4 font-bebas text-5xl tracking-wide md:text-6xl">
@@ -546,7 +544,7 @@ export default function ContactPage() {
 
                 <div className="mt-8 border-t border-white/15 pt-6">
                   <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.2em] text-white/45">
-                    Phone
+                    الهاتف
                   </p>
 
                   <a
@@ -560,7 +558,7 @@ export default function ContactPage() {
 
                 <div className="mt-6 border-t border-white/15 pt-6">
                   <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.2em] text-white/45">
-                    Map coordinates
+                    إحداثيات الموقع
                   </p>
 
                   <p className="mt-3 font-montserrat text-sm text-white/65">
@@ -575,7 +573,7 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="group mt-10 inline-flex w-full items-center justify-between gap-4 bg-white px-5 py-5 font-montserrat text-[10px] font-semibold uppercase tracking-[0.2em] text-black transition-colors hover:bg-white/85"
               >
-                Get directions
+                احصل على الاتجاهات
 
                 <ExternalLink
                   size={17}
@@ -622,26 +620,25 @@ export default function ContactPage() {
 
             <ScrollReveal className="relative z-10 max-w-3xl">
               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-white/45 md:text-xs">
-                Your next motorcycle
+                دراجتك النارية القادمة
               </p>
 
               <h2 className="mt-5 font-bebas text-6xl leading-[0.9] tracking-wide md:text-8xl">
-                Still looking?
+                ما زلت تبحث؟
                 <br />
-                Find your next ride.
+                اعثر على دراجتك القادمة.
               </h2>
 
               <p className="mt-6 max-w-xl font-montserrat text-sm leading-7 text-white/55 md:text-base">
-                Explore our motorcycles and discover a ride that
-                matches your style. Have questions? Our team is ready
-                to help.
+                استكشف دراجاتنا واعثر على ما يناسب أسلوبك. عندك استفسار؟
+                فريقنا جاهز لمساعدتك.
               </p>
 
               <Link
                 href="/motorcycle"
                 className="group mt-9 inline-flex items-center gap-5 bg-white px-6 py-4 font-montserrat text-[10px] font-semibold uppercase tracking-[0.2em] text-black transition-colors hover:bg-white/90"
               >
-                Browse motorcycles
+                تصفّح الدراجات النارية
 
                 <ArrowUpRight
                   size={17}
@@ -659,7 +656,7 @@ export default function ContactPage() {
       <footer className="border-t border-white/10 bg-black px-6 pb-8 text-white md:px-10 lg:px-14">
         <div className="mx-auto flex max-w-[1800px] flex-col justify-between gap-4 pt-8 sm:flex-row">
           <p className="font-montserrat text-[10px] uppercase tracking-[0.15em] text-white/35">
-            © {new Date().getFullYear()} {BUSINESS_NAME}. All rights reserved.
+            © {new Date().getFullYear()} {BUSINESS_NAME}. جميع الحقوق محفوظة.
           </p>
 
           <a
@@ -698,7 +695,7 @@ function ContactInfo({ icon: Icon, label, value, href, delay = 0 }) {
         </p>
 
         <p className="mt-2 break-words font-montserrat text-sm font-medium">
-          {value || "Not provided"}
+          {value || "غير متوفر"}
         </p>
       </div>
 

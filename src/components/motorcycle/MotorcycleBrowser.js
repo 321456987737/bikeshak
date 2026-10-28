@@ -12,6 +12,7 @@ import {
   X,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { translateLabel } from "@/lib/localization";
 
 const HERO_IMAGE = "/images/motorcycle/motorcycle1.jpg";
 
@@ -53,23 +54,23 @@ const MAKES = [
 const SORT_OPTIONS = [
   {
     value: "newest",
-    label: "Newest first",
+    label: "الأحدث أولًا",
   },
   {
     value: "price-low",
-    label: "Price: Low to High",
+    label: "السعر: من الأقل للأعلى",
   },
   {
     value: "price-high",
-    label: "Price: High to Low",
+    label: "السعر: من الأعلى للأقل",
   },
   {
     value: "year-new",
-    label: "Newest year",
+    label: "أحدث سنة",
   },
   {
     value: "mileage-low",
-    label: "Lowest mileage",
+    label: "أقل مسافة مقطوعة",
   },
 ];
 
@@ -476,13 +477,13 @@ export default function MotorcycleBrowser({
         });
 
         if (!response.ok) {
-          throw new Error("Failed to load inventory");
+          throw new Error("تعذّر تحميل المخزون.");
         }
 
         const result = await response.json();
 
         if (!result.success) {
-          throw new Error(result.message || "Failed to load inventory");
+          throw new Error(result.message || "تعذّر تحميل المخزون.");
         }
         if (requestIdRef.current !== requestId) {
           return;
@@ -542,7 +543,7 @@ export default function MotorcycleBrowser({
 
         console.error("Motorcycle fetch error:", fetchError);
 
-        setError("We couldn't load the inventory. Please try again.");
+        setError("تعذّر تحميل المخزون. حاول مرة أخرى.");
       } finally {
         /*
             An old request must never change
@@ -788,7 +789,7 @@ export default function MotorcycleBrowser({
         <div className="absolute inset-0">
           <Image
             src={HERO_IMAGE}
-            alt="Featured motorcycle"
+            alt="دراجة نارية مميزة"
             fill
             priority
             sizes="100vw"
@@ -818,16 +819,16 @@ export default function MotorcycleBrowser({
               className="max-w-3xl"
             >
               <p className="mb-3 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-white/60 md:text-[10px]">
-                Our Collection
+                مجموعتنا
               </p>
 
               <h1 className="font-bebas text-[clamp(4rem,8vw,8rem)] leading-[0.8] tracking-[-0.045em] text-white">
-                Find Your Next Motorcycle
+                اعثر على دراجتك النارية القادمة
               </h1>
 
               <p className="mt-5 max-w-xl font-montserrat text-[10px] leading-[1.8] tracking-[0.05em] text-white/60 md:text-[11px]">
-                Explore our current collection of carefully selected motorcycles,
-                from refined daily drivers to performance-focused machines.
+                استكشف مجموعتنا الحالية من الدراجات المختارة بعناية، من دراجات
+                التنقل اليومية إلى الدراجات عالية الأداء.
               </p>
             </motion.div>
           </div>
@@ -843,7 +844,7 @@ export default function MotorcycleBrowser({
           <div className="mx-auto flex max-w-[1800px] items-center justify-between gap-5 px-6 py-4 md:px-10 lg:px-14">
             <div>
               <p className="font-montserrat text-[8px] uppercase tracking-[0.25em] text-black/35">
-                Showing category
+                الفئة المعروضة
               </p>
 
               <p className="mt-1 font-bebas text-2xl leading-none">
@@ -856,7 +857,7 @@ export default function MotorcycleBrowser({
               onClick={resetFilters}
               className="cursor-pointer font-montserrat text-[8px] font-medium uppercase tracking-[0.16em] text-black/40 underline decoration-black/20 underline-offset-4 transition-colors hover:text-black"
             >
-              Clear category
+              إزالة الفئة
             </button>
           </div>
         </div>
@@ -871,11 +872,11 @@ export default function MotorcycleBrowser({
           <div className="flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="font-montserrat text-[9px] font-medium uppercase tracking-[0.3em] text-black/35 md:text-[10px]">
-                Available motorcycles
+                الدراجات النارية المتوفرة
               </p>
 
               <h2 className="mt-2 font-bebas text-4xl leading-none tracking-[-0.025em] md:text-5xl">
-                The Collection
+                المجموعة
               </h2>
             </div>
 
@@ -892,7 +893,7 @@ export default function MotorcycleBrowser({
                   name="search"
                   value={search}
                   onChange={(event) => setSearch(event.target.value)}
-                  placeholder="Search make, model or stock number"
+                  placeholder="ابحث حسب الشركة أو الطراز أو رقم المخزون"
                   className="min-w-0 flex-1 bg-transparent font-montserrat text-[11px] text-black outline-none placeholder:text-black/30"
                 />
 
@@ -900,7 +901,7 @@ export default function MotorcycleBrowser({
                   type="submit"
                   className="group ml-4 flex shrink-0 cursor-pointer items-center gap-2 font-montserrat text-[9px] font-medium uppercase tracking-[0.18em] text-black"
                 >
-                  Search
+                  بحث
                   <ArrowUpRight
                     size={14}
                     strokeWidth={1.3}
@@ -931,12 +932,12 @@ export default function MotorcycleBrowser({
                 </span>
 
                 <span className="font-montserrat text-[9px] uppercase tracking-[0.12em] text-black/35 sm:tracking-[0.2em]">
-                  {pagination.total === 1 ? "motorcycle" : "motorcycles"} available
+                  الدراجات النارية المتوفرة
                 </span>
               </div>
               {loading && motorcycles.length > 0 && (
                 <span className="font-montserrat text-[8px] uppercase tracking-[0.15em] text-black/30">
-                  Updating...
+                  جارٍ التحديث...
                 </span>
               )}
             </div>
@@ -949,7 +950,7 @@ export default function MotorcycleBrowser({
                 // className="flex cursor-pointer items-center gap-2 border border-black/15 px-4 py-2.5 font-montserrat text-[9px] font-medium uppercase tracking-[0.16em] transition-colors duration-300 hover:border-black md:hidden"
               >
                 <SlidersHorizontal size={13} strokeWidth={1.3} />
-                Filters
+                التصفية
                 {activeFilterCount > 0 && (
                   <span className="flex h-4 min-w-4 items-center justify-center bg-black px-1 text-[7px] text-white">
                     {activeFilterCount}
@@ -1051,11 +1052,11 @@ export default function MotorcycleBrowser({
                     <div className="mb-8 flex items-center justify-between border-b border-black/10 pb-5">
                       <div>
                         <p className="font-montserrat text-[8px] uppercase tracking-[0.25em] text-black/35">
-                          Refine
+                          خيارات التصفية
                         </p>
 
                         <h2 className="mt-1 font-bebas text-4xl leading-none">
-                          Filters
+                          التصفية
                         </h2>
                       </div>
 
@@ -1097,7 +1098,7 @@ export default function MotorcycleBrowser({
                       onClick={() => setMobileFiltersOpen(false)}
                       className="mt-8 flex w-full cursor-pointer items-center justify-center gap-3 bg-black py-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-white"
                     >
-                      View motorcycles
+                      عرض الدراجات النارية
                       <ArrowUpRight size={14} strokeWidth={1.3} />
                     </button>
                   </motion.aside>
@@ -1141,7 +1142,7 @@ export default function MotorcycleBrowser({
                   {!pagination.hasNextPage && (
                     <div className="mt-14 border-t border-black/10 pt-7 text-center">
                       <p className="font-montserrat text-[8px] uppercase tracking-[0.25em] text-black/30">
-                        You&apos;ve reached the end of the collection
+                        وصلت إلى نهاية المجموعة
                       </p>
                     </div>
                   )}
@@ -1189,10 +1190,10 @@ function FilterPanel({
       <div className="flex items-center justify-between border-b border-black/10 py-5">
         <div>
           <p className="font-montserrat text-[8px] uppercase tracking-[0.25em] text-black/30">
-            Refine
+            خيارات التصفية
           </p>
 
-          <h2 className="mt-1 font-bebas text-3xl leading-none">Filters</h2>
+          <h2 className="mt-1 font-bebas text-3xl leading-none">التصفية</h2>
         </div>
 
         <button
@@ -1200,20 +1201,20 @@ function FilterPanel({
           onClick={resetFilters}
           className="cursor-pointer font-montserrat text-[8px] font-medium uppercase tracking-[0.16em] text-black/40 underline decoration-black/20 underline-offset-4 transition-colors duration-300 hover:text-black"
         >
-          Clear all
+          مسح الكل
         </button>
       </div>
 
       <div className="divide-y divide-black/10">
         <FilterSelect
-          label="Make"
+          label="الشركة المصنّعة"
           value={make}
           onChange={(value) => handleFilterChange(setMake, "make", value)}
           options={MAKES}
         />
 
         <FilterSelect
-          label="Motorcycle type"
+          label="نوع الدراجة"
           value={bikeType}
           onChange={(value) =>
             handleFilterChange(setBodyType, "bikeType", value)
@@ -1222,7 +1223,7 @@ function FilterPanel({
         />
 
         <FilterSelect
-          label="Fuel"
+          label="الوقود"
           value={fuelType}
           onChange={(value) =>
             handleFilterChange(setFuelType, "fuelType", value)
@@ -1231,7 +1232,7 @@ function FilterPanel({
         />
 
         <FilterSelect
-          label="Transmission"
+          label="ناقل الحركة"
           value={transmission}
           onChange={(value) =>
             handleFilterChange(setTransmission, "transmission", value)
@@ -1240,7 +1241,7 @@ function FilterPanel({
         />
 
         <FilterSelect
-          label="Condition"
+          label="الحالة"
           value={condition}
           onChange={(value) =>
             handleFilterChange(setCondition, "condition", value)
@@ -1250,7 +1251,7 @@ function FilterPanel({
 
         <div className="py-5">
           <label className="mb-3 block font-montserrat text-[8px] font-medium uppercase tracking-[0.2em] text-black/40">
-            Price
+            السعر
           </label>
 
           <div className="grid grid-cols-2 gap-2">
@@ -1262,7 +1263,7 @@ function FilterPanel({
               onBlur={(event) =>
                 handleRangeChange(setMinPrice, "minPrice", event.target.value)
               }
-              placeholder="Min"
+              placeholder="الأقل"
               className="h-10 w-full border border-black/15 bg-white px-3 font-montserrat text-[10px] outline-none placeholder:text-black/25 focus:border-black"
             />
 
@@ -1274,7 +1275,7 @@ function FilterPanel({
               onBlur={(event) =>
                 handleRangeChange(setMaxPrice, "maxPrice", event.target.value)
               }
-              placeholder="Max"
+              placeholder="الأعلى"
               className="h-10 w-full border border-black/15 bg-white px-3 font-montserrat text-[10px] outline-none placeholder:text-black/25 focus:border-black"
             />
           </div>
@@ -1282,7 +1283,7 @@ function FilterPanel({
 
         <div className="py-5">
           <label className="mb-3 block font-montserrat text-[8px] font-medium uppercase tracking-[0.2em] text-black/40">
-            Year
+            سنة الصنع
           </label>
 
           <div className="grid grid-cols-2 gap-2">
@@ -1293,7 +1294,7 @@ function FilterPanel({
               onBlur={(event) =>
                 handleRangeChange(setMinYear, "minYear", event.target.value)
               }
-              placeholder="From"
+              placeholder="من"
               className="h-10 w-full border border-black/15 bg-white px-3 font-montserrat text-[10px] outline-none placeholder:text-black/25 focus:border-black"
             />
 
@@ -1304,7 +1305,7 @@ function FilterPanel({
               onBlur={(event) =>
                 handleRangeChange(setMaxYear, "maxYear", event.target.value)
               }
-              placeholder="To"
+              placeholder="إلى"
               className="h-10 w-full border border-black/15 bg-white px-3 font-montserrat text-[10px] outline-none placeholder:text-black/25 focus:border-black"
             />
           </div>
@@ -1331,14 +1332,14 @@ function FilterSelect({ label, value, onChange, options }) {
           onChange={(event) => onChange(event.target.value)}
           className="h-10 w-full cursor-pointer appearance-none border border-black/15 bg-white px-3 pr-8 font-montserrat text-[10px] text-black outline-none transition-colors duration-300 hover:border-black focus:border-black"
         >
-          <option value="">All {label.toLowerCase()}</option>
+          <option value="">كل الخيارات</option>
 
           {options.map((option) => (
             <option
               key={typeof option === "string" ? option : option.value}
               value={typeof option === "string" ? option : option.value}
             >
-              {typeof option === "string" ? option : option.label}
+              {translateLabel(typeof option === "string" ? option : option.label)}
             </option>
           ))}
         </select>
@@ -1399,7 +1400,7 @@ function InventoryCard({ motorcycle, index }) {
           ) : (
             <div className="flex h-full items-center justify-center">
               <span className="font-montserrat text-[9px] uppercase tracking-[0.2em] text-black/25">
-                No image available
+                لا توجد صورة
               </span>
             </div>
           )}
@@ -1408,7 +1409,7 @@ function InventoryCard({ motorcycle, index }) {
 
           <div className="absolute left-1 top-1 md:left-4 md:top-4">
             <span className="bg-white px-3 py-2 font-montserrat text-[8px] font-medium uppercase tracking-[0.16em] text-black">
-              {motorcycle.condition}
+              {translateLabel(motorcycle.condition)}
             </span>
           </div>
 
@@ -1449,20 +1450,20 @@ function InventoryCard({ motorcycle, index }) {
 
             <span className="h-[3px] w-[3px] rounded-full bg-black/20" />
 
-            <span>{motorcycle.transmission}</span>
+            <span>{translateLabel(motorcycle.transmission)}</span>
 
             <span className="h-[3px] w-[3px] rounded-full bg-black/20" />
 
-            <span>{motorcycle.bikeType}</span>
+            <span>{translateLabel(motorcycle.bikeType)}</span>
           </div>
 
           <div className="mt-6 flex items-center justify-between">
             <span className="font-montserrat text-[8px] font-medium uppercase tracking-[0.18em] text-black/35">
-              View motorcycle
+              عرض الدراجة
             </span>
 
             <span className="font-montserrat text-[8px] uppercase tracking-[0.18em] text-black/25">
-              {motorcycle.stockNumber || "Available"}
+              {motorcycle.stockNumber || "متاحة"}
             </span>
           </div>
         </div>
@@ -1499,16 +1500,16 @@ function EmptyState({ onReset }) {
   return (
     <div className="flex min-h-[420px] flex-col items-center justify-center border-t border-black/10 text-center">
       <p className="font-montserrat text-[8px] font-medium uppercase tracking-[0.3em] text-black/30">
-        Collection
+        المجموعة
       </p>
 
       <h2 className="mt-4 font-bebas text-6xl leading-none tracking-[-0.03em] md:text-8xl">
-        No Motorcycle Found
+        ما لقينا دراجات نارية
       </h2>
 
       <p className="mt-5 max-w-md font-montserrat text-[10px] leading-[1.9] tracking-[0.04em] text-black/40 md:text-[11px]">
-        We could not find motorcycles matching your current selection. Try
-        adjusting your filters to explore more of the collection.
+        ما لقينا دراجات نارية تطابق اختياراتك الحالية. جرّب تعديل خيارات
+        التصفية لاستكشاف المزيد من المجموعة.
       </p>
 
       <button
@@ -1516,7 +1517,7 @@ function EmptyState({ onReset }) {
         onClick={onReset}
         className="group mt-8 inline-flex cursor-pointer items-center gap-3 bg-black px-6 py-3.5 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-black/80"
       >
-        Clear filters
+        مسح عوامل التصفية
         <ArrowUpRight
           size={14}
           strokeWidth={1.3}
@@ -1577,7 +1578,7 @@ function LoadingMoreIndicator() {
         <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-black/30" />
 
         <p className="font-montserrat text-[8px] font-medium uppercase tracking-[0.25em] text-black/35">
-          Loading more motorcycles
+          جارٍ تحميل المزيد من الدراجات
         </p>
 
         <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-black/30" />

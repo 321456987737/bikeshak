@@ -62,7 +62,7 @@ export default function AccessoryForm({ initialData = null }) {
 
     const remaining = MAX_IMAGES - images.length;
     if (files.length > remaining) {
-      setError(`You can add up to ${remaining} more images.`);
+      setError(`يمكنك إضافة ${remaining} صورة أخرى كحد أقصى.`);
       return;
     }
 
@@ -72,7 +72,7 @@ export default function AccessoryForm({ initialData = null }) {
         file.size > 10 * 1024 * 1024,
     );
     if (invalidFile) {
-      setError("Choose JPG, PNG or WebP images smaller than 10MB each.");
+      setError("اختر صور JPG أو PNG أو WebP، على ألا يتجاوز حجم كل صورة 10MB.");
       return;
     }
 
@@ -119,7 +119,7 @@ export default function AccessoryForm({ initialData = null }) {
     });
     const result = await response.json();
     if (!response.ok || !result.success) {
-      throw new Error(result.message || "Failed to upload images");
+      throw new Error(result.message || "تعذر رفع الصور.");
     }
     return result.data.images || [];
   }
@@ -133,7 +133,7 @@ export default function AccessoryForm({ initialData = null }) {
     });
     const result = await response.json();
     if (!response.ok || !result.success) {
-      throw new Error(result.message || "Failed to remove old images");
+      throw new Error(result.message || "تعذر حذف الصور السابقة.");
     }
   }
 
@@ -147,15 +147,15 @@ export default function AccessoryForm({ initialData = null }) {
     try {
       const price = Number(form.price);
       const stockQuantity = Number(form.stockQuantity);
-      if (!form.name.trim()) throw new Error("Product name is required.");
+      if (!form.name.trim()) throw new Error("اسم المنتج مطلوب.");
       if (!Number.isFinite(price) || price < 0) {
-        throw new Error("Enter a valid price.");
+        throw new Error("أدخل سعرًا صحيحًا.");
       }
       if (!Number.isInteger(stockQuantity) || stockQuantity < 0) {
-        throw new Error("Stock quantity must be a whole number of zero or more.");
+        throw new Error("يجب أن تكون الكمية عددًا صحيحًا لا يقل عن صفر.");
       }
 
-      setSuccess("Uploading product images...");
+      setSuccess("جارٍ رفع صور المنتج...");
       const uploadedImages = await uploadNewImages();
       uploadedPublicIds = uploadedImages
         .map((image) => image.publicId)
@@ -208,7 +208,7 @@ export default function AccessoryForm({ initialData = null }) {
       );
       const result = await response.json();
       if (!response.ok || !result.success) {
-        throw new Error(result.message || "Failed to save accessory");
+        throw new Error(result.message || "تعذر حفظ الإكسسوار.");
       }
 
       let cleanupWarning = "";
@@ -216,10 +216,10 @@ export default function AccessoryForm({ initialData = null }) {
         await deleteCloudinaryImages(removedPublicIds);
       } catch (cleanupError) {
         console.error("Removed accessory image cleanup error:", cleanupError);
-        cleanupWarning = " Some removed images could not be deleted.";
+        cleanupWarning = " تعذر حذف بعض الصور التي أُزيلت.";
       }
       setSuccess(
-        `${isEdit ? "Accessory updated" : "Accessory added"} successfully.${cleanupWarning}`,
+        `${isEdit ? "تم تحديث الإكسسوار" : "تمت إضافة الإكسسوار"} بنجاح.${cleanupWarning}`,
       );
       window.setTimeout(() => {
         router.push("/admin/accessories");
@@ -235,7 +235,7 @@ export default function AccessoryForm({ initialData = null }) {
         }
       }
       setSuccess("");
-      setError(submitError.message || "Failed to save accessory.");
+      setError(submitError.message || "تعذر حفظ الإكسسوار.");
     } finally {
       setSubmitting(false);
     }
@@ -256,16 +256,16 @@ export default function AccessoryForm({ initialData = null }) {
 
       <section className="space-y-5 rounded-2xl border border-black/10 bg-white p-5 sm:p-7">
         <div>
-          <h2 className="text-lg font-semibold">Product information</h2>
-          <p className="mt-1 text-sm text-black/45">Details shown in the public accessories catalog.</p>
+          <h2 className="text-lg font-semibold">معلومات المنتج</h2>
+          <p className="mt-1 text-sm text-black/45">التفاصيل التي ستظهر في كتالوج الإكسسوارات.</p>
         </div>
         <div className="grid gap-5 sm:grid-cols-2">
           <label className="space-y-2 text-sm font-medium">
-            Product name
+            اسم المنتج
             <input name="name" value={form.name} onChange={handleChange} required maxLength={160} className="h-11 w-full rounded-xl border border-black/15 px-3 font-normal outline-none focus:border-black" />
           </label>
           <label className="space-y-2 text-sm font-medium">
-            Category
+            الفئة
             <select name="category" value={form.category} onChange={handleChange} className="h-11 w-full rounded-xl border border-black/15 bg-white px-3 font-normal outline-none focus:border-black">
               {ACCESSORY_CATEGORIES.map((category) => (
                 <option key={category.value} value={category.value}>{category.label}</option>
@@ -273,62 +273,62 @@ export default function AccessoryForm({ initialData = null }) {
             </select>
           </label>
           <label className="space-y-2 text-sm font-medium">
-            Stock number
+            رقم المخزون
             <input name="stockNumber" value={form.stockNumber} onChange={handleChange} maxLength={80} className="h-11 w-full rounded-xl border border-black/15 px-3 font-normal outline-none focus:border-black" />
           </label>
           <label className="space-y-2 text-sm font-medium">
-            Price
+            السعر
             <div className="flex gap-2">
               <input name="price" type="number" min="0" step="0.01" value={form.price} onChange={handleChange} required className="h-11 min-w-0 flex-1 rounded-xl border border-black/15 px-3 font-normal outline-none focus:border-black" />
-              <input name="currency" value={form.currency} onChange={handleChange} maxLength={3} aria-label="Currency code" className="h-11 w-20 rounded-xl border border-black/15 px-3 uppercase font-normal outline-none focus:border-black" />
+              <input name="currency" value={form.currency} onChange={handleChange} maxLength={3} aria-label="رمز العملة" className="h-11 w-20 rounded-xl border border-black/15 px-3 uppercase font-normal outline-none focus:border-black" />
             </div>
           </label>
           <label className="space-y-2 text-sm font-medium">
-            Stock quantity
+            الكمية المتوفرة
             <input name="stockQuantity" type="number" min="0" step="1" value={form.stockQuantity} onChange={handleChange} required className="h-11 w-full rounded-xl border border-black/15 px-3 font-normal outline-none focus:border-black" />
           </label>
           <label className="space-y-2 text-sm font-medium">
-            Status
+            الحالة
             <select name="status" value={form.status} onChange={handleChange} className="h-11 w-full rounded-xl border border-black/15 bg-white px-3 font-normal outline-none focus:border-black">
-              <option>Available</option>
-              <option>Out of stock</option>
-              <option>Discontinued</option>
+              <option value="Available">متوفر</option>
+              <option value="Out of stock">نفد المخزون</option>
+              <option value="Discontinued">متوقف</option>
             </select>
           </label>
         </div>
         <label className="block space-y-2 text-sm font-medium">
-          Description
+          الوصف
           <textarea name="description" value={form.description} onChange={handleChange} maxLength={5000} rows={5} className="w-full rounded-xl border border-black/15 px-3 py-3 font-normal leading-6 outline-none focus:border-black" />
         </label>
         <label className="flex items-center gap-3 text-sm font-medium">
           <input type="checkbox" name="isFeatured" checked={form.isFeatured} onChange={handleChange} className="h-4 w-4 accent-black" />
-          Feature this accessory
+          اجعل هذا الإكسسوار مميزًا
         </label>
       </section>
 
       <section className="space-y-5 rounded-2xl border border-black/10 bg-white p-5 sm:p-7">
         <div>
-          <h2 className="text-lg font-semibold">Product images</h2>
-          <p className="mt-1 text-sm text-black/45">Upload up to {MAX_IMAGES} JPG, PNG or WebP images (10MB each).</p>
+          <h2 className="text-lg font-semibold">صور المنتج</h2>
+          <p className="mt-1 text-sm text-black/45">ارفع حتى {MAX_IMAGES} صورة بصيغة JPG أو PNG أو WebP (10MB لكل صورة).</p>
         </div>
         <label className="flex min-h-28 cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed border-black/25 text-center text-sm hover:border-black">
           <span className="text-2xl">+</span>
-          <span>Choose images</span>
+          <span>اختر الصور</span>
           <input type="file" accept="image/jpeg,image/png,image/webp" multiple onChange={handleImageSelection} className="sr-only" />
         </label>
         {images.length > 0 && (
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {images.map((image, index) => (
               <div key={image.id} className="relative aspect-square overflow-hidden rounded-xl bg-black/5">
-                <Image src={image.preview} alt={image.alt || form.name || "Accessory"} fill sizes="(max-width: 640px) 50vw, 25vw" className="object-cover" />
-                <button type="button" onClick={() => removeImage(index)} aria-label={`Remove image ${index + 1}`} className="absolute right-2 top-2 rounded-full bg-black/75 px-2 py-1 text-xs text-white">Remove</button>
+                <Image src={image.preview} alt={image.alt || form.name || "إكسسوار"} fill sizes="(max-width: 640px) 50vw, 25vw" className="object-cover" />
+                <button type="button" onClick={() => removeImage(index)} aria-label={`إزالة الصورة ${index + 1}`} className="absolute right-2 top-2 rounded-full bg-black/75 px-2 py-1 text-xs text-white">إزالة</button>
               </div>
             ))}
           </div>
         )}
       </section>
       <button type="submit" disabled={submitting} className="w-full rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white disabled:opacity-50 sm:w-auto">
-        {submitting ? "Saving..." : isEdit ? "Save changes" : "Add accessory"}
+        {submitting ? "جارٍ الحفظ..." : isEdit ? "حفظ التغييرات" : "إضافة إكسسوار"}
       </button>
     </form>
   );

@@ -194,13 +194,13 @@ export default function Header() {
             className="flex shrink-0 items-center gap-2.5"
           >
           
-          <Link
+          {/* <Link
             href="/"
             aria-label="الصفحة الرئيسية لـ BIKESHACK"
             className="flex shrink-0 items-center gap-3"
           >
             <Image src="/logo.png" alt="شعار BIKESHACK" width={85} height={85} />
-            </Link>
+            </Link> */}
           </Link>
 
           {session && (

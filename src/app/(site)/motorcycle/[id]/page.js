@@ -8,8 +8,7 @@ import { translateLabel } from "@/lib/localization";
 
 async function getMotorcycle(id) {
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-
+    process.env.NEXT_PUBLIC_SITE_URL
   try {
     const response = await fetch(
       `${baseUrl}/api/motorcycle/${id}`,
@@ -39,7 +38,7 @@ async function getMotorcycle(id) {
 
 async function getLatestMotorcycles(currentMotorcycleId) {
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+    process.env.NEXT_PUBLIC_SITE_URL;
 
   try {
     const response = await fetch(
